@@ -1,0 +1,40 @@
+aside {
+    width: 20%;
+
+    background-color: #e6f2ff;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    border-left-width: 5px;
+    border-left-color: #0080ff;
+}
+
+.pagetop {
+    text-align: center;
+
+    background-color: #e6f2ff;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: #0080ff;
+}
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #b499ff;
+}
+
+li a.navbar {
+    display: block;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #8670c2;
+    color: white;
+}
