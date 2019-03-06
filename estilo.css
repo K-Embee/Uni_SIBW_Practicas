@@ -23,7 +23,8 @@ h1 {
 	padding: 8px;
 	text-align: center;
 	vertical-align: center;
-	overflow: hidden
+	overflow: hidden;
+	box-sizing: border-box;
 }
 
 .logoimg {
@@ -125,7 +126,7 @@ Misc
 =====================================*/
 
 body {
-  background-image: url("background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+	background-image: url("background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
