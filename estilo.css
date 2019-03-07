@@ -19,11 +19,10 @@ h1 {
 }
 
 .logotipo {
-	width: 100%;
 	padding: 8px;
 	text-align: center;
-	vertical-align: center;
-	overflow: hidden;
+	vertical-align: middle;
+	overflow: auto;
 	box-sizing: border-box;
 }
 
@@ -47,7 +46,7 @@ ul.navbar {
 }
 
 ul.navbar li {
-	display: inline;
+	display: inline; /*Para que los elementos se muestren en una sola línea*/
 	float: left;
 	width: 200px;
 	border-radius: 0px;
@@ -75,9 +74,8 @@ Barra lateral (22% anchura, 20 + 1/margen)
 
 aside {
 	width: 20%;
-	height: 400px;
 	float: left;
-	box-sizing: border-box; /*Incluye a PADDING y BORDER (pero no MARGIN) en el tamaño*/
+	box-sizing: border-box; /*Incluye a PADDING y BORDER (pero no MARGIN) en el tamaño, para que salgan bien las cajas*/
 
 	background-color: #e6f2ff;
 	border-style: solid;
@@ -107,11 +105,22 @@ Contenido central (78% anchura, 76 + 1/margen)
 	margin: 1%;
 }
 
+.infobox {
+	text-align: center;
+}
+
+.infoimg{
+	height: 150px;
+	width: 150px;
+}
+
 /*=====================================
 Barra inferior
 =====================================*/
-.pagebottom {
-	text-align: right;
+
+footer {
+	text-align: center;
+	vertical-align: middle;
 	background-color: #e6f2ff;
 	border-style: solid;
 	border-radius: 10px;
@@ -121,6 +130,26 @@ Barra inferior
 
 	overflow: auto; /*Para que no se desborden los enlaces*/
 }
+
+.links {
+	text-align: right;
+}
+
+.links img {
+	height: 35px;
+	width: 35px;
+}
+
+.copyright {
+	font-weight: bold;
+	text-align: left;
+	padding-left: 30px;
+}
+
+address {
+	display: inline-block; /*Para que los enlaces se muestren en la misma linea*/
+}
+
 
 /*=====================================
 Misc
@@ -136,21 +165,13 @@ body {
 	clear: both; /*No permite que hayan elementos flotando (float) en ningun lado*/
 }
 
-.copyright {
-	text-align: left;
-	height: 35px;
-	width: 35px;
+.box {
+	box-sizing: border-box; /*Incluye a PADDING y BORDER (pero no MARGIN) en el tamaño, para que salgan bien las cajas*/
+	margin: auto; /*Necesario para que Flex funcione*/
+	float: left;
+	width: 33.33%; /*Tres cajas por linea*/
 }
 
-.links {
-	float: right;
-}
-
-.links img {
-	height: 35px;
-	width: 35px;
-}
-
-address {
-	text-align: center;
+.flex {
+	display: flex; /*Para que las cajas sean iguales de altas. Incompatible con IE10 y anteriores*/
 }
