@@ -126,7 +126,7 @@ Misc
 =====================================*/
 
 body {
-	background-image: url("background.jpg");
+	background-image: url("imgs/background.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }
