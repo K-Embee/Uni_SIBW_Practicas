@@ -111,14 +111,15 @@ Contenido central (78% anchura, 76 + 1/margen)
 Barra inferior
 =====================================*/
 .pagebottom {
-	text-align: center;
+	text-align: right;
 	background-color: #e6f2ff;
 	border-style: solid;
 	border-radius: 10px;
 	border-width: 3px;
 	border-color: #0080ff;
+	padding: 8px;
 
-	clear: both; /*No permite que hayan elementos flotando (float) en ningun lado*/
+	overflow: auto; /*Para que no se desborden los enlaces*/
 }
 
 /*=====================================
@@ -129,4 +130,27 @@ body {
 	background-image: url("imgs/background.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.cleared {
+	clear: both; /*No permite que hayan elementos flotando (float) en ningun lado*/
+}
+
+.copyright {
+	text-align: left;
+	height: 35px;
+	width: 35px;
+}
+
+.links {
+	float: right;
+}
+
+.links img {
+	height: 35px;
+	width: 35px;
+}
+
+address {
+	text-align: center;
 }
