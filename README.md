@@ -1,2 +1,2 @@
-# Uni_SIBW_P1
-Práctica 1 de Sistemas de Información Basados en Web
+# Uni_SIBW_Practicas
+Prácticas de Sistemas de Información Basados en Web (curso 2018/2019)
