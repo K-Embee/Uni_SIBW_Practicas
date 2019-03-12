@@ -1,0 +1,94 @@
+/*=====================================
+Barra superior
+=====================================*/
+
+.pagetop {
+	text-align: center;
+}
+
+h1 {
+	font-family: "Arial", "Verdana", sans;
+	font-size: 4em;
+	font-weight: 1000; /*Parece ser el máximo*/
+}
+
+.logotipo {
+	padding: 8px;
+	text-align: center;
+	vertical-align: middle;
+	overflow: auto;
+	box-sizing: border-box;
+}
+
+.logoimg {
+	height: 150px;
+	width: 150px;
+}
+
+/*=====================================
+Contenido central (En la impresión 100% anchura)
+=====================================*/
+
+.principal {
+	width: 100%;
+}
+
+.infobox {
+	text-align: center;
+}
+
+.infoimg{
+	height: 150px;
+	width: 150px;
+}
+
+.imageevento {
+	float: right;
+	text-align: center;
+}
+
+h2 {
+	font-family: "Arial", "Verdana", sans;
+	font-size: 3em;
+	font-weight: 800;
+	text-align: center;
+}
+
+
+/*=====================================
+Barra inferior
+=====================================*/
+
+footer {
+	text-align: center;
+	vertical-align: middle;
+
+	overflow: auto; /*Para que no se desborden los enlaces*/
+}
+
+.copyright {
+	font-weight: bold;
+	text-align: left;
+	padding-left: 30px;
+}
+
+address {
+	display: inline-block; /*Para que los enlaces se muestren en la misma linea*/
+}
+
+
+/*=====================================
+Misc
+=====================================*/
+
+
+.box {
+	box-sizing: border-box; /*Incluye a PADDING y BORDER (pero no MARGIN) en el tamaño, para que salgan bien las cajas*/
+	margin: auto; /*Necesario para que Flex funcione*/
+	float: left;
+	width: 33.33%; /*Tres cajas por linea*/
+}
+
+.flex {
+	display: flex; /*Para que las cajas sean iguales de altas. Incompatible con IE10 y anteriores*/
+}
