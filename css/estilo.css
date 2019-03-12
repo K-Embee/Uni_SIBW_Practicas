@@ -1,0 +1,201 @@
+/*=====================================
+Barra superior
+=====================================*/
+
+.pagetop {
+	text-align: center;
+
+	background-color: #e6f2ff;
+	border-style: solid;
+	border-radius: 10px;
+	border-width: 3px;
+	border-color: #0080ff;
+}
+
+h1 {
+	font-family: "Arial", "Verdana", sans;
+	font-size: 4em;
+	font-weight: 1000; /*Parece ser el máximo*/
+}
+
+.logotipo {
+	padding: 8px;
+	text-align: center;
+	vertical-align: middle;
+	overflow: auto;
+	box-sizing: border-box;
+}
+
+.logoimg {
+	float: left;
+	height: 150px;
+	width: 150px;
+}
+
+/*=====================================
+Barra navegación
+=====================================*/
+
+ul.navbar {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #d9dff2;
+	border-radius: 0px 0px 5px 5px;
+}
+
+ul.navbar li {
+	display: inline; /*Para que los elementos se muestren en una sola línea*/
+	float: left;
+	width: 200px;
+	border-radius: 0px;
+}
+
+li a.navbar {
+	display: block;
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.navbar li:first-child {
+	margin-left: 8px;
+}
+
+.navbar li a:hover {
+	background-color: #415ebe;
+	color: white;
+}
+
+/*=====================================
+Barra lateral (22% anchura, 20 + 1/margen)
+=====================================*/
+
+aside {
+	width: 20%;
+	float: left;
+	box-sizing: border-box; /*Incluye a PADDING y BORDER (pero no MARGIN) en el tamaño, para que salgan bien las cajas*/
+
+	background-color: #e6f2ff;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 0px;
+	border-left-width: 5px;
+	border-left-color: #0080ff;
+	padding: 10px;
+	margin: 1%;
+}
+
+aside ul {
+	list-style-type: none;
+}
+
+/*=====================================
+Contenido central (78% anchura, 76 + 1/margen)
+=====================================*/
+
+.principal {
+	width: 76%;
+	float: left;
+	box-sizing: border-box;
+
+	background-color: #e6f2ff;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 3px;
+	border-color: #0080ff;
+	padding: 10px;
+	margin: 1%;
+}
+
+.principal a:link, .principal a:visited{
+	color: black;
+	text-decoration: none;
+}
+
+.infobox {
+	text-align: center;
+}
+
+.infoimg{
+	height: 150px;
+	width: 150px;
+}
+
+.imageevento {
+	float: right;
+	text-align: center;
+}
+
+h2 {
+	font-family: "Arial", "Verdana", sans;
+	font-size: 3em;
+	font-weight: 800;
+	text-align: center;
+}
+
+
+/*=====================================
+Barra inferior
+=====================================*/
+
+footer {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #e6f2ff;
+	border-style: solid;
+	border-radius: 10px;
+	border-width: 3px;
+	border-color: #0080ff;
+	padding: 8px;
+
+	overflow: auto; /*Para que no se desborden los enlaces*/
+}
+
+.links {
+	text-align: right;
+}
+
+.links img {
+	height: 35px;
+	width: 35px;
+}
+
+.copyright {
+	font-weight: bold;
+	text-align: left;
+	padding-left: 30px;
+}
+
+address {
+	display: inline-block; /*Para que los enlaces se muestren en la misma linea*/
+}
+
+
+/*=====================================
+Misc
+=====================================*/
+
+body {
+	background-image: url("../imgs/background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "Arial", "Verdana", sans;
+	font-size: 0.9em;
+}
+
+.cleared {
+	clear: both; /*No permite que hayan elementos flotando (float) en ningun lado*/
+}
+
+.box {
+	box-sizing: border-box; /*Incluye a PADDING y BORDER (pero no MARGIN) en el tamaño, para que salgan bien las cajas*/
+	margin: auto; /*Necesario para que Flex funcione*/
+	float: left;
+	width: 33.33%; /*Tres cajas por linea*/
+}
+
+.flex {
+	display: flex; /*Para que las cajas sean iguales de altas. Incompatible con IE10 y anteriores*/
+}
