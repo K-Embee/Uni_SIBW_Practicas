@@ -92,3 +92,11 @@ Misc
 .flex {
 	display: flex; /*Para que las cajas sean iguales de altas. Incompatible con IE10 y anteriores*/
 }
+
+/*=====================================
+Eliminación de elementos
+=====================================*/
+
+footer .links, aside, .navbar, .cleared {
+	display: none; /*Hace desaparecer a un elemento*/
+}
