@@ -98,5 +98,5 @@ Eliminación de elementos
 =====================================*/
 
 footer .links, aside, .navbar, .cleared {
-	display: none; /*Hace desaparecer a un elemento*/
+	display: none; /*Hace desaparecer a un elemento, tal que ni se reserve espacio para el*/
 }
