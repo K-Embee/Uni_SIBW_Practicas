@@ -51,6 +51,7 @@ ul.navbar li {
 	float: left;
 	width: 200px;
 	border-radius: 0px;
+    cursor: pointer; /*Cambia el estilo del puntero al ponerlo encima*/
 }
 
 li a.navbar {
@@ -205,18 +206,42 @@ Caja de comentarios
 
 	box-sizing: border-box;
 	border-radius: 10px 0px 0px 10px;
-	padding: 50px;
 
 	background-color: #FFEBCD;
-	filter:drop-shadow(-8px 0px 10px gray);
+	filter:drop-shadow(-8px 0px 8px gray);
 	display: none; /*Hace desaparecer a un elemento, tal que ni se reserve espacio para el*/
+
+	font-size: 0.85em;
+}
+
+.comments {
+	position: absolute;
+	left: 5%;
+	right: 5%;
+	top: 5%;
+	max-height: 45%;
+	overflow: auto;
+}
+
+.comment {
+	width: 100%;
+	word-wrap: break-word;
+	box-sizing: border-box;
+
+	border-radius: 10px;
+	padding: 8px;
+	margin-bottom: 8px;
+	background-color: #ffffff;
+	border: 1px solid #c0c0c0;
 }
 
 form {
 	position: absolute;
-	left: 16px;
-	right: 16px;
-	bottom: 16px;
+	left: 5%;
+	right: 5%;
+	bottom: 5%;
+	max-height: 45%;
+	overflow: auto;
 }
 
 textarea {
@@ -227,7 +252,7 @@ textarea {
 
 input, textarea{
 	width: 100%;
-	padding: 12px 20px;
+	padding: 12px 10px;
 	margin: 8px 0;
 	display: inline-block;
 	border-radius: 4px;
@@ -242,7 +267,7 @@ input[type=text], select {
 input[type=submit] {
 	background-color: #415ebe;
 	color: white;
-	padding: 14px 20px;
+	padding: 14px 10px;
 	border: none;
 	cursor: pointer;
 }
@@ -260,6 +285,10 @@ body {
 	background-size: cover;
 	font-family: "Arial", "Verdana", sans;
 	font-size: 0.9em;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 .cleared {

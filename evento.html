@@ -65,8 +65,19 @@
 
 	<div class="commentbutton" onclick="toggle_comments()" id="commentbutton"><img src="/imgs/speechbubble.png"/></div>
 	<div class="commentpanel" id="commentpanel">
-		<!-- [Insertar comentarios predefinidos] -->
-		<form>
+		<div class="comments" id="comments">
+			<div class="comment">
+				<span class="bold">Autor: </span>Un usuario<br>
+				<span class="bold">Fecha: </span>Una fecha<br>
+				Un comentario
+			</div>
+			<div class="comment">
+				<span class="bold">Autor: </span>Otro usuario<br>
+				<span class="bold">Fecha: </span>Otro fecha<br>
+				Otro comentario
+			</div>
+		</div>
+		<form onsubmit="return validate_form()" >
 			<label for="name">Nombre</label>
 			<input type="text" id="name" placeholder="Nombre"></input>
 			<label for="email">Email</label>
