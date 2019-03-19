@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>Estrenos peliculas</title>
 	<link rel="stylesheet" type="text/css" href="./css/estilo.css"/>
+	<script type="text/javascript" src="./scripts/comentarios.js"></script>
 </head>
 
 <body>
@@ -59,6 +60,23 @@
 
 	<!-- Eliminación de elementos flotantes -->
 	<div class="cleared"></div>
+
+	<!-- Comentarios -->
+
+	<div class="commentbutton" onclick="toggle_comments()" id="commentbutton"><img src="/imgs/speechbubble.png"/></div>
+	<div class="commentpanel" id="commentpanel">
+		<!-- [Insertar comentarios predefinidos] -->
+		<form>
+			<label for="name">Nombre</label>
+			<input type="text" id="name" placeholder="Nombre"></input>
+			<label for="email">Email</label>
+			<input type="text" id="email" placeholder="Email"></input>
+			<label>Comentario</label>
+			<textarea id="comentario" placeholder="Comentario"></textarea>
+			<input type="submit" value="Submit"></input>
+		</form>
+	</div>
+
 
 	<!-- Pie -->
 	<footer class="flex">

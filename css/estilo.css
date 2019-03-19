@@ -176,6 +176,81 @@ address {
 
 
 /*=====================================
+Caja de comentarios
+=====================================*/
+
+.commentbutton {
+	position: fixed;
+	z-index: 1; /*Para que se muestre por enicma de todo*/
+	right: 0;
+	bottom: 5%;
+	padding: 8px;
+	border-radius: 10px 0px 0px 10px;
+	background-color: #FFEBCD;
+    cursor: pointer; /*Cambia el estilo del puntero al ponerlo encima*/
+}
+
+.commentbutton img {
+	height: 32px;
+	filter:drop-shadow(1px 1px 4px gray);
+}
+
+.commentpanel {
+	position: fixed;
+	z-index: 0.5;
+	right: 0;
+	top: 2.5%;
+	height: 95%;
+	width: 30%;
+
+	box-sizing: border-box;
+	border-radius: 10px 0px 0px 10px;
+	padding: 50px;
+
+	background-color: #FFEBCD;
+	filter:drop-shadow(-8px 0px 10px gray);
+	display: none; /*Hace desaparecer a un elemento, tal que ni se reserve espacio para el*/
+}
+
+form {
+	position: absolute;
+	left: 16px;
+	right: 16px;
+	bottom: 16px;
+}
+
+textarea {
+	rows: 4;
+	resize: none;
+	border: 1px solid #c0c0c0;
+}
+
+input, textarea{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font: inherit;
+}
+
+input[type=text], select {
+	border: 1px solid #c0c0c0;
+}
+
+input[type=submit] {
+	background-color: #415ebe;
+	color: white;
+	padding: 14px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #0080ff;
+}
+/*=====================================
 Misc
 =====================================*/
 
