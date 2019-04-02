@@ -11,6 +11,7 @@ $twig = new Twig_Environment($loader, ['cache' => './directorioCache']);
 // Busco en la base de datos la informacion del evento y lo
 // almaceno en las variables $eventoNombre, $eventoFecha, $eventoFoto...
 
-echo $twig->render('plantillaEvento.html', ['nombre' => $eventoNombre, 'fecha' => $eventoFecha, 'foto' => $eventoFoto]);
+
+echo $twig->render('plantillaEvento.html', ['eventoNombre' => 'Detective Pikachu', 'estudios' => 'Pika Pi Productions', 'distribuidora' => 'Warner Brothers', 'genero' => 'Accion, Aventura', 'fechaEstreno' => 'Pikachu de febrero', 'enlace_twitter' => 'https://www.twitter.com', 'enlace_fb' => 'https://www.facebook.com', 'descripcion' => 'BLOOD FOR THE BLLOD GOD', 'imagen1' => './imgs/pikachu-inicio.jpg', 'imagen2' => './imgs/pikachu.jpg']);
 
 ?>

@@ -1,0 +1,30 @@
+{% extends "plantillaGeneral.html" %}
+
+{% block titulo %}
+    {{eventoNombre}}
+{% endblock %}
+
+{% block evento %}
+    <span class="principal">
+        <span>
+            <div class="imageevento">
+                <img class="infoimg" src="{{ imagen1 }}"/>
+                <p>Imagen del trailer</p>
+                <img class="infoimg" src="{{ imagen2 }}"/>
+                <p>Imagen del trailer</p>
+            </div>
+            <h2>{{ eventoNombre }}</h2>
+            <ul>
+                <li>Genero: {{ genero }}</li>
+                <li>Estudios: {{ estudios }}</li>
+                <li>Distribuidora: {{ distribuidora }}</li>
+                <li>Fecha de estreno: {{ fechaEstreno }}</li>
+            </ul>
+            {{ descripcion }}
+        </span>
+    </span>
+{% endblock %}
+
+{% block footer  %}
+    {% include 'footerHijo.html' %}
+{% endblock %}
