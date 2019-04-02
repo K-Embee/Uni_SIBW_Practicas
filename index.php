@@ -1,5 +1,8 @@
 <?php
+
+//Cargar funciones del modelo
 require './modelo/evento.php';
+
 //Inicializamos el motor de plantillas
 require_once './vendor/autoload.php';
 
@@ -32,6 +35,6 @@ if(!$args) {
 echo $twig->render('plantillaEvento.html', ['eventoNombre' => $args["eventoNombre"], 'estudios' => $args["estudios"],
                     'distribuidora' => $args["distribuidora"], 'genero' => $args["genero"], 'fechaEstreno' => $args["fechaEstreno"],
                     'enlace_twitter' => $args["enlace_twitter"], 'enlace_fb' => $args["enlace_fb"],
-                'descripcion' => $args["descripcion"]/*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
+                    'descripcion' => $args["descripcion"]/*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
 
 ?>
