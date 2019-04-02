@@ -1,8 +1,7 @@
 <?php
 
-//Cargar funciones del modelo
-require './modelo/evento.php';
-
+//Se carga el modelo
+require './modelo/modelo.php';
 //Inicializamos el motor de plantillas
 require_once './vendor/autoload.php';
 
@@ -16,10 +15,6 @@ $twig = new Twig_Environment($loader, ['cache' => './directorioCache']);
 
 $conn = DBconnect();
 
-if(!$conn) {
-    echo "ay fam u fukked up";
-}
-
 if (!$_GET["evento"]) {
     exit();
 }
@@ -29,12 +24,13 @@ $evento = str_replace("_"," ",$_GET["evento"]);
 $args = DBevento($conn, $evento);
 
 if(!$args) {
-    echo "ayy fr tho bro";
+    echo "Error de servidor: Acceso a BD fallada";
+    exit();
 }
 
 echo $twig->render('plantillaEvento.html', ['eventoNombre' => $args["eventoNombre"], 'estudios' => $args["estudios"],
                     'distribuidora' => $args["distribuidora"], 'genero' => $args["genero"], 'fechaEstreno' => $args["fechaEstreno"],
                     'enlace_twitter' => $args["enlace_twitter"], 'enlace_fb' => $args["enlace_fb"],
-                    'descripcion' => $args["descripcion"]/*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
+                'descripcion' => $args["descripcion"]/*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
 
 ?>

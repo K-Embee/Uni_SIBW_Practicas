@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2019 a las 20:34:25
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.3
+-- Host: 127.0.0.1
+-- Generation Time: Apr 02, 2019 at 10:38 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,46 +19,46 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `eventos`
+-- Database: `eventos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comentarios`
+-- Table structure for table `comentarios`
 --
 
 CREATE TABLE `comentarios` (
   `idComentario` int(11) NOT NULL,
-  `eventoNombre` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
-  `ip` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `nombre` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
-  `correo` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
+  `eventoNombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `ip` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_hora` datetime NOT NULL,
-  `texto` text COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+  `texto` mediumtext COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `evento`
+-- Table structure for table `evento`
 --
 
 CREATE TABLE `evento` (
-  `eventoNombre` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
-  `genero` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
-  `estudios` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
-  `distribuidora` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
+  `eventoNombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `genero` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `estudios` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `distribuidora` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `fechaEstreno` date NOT NULL,
-  `descripcion` text COLLATE latin1_spanish_ci NOT NULL,
-  `enlace_twitter` varchar(300) COLLATE latin1_spanish_ci NOT NULL,
-  `enlace_fb` varchar(300) COLLATE latin1_spanish_ci NOT NULL,
+  `descripcion` mediumtext COLLATE utf8_spanish_ci NOT NULL,
+  `enlace_twitter` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `enlace_fb` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_creacion` date NOT NULL,
   `fecha_ultima_mod` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `evento`
+-- Dumping data for table `evento`
 --
 
 INSERT INTO `evento` (`eventoNombre`, `genero`, `estudios`, `distribuidora`, `fechaEstreno`, `descripcion`, `enlace_twitter`, `enlace_fb`, `fecha_creacion`, `fecha_ultima_mod`) VALUES
@@ -67,39 +67,39 @@ INSERT INTO `evento` (`eventoNombre`, `genero`, `estudios`, `distribuidora`, `fe
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `imagen`
+-- Table structure for table `imagen`
 --
 
 CREATE TABLE `imagen` (
-  `url` varchar(300) COLLATE latin1_spanish_ci NOT NULL,
-  `eventoNombre` varchar(200) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+  `url` varchar(300) COLLATE utf8_spanish_ci NOT NULL,
+  `eventoNombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `imagen`
+-- Dumping data for table `imagen`
 --
 
 INSERT INTO `imagen` (`url`, `eventoNombre`) VALUES
 ('./imgs/pikachu-inicio.jpg', 'Detective Pikachu');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `comentarios`
+-- Indexes for table `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`idComentario`);
 
 --
--- Indices de la tabla `evento`
+-- Indexes for table `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`eventoNombre`);
 
 --
--- Indices de la tabla `imagen`
+-- Indexes for table `imagen`
 --
 ALTER TABLE `imagen`
   ADD PRIMARY KEY (`url`(200));
