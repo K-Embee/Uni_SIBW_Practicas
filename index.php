@@ -1,5 +1,5 @@
 <?php
-
+require './modelo/evento.php';
 //Inicializamos el motor de plantillas
 require_once './vendor/autoload.php';
 
@@ -11,7 +11,27 @@ $twig = new Twig_Environment($loader, ['cache' => './directorioCache']);
 // Busco en la base de datos la informacion del evento y lo
 // almaceno en las variables $eventoNombre, $eventoFecha, $eventoFoto...
 
+$conn = DBconnect();
 
-echo $twig->render('plantillaEvento.html', ['eventoNombre' => 'Detective Pikachu', 'estudios' => 'Pika Pi Productions', 'distribuidora' => 'Warner Brothers', 'genero' => 'Accion, Aventura', 'fechaEstreno' => 'Pikachu de febrero', 'enlace_twitter' => 'https://www.twitter.com', 'enlace_fb' => 'https://www.facebook.com', 'descripcion' => 'BLOOD FOR THE BLLOD GOD', 'imagen1' => './imgs/pikachu-inicio.jpg', 'imagen2' => './imgs/pikachu.jpg']);
+if(!$conn) {
+    echo "ay fam u fukked up";
+}
+
+if (!$_GET["evento"]) {
+    exit();
+}
+
+$evento = str_replace("_"," ",$_GET["evento"]);
+
+$args = DBevento($conn, $evento);
+
+if(!$args) {
+    echo "ayy fr tho bro";
+}
+
+echo $twig->render('plantillaEvento.html', ['eventoNombre' => $args["eventoNombre"], 'estudios' => $args["estudios"],
+                    'distribuidora' => $args["distribuidora"], 'genero' => $args["genero"], 'fechaEstreno' => $args["fechaEstreno"],
+                    'enlace_twitter' => $args["enlace_twitter"], 'enlace_fb' => $args["enlace_fb"],
+                'descripcion' => $args["descripcion"]/*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
 
 ?>
