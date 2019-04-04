@@ -1,7 +1,6 @@
 <?php
-
 require './modelo/evento.php';
-
+require './modelo/principal.php';
 function DBconnect() {
     $servername = "localhost";
     $username = "user";
@@ -19,5 +18,5 @@ function DBconnect() {
     }
 
     return $conn;
-};
+}
 ?>

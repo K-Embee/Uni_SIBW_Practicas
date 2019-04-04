@@ -1,10 +1,15 @@
 <?php
 function DBevento($conn, $evento) {
-    $sql = "SELECT * FROM evento WHERE eventoNombre=" . '\'' . $evento . '\'';
-
+    $sql = "SELECT * FROM evento WHERE idEvento=" . '\'' . $evento . '\'';
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
-    mysqli_close($conn);
-    return $result->fetch_assoc();
+    return $result;
+}
+
+function DBimagenes($conn, $evento) {
+    $sql = "SELECT url FROM imagen WHERE idEvento=" . '\'' . $evento . '\'';
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    return $result;
 }
 ?>

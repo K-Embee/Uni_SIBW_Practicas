@@ -306,3 +306,22 @@ body {
 .flex {
 	display: flex; /*Para que las cajas sean iguales de altas. Incompatible con IE10 y anteriores*/
 }
+
+.big {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.bigger {
+	font-size: 4em;
+	font-weight: 1000;
+}
+
+.pad {
+	padding: 32px;
+}
+
+.errorimg {
+	 width: 40%;
+	 float: none;
+}

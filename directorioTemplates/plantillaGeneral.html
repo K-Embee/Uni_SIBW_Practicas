@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block titulo %}Estrenos peliculas{% endblock %}</title>
-	<link rel="stylesheet" type="text/css" href="./css/estilo.css"/>
+	<link rel="stylesheet" type="text/css" href="{% block estilo %}./css/estilo.css{% endblock %}"/>
 	<script type="text/javascript" src="./scripts/comentarios.js"></script>
 </head>
 
@@ -29,34 +29,6 @@
 
 	<!-- Eliminación de elementos flotantes -->
 	<div class="cleared"></div>
-
-	<!-- Comentarios -->
-
-	<div class="commentbutton" onclick="toggle_comments()" id="commentbutton"><img src="./imgs/speechbubble.png"/></div>
-	<div class="commentpanel" id="commentpanel">
-		<div class="comments" id="comments">
-			<div class="comment">
-				<span class="bold">Autor: </span>Un usuario<br>
-				<span class="bold">Fecha: </span>Una fecha<br>
-				Un comentario
-			</div>
-			<div class="comment">
-				<span class="bold">Autor: </span>Otro usuario<br>
-				<span class="bold">Fecha: </span>Otra fecha<br>
-				Otro comentario
-			</div>
-		</div>
-		<form onsubmit="return validate_form()" >
-			<label for="name">Nombre</label>
-			<input type="text" id="name" placeholder="Nombre"></input>
-			<label for="email">Email</label>
-			<input type="text" id="email" placeholder="Email"></input>
-			<label>Comentario</label>
-			<textarea id="comentario" placeholder="Comentario" oninput="censor_comment()"></textarea>
-			<input type="submit" value="Submit"></input>
-		</form>
-	</div>
-
 
 	<!-- Pie -->
 	{% block footer %}{% endblock %}

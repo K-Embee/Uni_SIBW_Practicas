@@ -1,12 +1,13 @@
 <?php
 
-//Se carga el modelo
+//Se carga el controlador y modelo
 require './modelo/modelo.php';
+require './controlador/render.php';
 //Inicializamos el motor de plantillas
 require_once './vendor/autoload.php';
 
 $loader = new Twig_Loader_Filesystem('./directorioTemplates');
-$twig = new Twig_Environment($loader, ['cache' => './directorioCache']);
+$twig = new Twig_Environment($loader, ['cache' => false]); //Cambiar false a './directorioCache para usar la cache'
 
 // Averiguo que la página que se quiere mostrar es la del evento 12,
 // porque hemos accedido desde http://localhost/?evento=12
@@ -15,22 +16,16 @@ $twig = new Twig_Environment($loader, ['cache' => './directorioCache']);
 
 $conn = DBconnect();
 
-if (!$_GET["evento"]) {
+if (array_key_exists("evento",$_GET)) {
+    renderEvento($twig, $conn);
+    mysqli_close($conn);
+    exit();
+}
+else{
+    renderPrincipal($twig, $conn);
+    mysqli_close($conn);
     exit();
 }
 
-$evento = str_replace("_"," ",$_GET["evento"]);
-
-$args = DBevento($conn, $evento);
-
-if(!$args) {
-    echo "Error de servidor: Acceso a BD fallada";
-    exit();
-}
-
-echo $twig->render('plantillaEvento.html', ['eventoNombre' => $args["eventoNombre"], 'estudios' => $args["estudios"],
-                    'distribuidora' => $args["distribuidora"], 'genero' => $args["genero"], 'fechaEstreno' => $args["fechaEstreno"],
-                    'enlace_twitter' => $args["enlace_twitter"], 'enlace_fb' => $args["enlace_fb"],
-                'descripcion' => $args["descripcion"]/*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
-
+exit();
 ?>
