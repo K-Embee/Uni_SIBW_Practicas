@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2019 a las 00:54:15
+-- Tiempo de generación: 04-04-2019 a las 18:47:29
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -32,6 +32,25 @@ CREATE TABLE `censura` (
   `palabra` varchar(45) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `censura`
+--
+
+INSERT INTO `censura` (`palabra`) VALUES
+('azul'),
+('ciudadanos'),
+('cs'),
+('digimon'),
+('dreamworks'),
+('iu'),
+('izquierda unida'),
+('podemos'),
+('pp'),
+('psoe'),
+('rapidos y furiosos'),
+('unidas podemos'),
+('vox');
+
 -- --------------------------------------------------------
 
 --
@@ -55,9 +74,30 @@ CREATE TABLE `comentarios` (
 --
 
 CREATE TABLE `etiquetas` (
-  `genero` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `idGenero` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `idEvento` varchar(100) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `etiquetas`
+--
+
+INSERT INTO `etiquetas` (`idGenero`, `idEvento`) VALUES
+('accion', 'detective_pikachu'),
+('accion', 'vengadores'),
+('animacion', 'toy_story'),
+('aventura', 'aladdin'),
+('aventura', 'detective_pikachu'),
+('aventura', 'spiderman'),
+('aventura', 'toy_story'),
+('ciencia_ficcion', 'vengadores'),
+('comedia', 'toy_story'),
+('fantasia', 'aladdin'),
+('musical', 'aladdin'),
+('romance', 'aladdin'),
+('romance', 'toy_story'),
+('superheroes', 'spiderman'),
+('superheroes', 'vengadores');
 
 -- --------------------------------------------------------
 
@@ -84,7 +124,11 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`idEvento`, `eventoNombre`, `genero`, `estudios`, `distribuidora`, `fechaEstreno`, `descripcion`, `enlace_twitter`, `enlace_fb`, `fecha_creacion`, `fecha_ultima_mod`) VALUES
-('detective_pikachu', 'Detective Pikachu', 'Acción, Aventuras', 'Legendary Pictures', 'Warner Bros. Pictures', '2019-05-17', 'Tim Goodman llega a Ryme City para investigar la misteriosa desaparición de su padre en la ciudad. En el camino,\r\n				 se encuentra con un Pikachu que habla, aunque en realidad solo él es el único que puede entenderlo. Ambos trabajarán\r\n				  juntos para resolver este gran enigma junto a la reportera Kathryn Newton con su Psyduck.', 'https://twitter.com/DetPikachuMovie', 'https://www.facebook.com/detectivepikachumovie/', '2019-04-02', '2019-04-02');
+('aladdin', 'Aladdin', 'Romance, aventuras, musical y fantasía', 'Walt Disney Pictures', 'Walt Disney Studios Motion Pictures', '2019-05-24', 'Una apasionante adaptación en imagen real del clásico animado de Disney. «Aladdín» es la fascinante historia de Aladdín, un encantador ladronzuelo callejero, Jasmine, una princesa valiente e independiente, y el Genio, que puede ser la clave para el futuro de ambos.', 'https://twitter.com/disneyaladdin?lang=es', 'https://es-la.facebook.com/DisneyAladdin/', '2019-04-04', '2019-04-04'),
+('detective_pikachu', 'Detective Pikachu', 'Acción, Aventuras', 'Legendary Pictures', 'Warner Bros. Pictures', '2019-05-17', 'Tim Goodman llega a Ryme City para investigar la misteriosa desaparición de su padre en la ciudad. En el camino,\r\n				 se encuentra con un Pikachu que habla, aunque en realidad solo él es el único que puede entenderlo. Ambos trabajarán\r\n				  juntos para resolver este gran enigma junto a la reportera Kathryn Newton con su Psyduck.', 'https://twitter.com/DetPikachuMovie', 'https://www.facebook.com/detectivepikachumovie/', '2019-04-02', '2019-04-02'),
+('spiderman', 'Spiderman: far from home', 'Superhéroes, Aventura', 'Marvel Studios', 'Sony Pictures Releasing', '2019-07-05', 'La película empieza después de los eventos de Avengers: Endgame,​ cuando Peter Parker va en un viaje escolar a Europa con sus amigos. Mientras que está en el extranjero, es obligado a unirse a Mysterio y así detener a los Elementales, unos extraños enemigos que nadie sabe de dónde vienen.', 'https://twitter.com/spidermanmovie', 'https://es-la.facebook.com/MarvelStudiosSpiderMan/', '2019-04-04', '2019-04-04'),
+('toy_story', 'Toy Story 4', 'Animación, Comedia Romántica, Aventura', 'Walt Disney Pictures', 'Walt Disney Studios\r\nMotion Pictures', '2019-06-21', 'Woody siempre ha sabido cuál es su lugar en el mundo, y que su prioridad es cuidar de su dueño, ya sea Bonnie o Andy, pero cuando Bonnie agrega un juguete nuevo y reacio llamado Forky a su dormitorio, una aventura junto a viejos y nuevos amigos le mostrarán a Woody qué tan grande puede ser el mundo para un juguete. En el camino, Woody se reúne inesperadamente con Betty.', 'https://twitter.com/toystory', 'https://es-es.facebook.com/PixarToyStory/', '2019-04-04', '2019-04-04'),
+('vengadores', 'Avengers: Endgame', 'Superhéroes, Acción, Ciencia ficción', 'Marvel Studios', 'Walt Disney Studios Motion Pictures', '2019-04-26', 'Tras los eventos de Avengers: Infinity War, la mitad de toda la vida en el universo ha sido asesinada en un evento denominado \"La Decimación\". Con el universo sobreviviente en ruinas, los Vengadores y los Guardianes de la Galaxia restantes tratan de recuperarse de su fuerte derrota a manos del malvado Titan y deberán volver a unirse una vez más para reparar el daño causado por Thanos y restaurar la armonía en el universo.', 'https://twitter.com/avengers', 'https://www.facebook.com/avengersendg4me/', '2019-04-04', '2019-04-04');
 
 -- --------------------------------------------------------
 
@@ -93,8 +137,24 @@ INSERT INTO `evento` (`idEvento`, `eventoNombre`, `genero`, `estudios`, `distrib
 --
 
 CREATE TABLE `genero` (
+  `idGenero` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `genero` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `genero`
+--
+
+INSERT INTO `genero` (`idGenero`, `genero`) VALUES
+('accion', 'Acción'),
+('animacion', 'Animación'),
+('aventura', 'Aventura'),
+('ciencia_ficcion', 'Ciencia ficción'),
+('comedia', 'Comedia'),
+('fantasia', 'Fantasía'),
+('musical', 'Musical'),
+('romance', 'Romance'),
+('superheroes', 'Superhéroes');
 
 -- --------------------------------------------------------
 
@@ -145,7 +205,7 @@ ALTER TABLE `comentarios`
 -- Indices de la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
-  ADD PRIMARY KEY (`genero`,`idEvento`),
+  ADD PRIMARY KEY (`idGenero`,`idEvento`),
   ADD KEY `Clave Externa Evento` (`idEvento`);
 
 --
@@ -158,7 +218,7 @@ ALTER TABLE `evento`
 -- Indices de la tabla `genero`
 --
 ALTER TABLE `genero`
-  ADD PRIMARY KEY (`genero`);
+  ADD PRIMARY KEY (`idGenero`);
 
 --
 -- Indices de la tabla `imagen`
@@ -188,7 +248,7 @@ ALTER TABLE `comentarios`
 --
 ALTER TABLE `etiquetas`
   ADD CONSTRAINT `Clave Externa Evento` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`),
-  ADD CONSTRAINT `Clave Externa Genero` FOREIGN KEY (`genero`) REFERENCES `genero` (`genero`);
+  ADD CONSTRAINT `Clave Externa Genero` FOREIGN KEY (`idGenero`) REFERENCES `genero` (`idGenero`);
 
 --
 -- Filtros para la tabla `imagen`
