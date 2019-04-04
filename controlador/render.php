@@ -16,6 +16,12 @@ function renderEvento($twig, $conn) {
     }
 
     $args =  $args->fetch_assoc();
+
+    if(!$args) {
+        echo $twig->render('oops.html');
+        exit();
+    }
+
     echo $twig->render( $imprimir?'plantillaEventoImpresion.html':'plantillaEvento.html', ['eventoNombre' => $args["eventoNombre"],
                         'estudios' => $args["estudios"], 'distribuidora' => $args["distribuidora"], 'genero' => $args["genero"],
                         'fechaEstreno' => $args["fechaEstreno"], 'enlace_twitter' => $args["enlace_twitter"],
