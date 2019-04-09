@@ -30,11 +30,11 @@ function renderEvento($twig, $conn) {
         exit();
     }
 
-    echo $twig->render( $ruta, ['eventoNombre' => $args->eventoNombre,
+    echo $twig->render( $ruta, ['eventoNombre' => $args->eventoNombre, 'fecha_ultima_mod' => $args->fecha_ultima_mod,
                         'estudios' => $args->estudios, 'distribuidora' => $args->distribuidora,
                         'fechaEstreno' => $args->fechaEstreno, 'enlace_twitter' => $args->enlace_twitter,
                         'enlace_fb' => $args->enlace_fb, 'descripcion' => $args->descripcion, 'idEvento' => $args->idEvento,
-                        'imagenes' => $args_I]);
+                        'fecha_creacion' => $args->fecha_creacion, 'imagenes' => $args_I]);
 }
 
 function renderPrincipal($twig, $conn) {

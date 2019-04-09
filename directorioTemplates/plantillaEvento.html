@@ -1,5 +1,7 @@
 {% extends "plantillaGeneral.html" %}
 
+{% set imgmax = 2 %}
+
 {% block titulo %}
     {{eventoNombre}}
 {% endblock %}
@@ -8,20 +10,26 @@
     <span class="principal">
         <span>
             <div class="imageevento">
-                {% for entry in imagenes|slice(0,2) %} {# Slice hace que solo se muestren los primeros n #}
-                    <img class="infoimg" src="{{ entry.url }}"/>
-                    <p>{{ entry.descripcion }}</p>
-                {% endfor %}
+                {% block imagenes %}
+                    {% for entry in imagenes|slice(0,imgmax) %} {# Slice hace que solo se muestren los primeros n #}
+                        <img class="infoimg" src="{{ entry.url }}"/>
+                        <p>{{ entry.descripcion }}</p>
+                    {% endfor %}
+                {% endblock %}
             </div>
             <h2>{{ eventoNombre }}</h2>
-            <ul>
-                <li>Genero: {{ genero }}</li>
-                <li>Estudios: {{ estudios }}</li>
-                <li>Distribuidora: {{ distribuidora }}</li>
-                <li>Fecha de estreno: {{ fechaEstreno }}</li>
-            </ul>
-            {{ descripcion }}
+            <div class="cuerpoevento">
+                <ul>
+                    <li>Genero: {{ genero }}</li>
+                    <li>Estudios: {{ estudios }}</li>
+                    <li>Distribuidora: {{ distribuidora }}</li>
+                    <li>Fecha de estreno: {{ fechaEstreno }}</li>
+                </ul>
+                {{ descripcion }}
 
+                <p>Evento subido en {{fecha_creacion}}</p>
+                <p>Evento actualizado en {{fecha_ultima_mod}}</p>
+            </div>
             {% block galeria %}
                 <div class="bold"><a href="./?evento={{idEvento}}&galeria">(Galería)</a></div>
             {% endblock %}

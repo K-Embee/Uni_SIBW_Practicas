@@ -21,6 +21,7 @@ h1 {
 }
 
 .logoimg {
+	float: left;
 	height: 150px;
 	width: 150px;
 }
@@ -33,13 +34,16 @@ Contenido central (En la impresión 100% anchura)
 	width: 100%;
 }
 
+.cuerpoevento {
+	column-count: 2;
+}
+
 .infobox {
 	text-align: center;
 }
 
 .infoimg{
-	height: 150px;
-	width: 150px;
+	width: 90%;
 }
 
 .imageevento {

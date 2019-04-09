@@ -9,7 +9,12 @@
 {% endblock %}
 
 {% block estilo %}
-        ./css/estilo_imprimir.css
+        ./css/estilo_impresion.css
+{% endblock %}
+
+{% block imagenes %}
+    {% set imgmax = 1 %}
+    {{parent()}}
 {% endblock %}
 
 {% block sidebar %}
