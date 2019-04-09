@@ -4,6 +4,11 @@ function DBprincipal($conn) {
 
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
-    return $result;
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, $row);
+    }
+    return $array;
 }
 ?>

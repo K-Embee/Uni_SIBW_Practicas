@@ -1,6 +1,7 @@
 <?php
 
 //Se carga el controlador y modelo
+require './controlador/class.php';
 require './modelo/modelo.php';
 require './controlador/render.php';
 //Inicializamos el motor de plantillas
