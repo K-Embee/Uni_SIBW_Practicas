@@ -4,6 +4,7 @@ function renderEvento($twig, $conn) {
     $evento = $_GET["evento"];
 
     $args = DBevento($conn, $evento);
+    $args_I = DBimagenes($conn, $evento);
 
     if(!$args) {
         echo $twig->render('oops.html');
@@ -15,6 +16,13 @@ function renderEvento($twig, $conn) {
         $imprimir = true;
     }
 
+    $galeria = false;
+    if(array_key_exists("galeria",$_GET)) {
+        $galeria = true;
+    }
+
+    $ruta = $imprimir?'plantillaEventoImpresion.html':($galeria?'plantillaEventoGaleria.html':'plantillaEvento.html');
+
     $args =  $args->fetch_assoc();
 
     if(!$args) {
@@ -22,10 +30,11 @@ function renderEvento($twig, $conn) {
         exit();
     }
 
-    echo $twig->render( $imprimir?'plantillaEventoImpresion.html':'plantillaEvento.html', ['eventoNombre' => $args["eventoNombre"],
-                        'estudios' => $args["estudios"], 'distribuidora' => $args["distribuidora"], 'genero' => $args["genero"],
+    echo $twig->render( $ruta, ['eventoNombre' => $args["eventoNombre"],
+                        'estudios' => $args["estudios"], 'distribuidora' => $args["distribuidora"],
                         'fechaEstreno' => $args["fechaEstreno"], 'enlace_twitter' => $args["enlace_twitter"],
-                        'enlace_fb' => $args["enlace_fb"], 'descripcion' => $args["descripcion"], 'idEvento' => $args["idEvento"]
+                        'enlace_fb' => $args["enlace_fb"], 'descripcion' => $args["descripcion"], 'idEvento' => $args["idEvento"],
+                        'imagenes' => $args_I
                         /*, 'imagen1' => $args["imagen1"], 'imagen2' => $args["imagen2"]*/]);
 }
 

@@ -1,0 +1,17 @@
+{% extends "plantillaEvento.html" %}
+
+{% block evento %}
+    <span class="principal">
+
+        {% for entry in imagenes %}
+        <div class="box infobox">
+            <img class="infoimg pad" src="{{ entry.url }}"/>
+            <p>{{ entry.descripcion }}</p>
+        </div>
+        {% endfor %}
+
+    </span>
+{% endblock %}
+
+{% block galeria %}
+{% endblock %}

@@ -121,8 +121,8 @@ Contenido central (78% anchura, 76 + 1/margen)
 }
 
 .infoimg{
-	height: 150px;
-	width: 150px;
+	max-height: 150px;
+	max-width: 150px;
 	filter:drop-shadow(8px 8px 10px gray);
 }
 
