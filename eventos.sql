@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2019 a las 00:01:29
+-- Tiempo de generación: 11-04-2019 a las 00:06:42
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -228,7 +228,7 @@ INSERT INTO `imagen` (`url`, `idEvento`, `descripcion`) VALUES
 ('./imgs/vengadores/China.jpg', 'vengadores', 'Poster China'),
 ('./imgs/vengadores/DolbyCinema.jpg', 'vengadores', 'Poster DolbyCinema'),
 ('./imgs/vengadores/IMAX.jpg', 'vengadores', 'Poster IMAX'),
-('./imgs/vengadores/INREALD.jpg', 'vengadores', 'Poster InReal3D'),
+('./imgs/vengadores/INREAL3D.jpg', 'vengadores', 'Poster InReal3D'),
 ('./imgs/vengadores/portada.jpg', 'vengadores', 'Portada'),
 ('./imgs/vengadores/Posters.jpg', 'vengadores', 'Poster de los personajers'),
 ('./imgs/vengadores/Rusia.jpg', 'vengadores', 'Cartel Rusia');
