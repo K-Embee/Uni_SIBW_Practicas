@@ -5,7 +5,26 @@
 	</div>
 	<ul class="navbar">
 		{% block tipo_cabecera %}
-		<li><a class="navbar">Spoilers Dreamworks</a></li>
+		<li><a class="navbar">Etiquetas</a>
+			<ul>
+				{% for entry in genero %}
+		            <li><a class="navbar">{{ entry.genero }}</a></li>
+		        {% endfor %}
+				<!--<li><a class="navbar">Acción</a></li>
+				<li><a class="navbar">Animación</a></li>
+				<li><a class="navbar">Aventura</a></li>
+				<li><a class="navbar">Biográfica</a></li>
+				<li><a class="navbar">Ciencia ficción</a></li>
+				<li><a class="navbar">Comedia</a></li>
+				<li><a class="navbar">Drama</a></li>
+				<li><a class="navbar">Espionaje</a></li>
+				<li><a class="navbar">Fantasía</a></li>
+				<li><a class="navbar">Musical</a></li>
+				<li><a class="navbar">Romance</a></li>
+				<li><a class="navbar">Superhéroes</a></li>
+				<li><a class="navbar">Suspense</a></li>-->
+			</ul>
+		</li>
 		<li><a class="navbar">Spoilers Marvel</a></li>
 		<li><a class="navbar">Spoilers Disney</a></li>
 		{% endblock %}

@@ -61,13 +61,33 @@ li a.navbar {
 	text-decoration: none;
 }
 
-.navbar li:first-child {
+.navbar > ul > li:first-child {
 	margin-left: 8px;
 }
 
 .navbar li a:hover {
 	background-color: #415ebe;
 	color: white;
+}
+
+/*Subniveles*/
+
+ul.navbar ul > li {
+	background-color: #415ebe;
+	display: none;
+	float: none;
+	width: 200px;
+}
+
+ul.navbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.navbar li:hover li {
+	position:absolute;
+	display: block;
 }
 
 /*=====================================
