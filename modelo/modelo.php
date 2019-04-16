@@ -1,6 +1,7 @@
 <?php
 require './modelo/evento.php';
 require './modelo/principal.php';
+require './modelo/generico.php';
 function DBconnect() {
     $servername = "localhost";
     $username = "user";

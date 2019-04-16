@@ -43,4 +43,18 @@ function renderPrincipal($twig, $conn) {
 
     echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args]);
 }
+
+function renderGenerica($twig, $conn) {
+    $nombre = $_GET["pagina"];
+
+    $args = DBgenerica($conn, $nombre);
+
+    if(!$args) {
+        echo $twig->render('oops.html');
+        exit();
+    }
+
+    // nl2br pasa lineas nuevas del texto a BRs para la página HTML, y htmlspecialchars sustituye caracteres problematicos
+    echo $twig->render('plantillaGenerica.html', ['paginaNombre' => $args["Titulo"], 'Texto' => (($args["Texto"]))]);
+}
 ?>

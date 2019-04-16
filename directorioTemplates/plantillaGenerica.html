@@ -1,0 +1,12 @@
+{% extends "plantillaGeneral.html" %}
+
+{% block evento %}
+    <span class="principal">
+        <h2> {{ paginaNombre }}</h2>
+        {{ Texto|nl2br }} {# nl2br pasa lineas nuevas a etiquetas de salto de linea #}
+    </span>
+{% endblock %}
+
+{% block footer  %}
+    {% include 'footer.html' %}
+{% endblock %}
