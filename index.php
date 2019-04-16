@@ -30,6 +30,11 @@ else if (array_key_exists("pagina",$_GET)) {
     mysqli_close($conn);
     exit();
 }
+else if (array_key_exists("genero",$_GET)) {
+    renderPorGenero($twig, $conn);
+    mysqli_close($conn);
+    exit();
+}
 else{
     renderPrincipal($twig, $conn);
     mysqli_close($conn);

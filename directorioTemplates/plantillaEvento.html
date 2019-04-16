@@ -13,7 +13,7 @@
             <div class="imageevento">
                 {% block imagenes %}
                     {% for entry in imagenes|slice(0,imgmax) %} {# Slice hace que solo se muestren los primeros n #}
-                        <img  {% if loop.first%} id="imagenPortada"{%endif%} class="infoimg" src="{{ entry.url }}"/>
+                        <img  {% if loop.first %} id="imagenPortada"{% endif %} class="infoimg" src="{{ entry.url }}"/>
                         <p>{{ entry.descripcion }}</p>
                     {% endfor %}
                     {% for entry in videos|slice(0,vidmax) %}
