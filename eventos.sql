@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 16, 2019 at 06:24 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-04-2019 a las 17:29:36
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `eventos`
+-- Base de datos: `eventos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `censura`
+-- Estructura de tabla para la tabla `censura`
 --
 
 CREATE TABLE `censura` (
@@ -33,7 +33,7 @@ CREATE TABLE `censura` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `censura`
+-- Volcado de datos para la tabla `censura`
 --
 
 INSERT INTO `censura` (`palabra`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `censura` (`palabra`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentarios`
+-- Estructura de tabla para la tabla `comentarios`
 --
 
 CREATE TABLE `comentarios` (
@@ -70,7 +70,7 @@ CREATE TABLE `comentarios` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etiquetas`
+-- Estructura de tabla para la tabla `etiquetas`
 --
 
 CREATE TABLE `etiquetas` (
@@ -79,7 +79,7 @@ CREATE TABLE `etiquetas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `etiquetas`
+-- Volcado de datos para la tabla `etiquetas`
 --
 
 INSERT INTO `etiquetas` (`idGenero`, `idEvento`) VALUES
@@ -114,7 +114,7 @@ INSERT INTO `etiquetas` (`idGenero`, `idEvento`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evento`
+-- Estructura de tabla para la tabla `evento`
 --
 
 CREATE TABLE `evento` (
@@ -131,7 +131,7 @@ CREATE TABLE `evento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `evento`
+-- Volcado de datos para la tabla `evento`
 --
 
 INSERT INTO `evento` (`idEvento`, `eventoNombre`, `estudios`, `distribuidora`, `fechaEstreno`, `descripcion`, `enlace_twitter`, `enlace_fb`, `fecha_creacion`, `fecha_ultima_mod`) VALUES
@@ -148,7 +148,7 @@ INSERT INTO `evento` (`idEvento`, `eventoNombre`, `estudios`, `distribuidora`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genero`
+-- Estructura de tabla para la tabla `genero`
 --
 
 CREATE TABLE `genero` (
@@ -157,7 +157,7 @@ CREATE TABLE `genero` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `genero`
+-- Volcado de datos para la tabla `genero`
 --
 
 INSERT INTO `genero` (`idGenero`, `genero`) VALUES
@@ -178,7 +178,7 @@ INSERT INTO `genero` (`idGenero`, `genero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagen`
+-- Estructura de tabla para la tabla `imagen`
 --
 
 CREATE TABLE `imagen` (
@@ -188,7 +188,7 @@ CREATE TABLE `imagen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `imagen`
+-- Volcado de datos para la tabla `imagen`
 --
 
 INSERT INTO `imagen` (`url`, `idEvento`, `descripcion`) VALUES
@@ -236,27 +236,17 @@ INSERT INTO `imagen` (`url`, `idEvento`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pag_info`
+-- Estructura de tabla para la tabla `pag_info`
 --
 
 CREATE TABLE `pag_info` (
-  `idPagina` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `texto` text COLLATE utf8_spanish_ci NOT NULL,
-  `titulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `idPagina` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Dumping data for table `pag_info`
---
-
-INSERT INTO `pag_info` (`idPagina`, `texto`, `titulo`) VALUES
-('contacto', 'Kieran - bla bla bla\r\nMonica - bla bla bla\r\nLorem Ipsum', 'Datos de Contacto'),
-('legal', 'Información legal y de copyright\r\nAlgo algo Disney©®™\r\nLorem Ipsum', 'Información Legal');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `videos`
+-- Estructura de tabla para la tabla `videos`
 --
 
 CREATE TABLE `videos` (
@@ -265,7 +255,7 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `videos`
+-- Volcado de datos para la tabla `videos`
 --
 
 INSERT INTO `videos` (`url`, `idEvento`) VALUES
@@ -282,86 +272,86 @@ INSERT INTO `videos` (`url`, `idEvento`) VALUES
 ('https://www.youtube.com/embed/UQ3bqYKnyhM', 'vengadores');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `censura`
+-- Indices de la tabla `censura`
 --
 ALTER TABLE `censura`
   ADD PRIMARY KEY (`palabra`);
 
 --
--- Indexes for table `comentarios`
+-- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`idComentario`),
   ADD KEY `ClaveExternaEvento` (`idEvento`);
 
 --
--- Indexes for table `etiquetas`
+-- Indices de la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
   ADD PRIMARY KEY (`idGenero`,`idEvento`),
   ADD KEY `Clave Externa Evento` (`idEvento`);
 
 --
--- Indexes for table `evento`
+-- Indices de la tabla `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`idEvento`);
 
 --
--- Indexes for table `genero`
+-- Indices de la tabla `genero`
 --
 ALTER TABLE `genero`
   ADD PRIMARY KEY (`idGenero`);
 
 --
--- Indexes for table `imagen`
+-- Indices de la tabla `imagen`
 --
 ALTER TABLE `imagen`
   ADD PRIMARY KEY (`url`(200)),
   ADD KEY `Clave Externa` (`idEvento`);
 
 --
--- Indexes for table `pag_info`
+-- Indices de la tabla `pag_info`
 --
 ALTER TABLE `pag_info`
   ADD PRIMARY KEY (`idPagina`);
 
 --
--- Indexes for table `videos`
+-- Indices de la tabla `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`url`),
   ADD KEY `Clave Externa video` (`idEvento`);
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `comentarios`
+-- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `ClaveExternaEvento` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`);
 
 --
--- Constraints for table `etiquetas`
+-- Filtros para la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
   ADD CONSTRAINT `Clave Externa Evento` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`),
   ADD CONSTRAINT `Clave Externa Genero` FOREIGN KEY (`idGenero`) REFERENCES `genero` (`idGenero`);
 
 --
--- Constraints for table `imagen`
+-- Filtros para la tabla `imagen`
 --
 ALTER TABLE `imagen`
   ADD CONSTRAINT `Clave Externa` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`);
 
 --
--- Constraints for table `videos`
+-- Filtros para la tabla `videos`
 --
 ALTER TABLE `videos`
   ADD CONSTRAINT `Clave Externa video` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`);
