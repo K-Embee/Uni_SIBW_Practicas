@@ -13,8 +13,16 @@
 {% endblock %}
 
 {% block imagenes %}
-    {% set imgmax = 1 %}
-    {{parent()}}
+    <div class="cleared"></div>
+        {% set imgmax = 1 %}
+        {% set vidmax = 0 %}
+        {{ parent() }}
+        {% for entry in videos %}
+            <p>{{ entry.url }}</p>
+        {% endfor %}
+{% endblock %}
+
+{% block galeria %}
 {% endblock %}
 
 {% block sidebar %}

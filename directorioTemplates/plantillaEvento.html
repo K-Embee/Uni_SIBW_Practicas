@@ -1,6 +1,7 @@
 {% extends "plantillaGeneral.html" %}
 
 {% set imgmax = 2 %}
+{% set vidmax = 1 %}
 
 {% block titulo %}
     {{eventoNombre}}
@@ -12,12 +13,16 @@
             <div class="imageevento">
                 {% block imagenes %}
                     {% for entry in imagenes|slice(0,imgmax) %} {# Slice hace que solo se muestren los primeros n #}
-                        <img class="infoimg" src="{{ entry.url }}"/>
+                        <img  {% if loop.first%} id="imagenPortada"{%endif%} class="infoimg" src="{{ entry.url }}"/>
                         <p>{{ entry.descripcion }}</p>
+                    {% endfor %}
+                    {% for entry in videos|slice(0,vidmax) %}
+                        <iframe class="video" src="{{ entry.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>{{ entry.url }}</iframe>
+                        <p>Video</p>
                     {% endfor %}
                 {% endblock %}
             </div>
-            <h2>{{ eventoNombre }}</h2>
+            <h2 id="eventoNombre">{{ eventoNombre }}</h2>
             <div class="cuerpoevento">
                 <ul>
                     <li>Genero: {{ genero }}</li>
@@ -35,6 +40,10 @@
             {% endblock %}
         </span>
     </span>
+{% endblock %}
+
+{% block comentarios %}
+    {% include 'comentarios.html' %}
 {% endblock %}
 
 {% block footer  %}

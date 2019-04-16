@@ -22,4 +22,16 @@ function DBimagenes($conn, $evento) {
     }
     return $array;
 }
+
+function DBvideos($conn, $evento) {
+    $sql = "SELECT * FROM videos WHERE idEvento=" . '\'' . $evento . '\'';
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, new Video($row));
+    }
+    return $array;
+}
 ?>

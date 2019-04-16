@@ -34,4 +34,13 @@ class Imagen {
         $this->idEvento = $array["idEvento"];
     }
 }
+
+class Video {
+    public $url;
+    public $idEvento;
+    function Video ($array) {
+        $this->url = $array["url"];
+        $this->idEvento = $array["idEvento"];
+    }
+}
 ?>

@@ -6,6 +6,7 @@
 	<title>{% block titulo %}Estrenos peliculas{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{% block estilo %}./css/estilo.css{% endblock %}"/>
 	<script type="text/javascript" src="./scripts/comentarios.js"></script>
+	<script type="text/javascript" src="./scripts/botones.js"></script>
 </head>
 
 <body>
@@ -29,6 +30,9 @@
 
 	<!-- Eliminación de elementos flotantes -->
 	<div class="cleared"></div>
+
+
+	{% block comentarios %}{% endblock %}
 
 	<!-- Pie -->
 	{% block footer %}{% endblock %}

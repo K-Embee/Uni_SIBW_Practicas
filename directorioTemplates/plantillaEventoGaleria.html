@@ -4,10 +4,10 @@
     <span class="principal">
 
         {% for entry in imagenes %}
-        <div class="box infobox">
-            <img class="infoimg pad" src="{{ entry.url }}"/>
-            <p>{{ entry.descripcion }}</p>
-        </div>
+            <div class="box infobox">
+                <img class="infoimg pad" src="{{ entry.url }}"/>
+                <p>{{ entry.descripcion }}</p>
+            </div>
         {% endfor %}
 
         {% block galeria %}
@@ -15,3 +15,5 @@
         {% endblock %}
     </span>
 {% endblock %}
+
+{% block comentarios %}{% endblock %}

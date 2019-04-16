@@ -47,8 +47,8 @@ Contenido central (En la impresión 100% anchura)
 }
 
 .imageevento {
-	float: right;
 	text-align: center;
+	width: 100%
 }
 
 h2 {
@@ -95,6 +95,10 @@ Misc
 
 .flex {
 	display: flex; /*Para que las cajas sean iguales de altas. Incompatible con IE10 y anteriores*/
+}
+
+.cleared {
+	clear: both; /*No permite que hayan elementos flotando (float) en ningun lado*/
 }
 
 /*=====================================

@@ -5,6 +5,7 @@ function renderEvento($twig, $conn) {
 
     $args = DBevento($conn, $evento);
     $args_I = DBimagenes($conn, $evento);
+    $args_V = DBvideos($conn, $evento);
 
     if(!$args) {
         echo $twig->render('oops.html');
@@ -34,7 +35,7 @@ function renderEvento($twig, $conn) {
                         'estudios' => $args->estudios, 'distribuidora' => $args->distribuidora,
                         'fechaEstreno' => $args->fechaEstreno, 'enlace_twitter' => $args->enlace_twitter,
                         'enlace_fb' => $args->enlace_fb, 'descripcion' => $args->descripcion, 'idEvento' => $args->idEvento,
-                        'fecha_creacion' => $args->fecha_creacion, 'imagenes' => $args_I]);
+                        'fecha_creacion' => $args->fecha_creacion, 'imagenes' => $args_I, 'videos' => $args_V]);
 }
 
 function renderPrincipal($twig, $conn) {

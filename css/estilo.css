@@ -126,6 +126,12 @@ Contenido central (78% anchura, 76 + 1/margen)
 	filter:drop-shadow(8px 8px 10px gray);
 }
 
+.video{
+	width: 320px;
+	height: 180px;
+	filter:drop-shadow(8px 8px 10px gray);
+}
+
 .imageevento {
 	float: right;
 	text-align: center;
@@ -164,6 +170,7 @@ footer {
 .links img {
 	height: 35px;
 	width: 35px;
+	cursor: pointer;
 }
 
 .copyright {
