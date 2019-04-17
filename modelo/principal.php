@@ -24,28 +24,39 @@ function DBporGenero($conn, $genero) {
     return $array;
 }
 
-//Las siguientes funciones devuelven un listado con el ID como la clave y el nombre como lo que se asocia.
-//Recuperar el id en un bucle con foreach($array as $key => $value)
-function DBlistadoGenero($conn) {
+//Devuelve un array asociativo con clave de nombre y valor de URL **O** otro array asociativo con clave nombre y valor id
+function DBmenu($conn) {
+    $array = array();
+
+    $array["Página Principal"] = "/";
+    $array["Géneros"] = DBlistadoGenero($conn, true);
+    $array["Otras páginas"] = DBlistadoPaginas($conn, true);
+
+    return $array;
+}
+
+//Las siguientes funciones devuelven un listado con el ID como la clave y la URL o ID de la página correspondiente (dependiendo del bool $url).
+//Recuperar el id en un bucle con foreach($array as $key => $value) en PHP, o {% for key, value in array %} en twig
+function DBlistadoGenero($conn, $url) {
     $sql = "SELECT * FROM  genero";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
     $array = array();
 
     while($row = $result->fetch_assoc()){
-        $array[$row["idGenero"]] = $row["genero"];
+        $array[$row["genero"]] = (($url) ? "/?genero=" : "") . $row["idGenero"];
     }
     return $array;
 }
 
-function DBlistadoPaginas($conn) {
+function DBlistadoPaginas($conn, $url) {
     $sql = "SELECT * FROM  pag_info";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
     $array = array();
 
     while($row = $result->fetch_assoc()){
-        $array[$row["idPagina"]] = $row["titulo"];
+        $array[$row["titulo"]] = (($url) ? "/?pagina=" : "") . $row["idPagina"];
     }
     return $array;
 }

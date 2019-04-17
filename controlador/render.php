@@ -6,6 +6,7 @@ function renderEvento($twig, $conn) {
     $args = DBevento($conn, $evento);
     $args_I = DBimagenes($conn, $evento);
     $args_V = DBvideos($conn, $evento);
+    $menu = DBmenu($conn);
 
     if(!$args) {
         echo $twig->render('oops.html');
@@ -35,12 +36,13 @@ function renderEvento($twig, $conn) {
                         'estudios' => $args->estudios, 'distribuidora' => $args->distribuidora,
                         'fechaEstreno' => $args->fechaEstreno, 'enlace_twitter' => $args->enlace_twitter,
                         'enlace_fb' => $args->enlace_fb, 'descripcion' => $args->descripcion, 'idEvento' => $args->idEvento,
-                        'fecha_creacion' => $args->fecha_creacion, 'imagenes' => $args_I, 'videos' => $args_V]);
+                        'fecha_creacion' => $args->fecha_creacion, 'imagenes' => $args_I, 'videos' => $args_V,
+                        'listado_menu' => $menu]);
 }
 
 function renderPrincipal($twig, $conn) {
     $args = DBprincipal($conn);
-    $menu = DBlistadoGenero($conn);
+    $menu = DBmenu($conn);
 
     echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu]);
 }
@@ -61,12 +63,13 @@ function renderGenerica($twig, $conn) {
     $nombre = $_GET["pagina"];
 
     $args = DBgenerica($conn, $nombre);
+    $menu = DBmenu($conn);
 
     if(!$args) {
         echo $twig->render('oops.html');
         exit();
     }
 
-    echo $twig->render('plantillaGenerica.html', ['paginaNombre' => $args["Titulo"], 'Texto' => (($args["Texto"]))]);
+    echo $twig->render('plantillaGenerica.html', ['paginaNombre' => $args["Titulo"], 'Texto' => (($args["Texto"])), 'listado_menu' => $menu]);
 }
 ?>

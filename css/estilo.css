@@ -91,6 +91,7 @@ ul.navbar ul {
 	padding: 0;
 	background-color: #d9dff2;
 	width: 200px;
+	z-index: 1; /*Para que se muestre por enicma de todo (excepto los comentarios)*/
 }
 
 /*Elementos del submenu al pasar el raton para desplegarlos*/
@@ -218,7 +219,7 @@ Caja de comentarios
 
 .commentbutton {
 	position: fixed;
-	z-index: 1; /*Para que se muestre por enicma de todo*/
+	z-index: 3; /*Para que se muestre por enicma de todo*/
 	right: 0;
 	bottom: 5%;
 	padding: 8px;
@@ -234,7 +235,7 @@ Caja de comentarios
 
 .commentpanel {
 	position: fixed;
-	z-index: 0.5;
+	z-index: 2;
 	right: 0;
 	top: 2.5%;
 	height: 95%;

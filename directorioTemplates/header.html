@@ -5,15 +5,19 @@
 	</div>
 	<ul class="navbar">
 		{% block tipo_cabecera %}
-		<li><a class="navbar" href="/">Pagina principal</a></li>
-		<li><a class="navbar">Géneros</a>
-			<ul>
-				{% for id, nombre in listado_menu %}
-		            <li><a class="navbar" href="/?genero={{id}}">{{ nombre }}</a></li>
-		        {% endfor %}
-			</ul>
-		</li>
-		<li><a class="navbar">Otras páginas</a></li>
+			{% for nombre, id_o_submenu in listado_menu %}
+				{% if id_o_submenu is iterable %} {# Mira si es una URL(false) o un submenu(true) #}
+					<li><a class="navbar">{{ nombre }}</a>
+						<ul>
+							{% for nombre, id in id_o_submenu %}
+					            <li><a class="navbar" href="{{id}}">{{ nombre }}</a></li>
+					        {% endfor %}
+						</ul>
+					</li>
+				{% else %}
+					<li><a class="navbar" href="{{id_o_submenu}}">{{ nombre }}</a></li>
+				{% endif %}
+			{% endfor %}
 		{% endblock %}
 	</ul>
 </div>
