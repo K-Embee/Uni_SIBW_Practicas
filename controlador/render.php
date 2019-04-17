@@ -50,13 +50,14 @@ function renderPrincipal($twig, $conn) {
 function renderPorGenero($twig, $conn) {
     $genero = $_GET["genero"];
     $args = DBporGenero($conn, $genero);
+    $menu = DBmenu($conn);
 
     if(!$args) {
         echo $twig->render('oops.html');
         exit();
     }
 
-    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args]);
+    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu]);
 }
 
 function renderGenerica($twig, $conn) {
