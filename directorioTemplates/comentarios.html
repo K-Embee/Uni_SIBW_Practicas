@@ -1,24 +1,21 @@
 <div class="commentbutton" onclick="toggle_comments()" id="commentbutton"><img src="./imgs/speechbubble.png"/></div>
 <div class="commentpanel" id="commentpanel">
     <div class="comments" id="comments">
-        <div class="comment">
-            <span class="bold">Autor: </span>Un usuario<br>
-            <span class="bold">Fecha: </span>Una fecha<br>
-            Un comentario
-        </div>
-        <div class="comment">
-            <span class="bold">Autor: </span>Otro usuario<br>
-            <span class="bold">Fecha: </span>Otra fecha<br>
-            Otro comentario
-        </div>
+        {% for comment in comentarios %}
+            <div class="comment">
+                <span class="bold">Autor: </span>{{ comment.nombre }}<br>
+                <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
+                {{ comment.texto }}
+            </div>
+        {% endfor %}
     </div>
-    <form onsubmit="return validate_form()" >
+    <form action="" method="post" onsubmit="return validate_form();" >
         <label for="name">Nombre</label>
-        <input type="text" id="name" placeholder="Nombre"></input>
+        <input type="text" name="name" id="name" placeholder="Nombre"></input>
         <label for="email">Email</label>
-        <input type="text" id="email" placeholder="Email"></input>
+        <input type="text" name="email" id="email" placeholder="Email"></input>
         <label>Comentario</label>
-        <textarea id="comentario" placeholder="Comentario" oninput="censor_comment()"></textarea>
+        <textarea name="comentario" id="comentario" placeholder="Comentario" oninput="censor_comment()"></textarea>
         <input type="submit" value="Submit"></input>
     </form>
 </div>

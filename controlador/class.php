@@ -43,4 +43,23 @@ class Video {
         $this->idEvento = $array["idEvento"];
     }
 }
+
+class Comentario {
+    //public $idComentario;
+    public $idEvento;
+    public $ip;
+    public $nombre;
+    public $correo;
+    public $fecha_hora;
+    public $texto;
+    function Comentario ($array) {
+        //$this->idComentario = $array["idComentario"];
+        $this->idEvento = $array["idEvento"];
+        $this->ip = $array["ip"];
+        $this->nombre = $array["nombre"];
+        $this->correo = $array["correo"];
+        $this->fecha_hora = $array["fecha_hora"];
+        $this->texto = $array["texto"];
+    }
+}
 ?>

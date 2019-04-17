@@ -1,7 +1,7 @@
 <?php
-require './modelo/evento.php';
-require './modelo/principal.php';
-require './modelo/generico.php';
+require './modelo/evento.php'; //Las funciones de bases de datos que tienen que ver con las paginas de eventos
+require './modelo/principal.php'; //Las funciones de bases de datos que tienen que ver con mostrar la página principal
+require './modelo/misc.php'; //Las funciones de bases de datos que no tienen que ver con lo anterior
 function DBconnect() {
     $servername = "localhost";
     $username = "user";

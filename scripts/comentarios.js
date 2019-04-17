@@ -16,19 +16,20 @@ function validate_form(){
     var name = document.getElementById("name");
     var email = document.getElementById("email");
     var comment = document.getElementById("comentario");
-
-    if(name.value.length == 0 || email.value.length == 0 || comment.value.length == 0)
+	if(name.value.length == 0 || email.value.length == 0 || comment.value.length == 0)
     {
         alert("Hay campos vacíos");
+		return false;
     }
 	else if(!validate_email(email.value)){
 		alert("Email invalido");
+		return false;
 	}
     else {
         add_comment();
     }
 
-    return false; //Cambiar cuando usemos PHPs de verdad ya
+    return true; //Solo se ejecuta si es valido
 }
 
 function validate_email(text){
@@ -36,7 +37,8 @@ function validate_email(text){
 }
 
 function add_comment(){
-    var name = document.getElementById("name");
+	// Obsoleto -- La inserción de los comentarios unicamente se realiza en el lado del servidor
+    /*var name = document.getElementById("name");
     var email = document.getElementById("email");
     var comment = document.getElementById("comentario");
 
@@ -59,16 +61,17 @@ function add_comment(){
     new_comment.appendChild(document.createElement("BR"));
     new_comment.appendChild(document.createTextNode(comment.value));
 
-    document.getElementById("comments").appendChild(new_comment);
+    document.getElementById("comments").appendChild(new_comment);*/
 }
 
 function censor_comment(){
-	var comment = document.getElementById("comentario").value;
+	// Obsoleto -- La censura de los comentarios unicamente se realiza en el lado del servidor
+	/*var comment = document.getElementById("comentario").value;
 	var words_regex;
 
 	for(var i = 0; i < words.length; i++){
 		words_regex = new RegExp(words[i], "ig");
 		comment = comment.replace(words_regex, "*".repeat(words[i].length));
 	}
-	document.getElementById("comentario").value = comment;
+	document.getElementById("comentario").value = comment;*/
 }

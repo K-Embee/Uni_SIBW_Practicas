@@ -34,4 +34,16 @@ function DBvideos($conn, $evento) {
     }
     return $array;
 }
+
+function DBcomentarios($conn, $evento) {
+    $sql = "SELECT * FROM comentarios WHERE idEvento=" . '\'' . $evento . '\'';
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, new Comentario($row));
+    }
+    return $array;
+}
 ?>
