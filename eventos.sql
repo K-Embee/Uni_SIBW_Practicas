@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-04-2019 a las 17:29:36
+-- Tiempo de generación: 17-04-2019 a las 14:17:05
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -240,8 +240,18 @@ INSERT INTO `imagen` (`url`, `idEvento`, `descripcion`) VALUES
 --
 
 CREATE TABLE `pag_info` (
-  `idPagina` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+  `idPagina` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `texto` text COLLATE utf8_spanish_ci NOT NULL,
+  `titulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pag_info`
+--
+
+INSERT INTO `pag_info` (`idPagina`, `texto`, `titulo`) VALUES
+('contacto', 'Kieran - bla bla bla\r\nMonica - bla bla bla\r\nLorem Ipsum', 'Datos de Contacto'),
+('legal', 'Información legal y de copyright\r\nAlgo algo Disney©®™\r\nLorem Ipsum', 'Información Legal');
 
 -- --------------------------------------------------------
 

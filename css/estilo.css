@@ -61,32 +61,40 @@ li a.navbar {
 	text-decoration: none;
 }
 
-.navbar > ul > li:first-child {
+ul.navbar > li:first-child {
 	margin-left: 8px;
 }
 
 .navbar li a:hover {
 	background-color: #415ebe;
 	color: white;
+	border-radius: 0px;
 }
 
-/*Subniveles*/
+/*=====================================
+Barra navegación - Subniveles
+=====================================*/
 
+/*Elementos del submenu*/
 ul.navbar ul > li {
-	background-color: #415ebe;
-	display: none;
+	background-color: #d9dff2;
 	float: none;
 	width: 200px;
 }
 
+/*Los submenus en si*/
 ul.navbar ul {
 	list-style-type: none;
+	display: none;
+	position: absolute;
 	margin: 0;
 	padding: 0;
+	background-color: #d9dff2;
+	width: 200px;
 }
 
-ul.navbar li:hover li {
-	position:absolute;
+/*Elementos del submenu al pasar el raton para desplegarlos*/
+ul.navbar li:hover ul {
 	display: block;
 }
 

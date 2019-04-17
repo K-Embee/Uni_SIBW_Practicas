@@ -40,8 +40,9 @@ function renderEvento($twig, $conn) {
 
 function renderPrincipal($twig, $conn) {
     $args = DBprincipal($conn);
+    $menu = DBlistadoGenero($conn);
 
-    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args]);
+    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu]);
 }
 
 function renderPorGenero($twig, $conn) {
