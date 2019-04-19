@@ -4,7 +4,7 @@
 {% set vidmax = 1 %}
 
 {% block titulo %}
-    {{eventoNombre}}
+    {{evento.eventoNombre}}
 {% endblock %}
 
 {% block evento %}
@@ -22,21 +22,29 @@
                     {% endfor %}
                 {% endblock %}
             </div>
-            <h2 id="eventoNombre">{{ eventoNombre }}</h2>
+            <h2 id="eventoNombre">{{ evento.eventoNombre }}</h2>
             <div class="cuerpoevento">
                 <ul>
-                    <li>Genero: {{ genero }}</li>
-                    <li>Estudios: {{ estudios }}</li>
-                    <li>Distribuidora: {{ distribuidora }}</li>
-                    <li>Fecha de estreno: {{ fechaEstreno }}</li>
+                    <li>Generos:
+                        {% for entry in generos %}
+                            {% if loop.last %}
+                             {{entry}}.
+                            {% else %}
+                                {{entry}},
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                    <li>Estudios: {{ evento.estudios }}</li>
+                    <li>Distribuidora: {{ evento.distribuidora }}</li>
+                    <li>Fecha de estreno: {{ evento.fechaEstreno }}</li>
                 </ul>
-                {{ descripcion }}
+                {{ evento.descripcion }}
 
-                <p>Evento subido en {{fecha_creacion}}</p>
-                <p>Evento actualizado en {{fecha_ultima_mod}}</p>
+                <p>Evento subido en {{evento.fecha_creacion}}</p>
+                <p>Evento actualizado en {{evento.fecha_ultima_mod}}</p>
             </div>
             {% block galeria %}
-                <div class="bold"><a href="./?evento={{idEvento}}&galeria">(Galería)</a></div>
+                <div class="bold"><a href="./?evento={{evento.idEvento}}&galeria">(Galería)</a></div>
             {% endblock %}
         </span>
     </span>

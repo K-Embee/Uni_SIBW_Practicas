@@ -11,6 +11,18 @@ function DBevento($conn, $evento) {
     return $array;
 }
 
+function DBeventoGenero($conn, $evento) {
+    $sql = "SELECT genero FROM genero NATURAL JOIN etiquetas WHERE idEvento=" . '\'' . $evento . '\'';
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, $row["genero"]);
+    }
+    return $array;
+}
+
 function DBimagenes($conn, $evento) {
     $sql = "SELECT * FROM imagen WHERE idEvento=" . '\'' . $evento . '\'';
     $result = $conn->query($sql) or die("Error de servidor: SQL error");

@@ -7,6 +7,7 @@ function renderEvento($twig, $conn) {
     $args_I = DBimagenes($conn, $evento);
     $args_V = DBvideos($conn, $evento);
     $args_C = DBcomentarios($conn, $evento);
+    $args_G = DBeventoGenero($conn, $evento);
     $menu = DBmenu($conn);
 
     if(!$args) {
@@ -33,11 +34,7 @@ function renderEvento($twig, $conn) {
         exit();
     }
 
-    echo $twig->render( $ruta, ['eventoNombre' => $args->eventoNombre, 'fecha_ultima_mod' => $args->fecha_ultima_mod,
-                        'estudios' => $args->estudios, 'distribuidora' => $args->distribuidora,
-                        'fechaEstreno' => $args->fechaEstreno, 'enlace_twitter' => $args->enlace_twitter,
-                        'enlace_fb' => $args->enlace_fb, 'descripcion' => $args->descripcion, 'idEvento' => $args->idEvento,
-                        'fecha_creacion' => $args->fecha_creacion, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C,
+    echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C, 'generos' => $args_G,
                         'listado_menu' => $menu]);
 }
 
