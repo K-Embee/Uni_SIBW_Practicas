@@ -320,7 +320,7 @@ body {
 	background-image: url("../imgs/background.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	font-family: "Arial", "Verdana", sans;
+	font-family: "Arial", "Verdana";
 	font-size: 0.9em;
 }
 
