@@ -1,9 +1,11 @@
 {% extends "footer.html" %}
 
+{% set idArgumento = "{{idEvento}}" %}
+
 {% block redes %}
     <div class="links box">
-        <img onclick="botonTwitter()" id="Twitterbutton" src="./imgs/twitter.png"/>
-        <a href="{{ enlace_fb }}/"><img src="./imgs/facebook.png"/></a>
+        <img onclick="botonTwitter('{{idEvento}}')" id="Twitterbutton" src="./imgs/twitter.png"/>
+        <img onclick="botonFacebook('{{idEvento}}')" id="Facebookbutton" src="./imgs/facebook.png"/>
         <a href="?evento={{ idEvento }}&imprimir"><img src="./imgs/impresora.png"/></a>
     </div>
 {% endblock %}

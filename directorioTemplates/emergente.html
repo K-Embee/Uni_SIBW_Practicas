@@ -1,0 +1,15 @@
+{% extends 'plantillaGeneral.html'%}
+
+
+{% block header %}
+	<div class="pagetop">
+        <p>Se publicará en {{ red }} el siguiente mensaje: </p>
+        <p><var>{{ eventoNombre }}</var><p> @estrenos_favoritos</p>
+        <img class="infoimg" src="./imgs/{{ idEvento }}/portada.jpg"/>
+        <br>
+        <button onclick="closeWindow()">Aceptar</button>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

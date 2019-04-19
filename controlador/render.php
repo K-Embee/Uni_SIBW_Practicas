@@ -74,4 +74,27 @@ function renderGenerica($twig, $conn) {
 
     echo $twig->render('plantillaGenerica.html', ['paginaNombre' => $args["Titulo"], 'Texto' => (($args["Texto"])), 'listado_menu' => $menu]);
 }
+
+function renderFB_TW($twig, $conn) {
+    $evento = $_GET["evento"];
+    $red = $_GET["fb_tw"];
+    $args = DBevento($conn, $evento);
+
+    if(!$args || !$red) {
+        echo $twig->render('oops.html');
+        exit();
+    }
+
+    if($red=="tw") {
+        echo $twig->render('emergente.html', ['idEvento' => $evento, 'eventoNombre' => $args[0]->eventoNombre, 'red' => 'twitter']);
+    }
+    else if($red=="fb") {
+        echo $twig->render('emergente.html', ['idEvento' => $evento, 'eventoNombre' => $args[0]->eventoNombre, 'red' => 'facebook']);
+    }
+    else {
+        echo $twig->render('oops.html');
+        exit();
+    }
+}
+
 ?>

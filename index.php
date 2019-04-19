@@ -24,7 +24,11 @@ $conn = DBconnect();
 
 
 if (array_key_exists("evento",$_GET)) {
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (array_key_exists("fb_tw",$_GET)) {
+        renderFB_TW($twig, $conn);
+        exit();
+    }
+    else if ($_SERVER["REQUEST_METHOD"] == "POST") {
         comentar($conn, $_GET['evento']);
     }
     renderEvento($twig, $conn);
