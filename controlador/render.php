@@ -1,7 +1,16 @@
 <?php
 
+function validar_consulta($entrada) {
+    return preg_match('/^[a-zA-Z0-9\-_]+$/', $entrada); //Asegura que la cadena entera es carácteres alfanumericos
+}
+
 function renderEvento($twig, $conn) {
     $evento = $_GET["evento"];
+
+    if(!validar_consulta($evento)) {
+        echo $twig->render('emergente.html');
+        exit();
+    }
 
     $args = DBevento($conn, $evento);
     $args_I = DBimagenes($conn, $evento);
@@ -47,6 +56,12 @@ function renderPrincipal($twig, $conn) {
 
 function renderPorGenero($twig, $conn) {
     $genero = $_GET["genero"];
+
+    if(!validar_consulta($genero)) {
+        echo $twig->render('oops.html');
+        exit();
+    }
+
     $args = DBporGenero($conn, $genero);
     $menu = DBmenu($conn);
 
@@ -60,6 +75,11 @@ function renderPorGenero($twig, $conn) {
 
 function renderGenerica($twig, $conn) {
     $nombre = $_GET["pagina"];
+
+    if(!validar_consulta($nombre)) {
+        echo $twig->render('oops.html');
+        exit();
+    }
 
     $args = DBgenerica($conn, $nombre);
     $menu = DBmenu($conn);
@@ -75,9 +95,15 @@ function renderGenerica($twig, $conn) {
 function renderFB_TW($twig, $conn) {
     $evento = $_GET["evento"];
     $red = $_GET["fb_tw"];
+
+    if(!validar_consulta($evento) || !validar_consulta($red)) {
+        echo $twig->render('oops.html');
+        exit();
+    }
+
     $args = DBevento($conn, $evento);
 
-    if(!$args || !$red) {
+    if(!$args) {
         echo $twig->render('oops.html');
         exit();
     }
