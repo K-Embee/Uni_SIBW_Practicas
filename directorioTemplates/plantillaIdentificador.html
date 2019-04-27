@@ -1,0 +1,24 @@
+{% extends "plantillaGeneral.html" %}
+
+{% block evento %}
+    <form>
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>LOG IN</legend>
+
+    <!-- Formulario Identificacion -->
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="email"></input>
+
+        <label for="password">Contraseña</label>
+        <input type="text" name="password" id="password" placeholder="contraseña"></input>
+    </div>
+
+    <!-- boton -->
+     <button id="button" name="button">Identificarse</button>
+
+    </fieldset>
+    </form>
+{% endblock %}
