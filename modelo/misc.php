@@ -99,4 +99,9 @@ function DBtodosUsuarios($conn) {
     }
     return $array;
 }
+
+function DB_DROPcomentario($conn, $idcomentario) {
+    $sql = "DELETE FROM comentarios WHERE idComentario =" . $idcomentario ;
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+}
 ?>

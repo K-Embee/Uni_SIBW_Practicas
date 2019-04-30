@@ -11,6 +11,7 @@
                 <span class="bold">Autor: </span>{{ comment.nombre }}<br>
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
                 {{ comment.texto }}
+                <form method="post" action=""><button id="submit" type="submit" name="comentario" value="{{ comment.idComentario }}" formmethod="post">Borrar</button></form>
             </div>
         {% endfor %}
     {% elseif tipo_listado == "eventos" %}
