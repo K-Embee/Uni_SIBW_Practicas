@@ -118,6 +118,7 @@ Barra navegación - Botones
 .login {
 	color: black;
 	border: 2px solid #415ebe;
+	border-radius: 4px;
 }
 
 /*=====================================
@@ -293,7 +294,7 @@ Caja de comentarios
 	border: 1px solid #c0c0c0;
 }
 
-form {
+.formcomentario {
 	position: absolute;
 	left: 5%;
 	right: 5%;
@@ -338,6 +339,14 @@ input[type=submit]:hover {
 Identificacion
 =====================================*/
 
+.formregistro {
+	left: 5%;
+	right: 5%;
+	top: 5%;
+	max-height: 45%;
+	background-color: #e6f2ff;
+	overflow: auto;
+}
 
 /*=====================================
 Misc

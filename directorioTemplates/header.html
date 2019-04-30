@@ -19,11 +19,17 @@
 				{% endif %}
 			{% endfor %}
 		{% endblock %}
-		<a href=".?registrarse">
-			<button class="button">Sign Up</button>
-		</a>
-		<a href=".?identificarse">
-			<button class="button login">Log In</button>
-		</a>
+		{% if nombre_usuario is defined and nombre_usuario is not null %}
+			<a href=".?logout">
+				<button class="button login">{{nombre_usuario}}: Log out</button>
+			</a>
+		{% else %}
+			<a href=".?registrarse">
+				<button class="button">Sign Up</button>
+			</a>
+			<a href=".?identificarse">
+				<button class="button login">Log In</button>
+			</a>
+		{% endif %}
 	</ul>
 </div>

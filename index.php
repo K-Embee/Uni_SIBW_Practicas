@@ -5,23 +5,46 @@ require './controlador/class.php';
 require './modelo/modelo.php';
 require './controlador/render.php';
 require './controlador/comentario.php';
+require './controlador/sesiones.php';
 //Inicializamos el motor de plantillas
 require_once './vendor/autoload.php';
 
 $loader = new Twig_Loader_Filesystem('./directorioTemplates');
 $twig = new Twig_Environment($loader, ['cache' => false]); //Cambiar false a './directorioCache para usar la cache'
 
-//Extensión de escape de HTML
-
-
-// Averiguo que la página que se quiere mostrar es la del evento 12,
-// porque hemos accedido desde http://localhost/?evento=12
-// Busco en la base de datos la informacion del evento y lo
-// almaceno en las variables $eventoNombre, $eventoFecha, $eventoFoto...
+//Inicializamos la sesion del Usuario
+session_start();
 
 $conn = DBconnect();
 
+if (array_key_exists("logout",$_GET)) {
+    session_unset();
+}
 
+if (array_key_exists("identificarse",$_GET)) {
+    $error = false;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        iniciarSesion($conn);
+        $error = true;
+    }
+    if (!array_key_exists("usuario",$_SESSION) || $_SESSION["usuario"]==NULL) {
+        renderIdentificarse($twig, $conn, $error);
+        mysqli_close($conn);
+        exit();
+    }
+}
+if (array_key_exists("registrarse",$_GET)) {
+    $error = false;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        registrarse($conn);
+        $error = true;
+    }
+    if (!array_key_exists("usuario",$_SESSION) || $_SESSION["usuario"]==NULL) {
+        renderRegistrarse($twig, $conn, $error);
+        mysqli_close($conn);
+        exit();
+    }
+}
 
 if (array_key_exists("evento",$_GET)) {
     if (array_key_exists("fb_tw",$_GET)) {

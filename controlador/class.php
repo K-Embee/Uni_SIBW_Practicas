@@ -62,4 +62,19 @@ class Comentario {
         $this->texto = $array["texto"];
     }
 }
+
+class Usuario{
+    public $nombre;
+    public $email;
+    public $contraseña;
+    public $idUsuario;
+    public $idRol;
+    function Usuario($array) {
+        $this->nombre = $array["nombre"];
+        $this->email = $array["email"];
+        $this->contraseña = $array["contraseña"];
+        $this->idUsuario = $array["idUsuario"];
+        $this->idRol = $array["idRol"];
+    }
+}
 ?>

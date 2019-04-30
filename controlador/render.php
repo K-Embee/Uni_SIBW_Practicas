@@ -19,6 +19,11 @@ function renderEvento($twig, $conn) {
     $args_G = DBeventoGenero($conn, $evento);
     $menu = DBmenu($conn);
 
+    $nombreUsuario = NULL;
+    if (array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+
     if(!$args) {
         echo $twig->render('oops.html');
         exit();
@@ -44,14 +49,19 @@ function renderEvento($twig, $conn) {
     }
 
     echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C, 'generos' => $args_G,
-                        'listado_menu' => $menu]);
+                        'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
 }
 
 function renderPrincipal($twig, $conn) {
     $args = DBprincipal($conn);
     $menu = DBmenu($conn);
 
-    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu]);
+    $nombreUsuario = NULL;
+    if(array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+
+    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
 }
 
 function renderPorGenero($twig, $conn) {
@@ -65,12 +75,17 @@ function renderPorGenero($twig, $conn) {
     $args = DBporGenero($conn, $genero);
     $menu = DBmenu($conn);
 
+    $nombreUsuario = NULL;
+    if (array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+
     if(!$args) {
         echo $twig->render('oops.html');
         exit();
     }
 
-    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu]);
+    echo $twig->render('plantillaPrincipal.html', ['peliculas' => $args, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
 }
 
 function renderGenerica($twig, $conn) {
@@ -84,12 +99,17 @@ function renderGenerica($twig, $conn) {
     $args = DBgenerica($conn, $nombre);
     $menu = DBmenu($conn);
 
+    $nombreUsuario = NULL;
+    if (array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+
     if(!$args) {
         echo $twig->render('oops.html');
         exit();
     }
 
-    echo $twig->render('plantillaGenerica.html', ['paginaNombre' => $args["Titulo"], 'Texto' => (($args["Texto"])), 'listado_menu' => $menu]);
+    echo $twig->render('plantillaGenerica.html', ['paginaNombre' => $args["Titulo"], 'Texto' => (($args["Texto"])), 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
 }
 
 function renderFB_TW($twig, $conn) {
@@ -120,4 +140,25 @@ function renderFB_TW($twig, $conn) {
     }
 }
 
+function renderIdentificarse($twig, $conn, $error) {
+    $menu = DBmenu($conn);
+
+    $nombreUsuario = NULL;
+    if (array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+
+    echo $twig->render('plantillaIdentificador.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'fail' => $error]);
+}
+
+function renderRegistrarse($twig, $conn, $error) {
+    $menu = DBmenu($conn);
+
+    $nombreUsuario = NULL;
+    if (array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+
+    echo $twig->render('plantillaRegistro.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'fail' => $error]);
+}
 ?>
