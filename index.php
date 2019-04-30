@@ -21,6 +21,11 @@ if (array_key_exists("logout",$_GET)) {
     session_unset();
 }
 
+if (array_key_exists("listado",$_GET)) {
+    renderListado($twig, $conn);
+    exit();
+}
+
 if (array_key_exists("identificarse",$_GET)) {
     $error = false;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

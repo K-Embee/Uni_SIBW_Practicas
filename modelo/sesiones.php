@@ -8,13 +8,19 @@ function DBlogin($conn, $email, $password) {
     if($row = $result->fetch_assoc()){
         $var = new Usuario($row);
     }
+
+    if($var && !password_verify($password, $var->contraseña)) {
+        $var = NULL;
+    }
+
     return $var;
 }
 
 function DB_INregister($conn, $email, $password, $nombreUsuario, $nombre) {
+    $password = password_hash($password, PASSWORD_BCRYPT);
     $sql = "INSERT INTO usuario (nombre, email, contraseña, idUsuario) VALUES
         ('$nombre', '$email', '$password', '$nombreUsuario')";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql);
 }
 
 

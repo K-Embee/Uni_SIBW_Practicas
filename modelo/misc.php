@@ -42,6 +42,10 @@ function DBmenu($conn) {
     $array["Página Principal"] = "/";
     $array["Géneros"] = DBlistadoGenero($conn, true);
     $array["Otras páginas"] = DBlistadoPaginas($conn, true);
+    if (array_key_exists("usuario",$_SESSION)) {
+        $permisos = array('editar perfil' => "editar perfil", 'comentarios' => "comentarios", 'eventos' => "eventos", 'usuarios' => "usuarios");
+        $array["Panel de control"] = $permisos;
+    }
 
     return $array;
 }
@@ -68,6 +72,30 @@ function DBlistadoPaginas($conn, $url) {
 
     while($row = $result->fetch_assoc()){
         $array[$row["titulo"]] = (($url) ? "/?pagina=" : "") . $row["idPagina"];
+    }
+    return $array;
+}
+
+function DBtodosComentarios($conn) {
+    $sql = "SELECT * FROM comentarios";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, new Comentario($row));
+    }
+    return $array;
+}
+
+function DBtodosUsuarios($conn) {
+    $sql = "SELECT * FROM usuario";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, new Usuario($row));
     }
     return $array;
 }

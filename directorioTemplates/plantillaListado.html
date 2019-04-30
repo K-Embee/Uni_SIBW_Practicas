@@ -1,0 +1,35 @@
+{% extends "plantillaGeneral.html" %}
+
+{% block sidebar %}{% endblock %}
+
+{% block evento %}
+
+<div class="principal_alt">
+    {% if tipo_listado == "comentarios" %}
+        {% for comment in lista %}
+            <div class="listado">
+                <span class="bold">Autor: </span>{{ comment.nombre }}<br>
+                <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
+                {{ comment.texto }}
+            </div>
+        {% endfor %}
+    {% elseif tipo_listado == "eventos" %}
+        {% for evento in lista %}
+            <div class="listado">
+                <span class="bold">Nombre: </span>{{ evento.eventoNombre }}<br>
+            </div>
+        {% endfor %}
+    {% elseif tipo_listado == "usuarios" %}
+        {% for usuario in lista %}
+            <div class="listado">
+                <span class="bold">Nombre: </span>{{ usuario.nombre }}<br>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block footer  %}
+    {% include 'footer.html' %}
+{% endblock %}

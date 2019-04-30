@@ -161,4 +161,28 @@ function renderRegistrarse($twig, $conn, $error) {
 
     echo $twig->render('plantillaRegistro.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'fail' => $error]);
 }
+
+function renderListado($twig, $conn) {
+    $listado = $_GET["listado"];
+
+    $menu = DBmenu($conn);
+
+    switch ($listado) {
+        case 'usuarios':
+            $args = DBtodosUsuarios($conn);
+            break;
+        case 'comentarios':
+            $args = DBtodosComentarios($conn);
+            break;
+        case 'eventos':
+            $args = DBprincipal($conn);
+            break;
+        default:
+            echo $twig->render('oops.html');
+            exit();
+            break;
+    }
+
+    echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args ]);
+}
 ?>
