@@ -1,0 +1,21 @@
+{% extends "plantillaGeneral.html" %}
+
+{% block evento %}
+    <div class="principal">
+        <span class="bold">Nombre: </span>{{ usuario.nombre }}<br>
+        <span class="bold">Usuario: </span>{{ usuario.idUsuario }}<br>
+        <span class="bold">email: </span>{{ usuario.email }}<br>
+        <span class="bold">Rol: </span>{{ usuario.idRol }}<br>
+        <label for="password">Contraseña nueva</label>
+
+        <input type="password" name="password" id="passworda" placeholder="Contraseña nueva"></input>
+        <label for="password">Contraseña antigua</label>
+
+        <input type="password" name="password" id="passwordb" placeholder="Contraseña antigua"></input>
+        <button>Cambiar contraseña</button>
+    </div>
+{% endblock %}
+
+{% block footer  %}
+    {% include 'footer.html' %}
+{% endblock %}

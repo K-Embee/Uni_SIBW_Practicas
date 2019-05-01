@@ -100,8 +100,22 @@ function DBtodosUsuarios($conn) {
     return $array;
 }
 
+//Borra un comentario de la BD
 function DB_DROPcomentario($conn, $idcomentario) {
     $sql = "DELETE FROM comentarios WHERE idComentario =" . $idcomentario ;
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
+}
+
+//Selecciona un usuario
+function DBusuarios($conn, $idUsuario) {
+    $sql = "SELECT * FROM usuario WHERE idUsuario =" . '\'' . $idUsuario . '\'';
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+
+    while($row = $result->fetch_assoc()){
+        array_push($array, new Usuario($row));
+    }
+    return $array;
 }
 ?>

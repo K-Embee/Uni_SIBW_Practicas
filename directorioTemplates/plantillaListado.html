@@ -9,8 +9,9 @@
         {% for comment in lista %}
             <div class="listado">
                 <span class="bold">Autor: </span>{{ comment.nombre }}<br>
+                <span class="bold">Email: </span>{{ comment.correo }}<br>
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
-                {{ comment.texto }}
+                {{ comment.texto }}<br>
                 <form method="post" action=""><button id="submit" type="submit" name="comentario" value="{{ comment.idComentario }}" formmethod="post">Borrar</button></form>
             </div>
         {% endfor %}
@@ -18,12 +19,30 @@
         {% for evento in lista %}
             <div class="listado">
                 <span class="bold">Nombre: </span>{{ evento.eventoNombre }}<br>
+                <span class="bold">Estudios: </span>{{ evento.estudios }}<br>
+                <span class="bold">Distribuidora: </span>{{ evento.distribuidora }}<br>
+                <span class="bold">Estreno: </span>{{ evento.fechaEstreno }}<br>
+                <span class="bold">Descripcion: </span>{{ evento.descripcion }}<br>
+                <span class="bold">Fecha creacion: </span>{{ evento.fecha_creacion }}<br>
+                <span class="bold">Fecha modificacion: </span>{{ evento.fecha_ultima_mod }}<br>
+                <span class="bold">Generos: </span>
+                {% for entry in genero %}
+                    {% if loop.last %}
+                     {{entry}}.
+                    {% else %}
+                        {{entry}},
+                    {% endif %}
+                {% endfor %}
+                <br>
             </div>
         {% endfor %}
     {% elseif tipo_listado == "usuarios" %}
         {% for usuario in lista %}
             <div class="listado">
                 <span class="bold">Nombre: </span>{{ usuario.nombre }}<br>
+                <span class="bold">Usuario: </span>{{ usuario.idUsuario }}<br>
+                <span class="bold">email: </span>{{ usuario.email }}<br>
+                <span class="bold">Rol: </span>{{ usuario.idRol }}<br>
             </div>
         {% endfor %}
     {% endif %}

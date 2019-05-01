@@ -176,6 +176,9 @@ function renderListado($twig, $conn) {
             break;
         case 'eventos':
             $args = DBprincipal($conn);
+            $args_G = DBeventoGenero($conn, $evento);
+            echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args, 'genero' => $args_G ]);
+            exit();
             break;
         default:
             echo $twig->render('oops.html');
@@ -184,5 +187,14 @@ function renderListado($twig, $conn) {
     }
 
     echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args ]);
+}
+
+function renderInfoUsuario($twig, $conn){
+    $usuario = $_GET["infousuario"];
+
+    $menu = DBmenu($conn);
+    $args = DBusuarios($conn,$usuario);
+
+    echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'usuario' => $args ]);
 }
 ?>

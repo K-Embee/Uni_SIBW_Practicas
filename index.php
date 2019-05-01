@@ -21,6 +21,17 @@ if (array_key_exists("logout",$_GET)) {
     session_unset();
 }
 
+if (array_key_exists("infousuario",$_GET)) {
+    /*if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("comentario",$_POST)) {
+        echo $_POST["comentario"];
+        exit();
+        DB_DROPcomentario($conn, $_POST["comentario"]);
+    }*/
+
+    renderInfoUsuario($twig, $conn);
+    exit();
+}
+
 if (array_key_exists("listado",$_GET)) {
     if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("comentario",$_POST)) {
         echo $_POST["comentario"];
