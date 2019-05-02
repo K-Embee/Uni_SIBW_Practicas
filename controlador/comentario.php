@@ -15,6 +15,7 @@ function comentar($conn, $evento) {
 
     if($name && !$email_err && $comentario) {
         $array = array();
+        $array["idComentario"] = "";
         $array["idEvento"] = $evento;
         $array["ip"] = $ip;
         $array["nombre"] = $name;
@@ -25,6 +26,7 @@ function comentar($conn, $evento) {
         DB_INcomentario($conn, $comm);
     }
 }
+
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

@@ -100,9 +100,14 @@ function DBtodosUsuarios($conn) {
     return $array;
 }
 
-//Borra un comentario de la BD
+//Borra de la BD
 function DB_DROPcomentario($conn, $idcomentario) {
     $sql = "DELETE FROM comentarios WHERE idComentario =" . $idcomentario ;
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+}
+
+function DB_DROPevento($conn, $idevento) {
+    $sql = "DELETE FROM evento WHERE idComentario =" . $idevento ;
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 }
 

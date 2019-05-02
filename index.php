@@ -36,6 +36,9 @@ if (array_key_exists("listado",$_GET)) {
     if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("comentario",$_POST)) {
         DB_DROPcomentario($conn, $_POST["comentario"]);
     }
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("evento",$_POST)) {
+        DB_DROPevento($conn, $_POST["evento"]);
+    }
     renderListado($twig, $conn);
     exit();
 }

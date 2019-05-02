@@ -54,7 +54,6 @@ class Comentario {
     public $fecha_hora;
     public $texto;
     function Comentario ($array) {
-        //$this->idComentario = $array["idComentario"];
         $this->idEvento = $array["idEvento"];
         $this->idComentario = $array["idComentario"];
         $this->ip = $array["ip"];

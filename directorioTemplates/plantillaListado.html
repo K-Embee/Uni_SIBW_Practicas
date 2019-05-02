@@ -20,6 +20,11 @@
             </div>
         {% endfor %}
     {% elseif tipo_listado == "eventos" %}
+        <form method="post" action="">
+            <input type="hidden" name="aniaeEvento">
+                <button id="submit" type="submit">Añadir evento</button>
+            </input>
+        </form>
         {% for evento in lista %}
             <div class="listado">
                 <span class="bold">Nombre: </span>{{ evento.eventoNombre }}<br>
@@ -38,6 +43,11 @@
                     {% endif %}
                 {% endfor %}-->
                 <br>
+                <form method="post" action="">
+                    <input type="hidden" name="evento" value="{{ evento.idEvento }}">
+                        <button id="submit" type="submit">Borrar</button>
+                    </input>
+                </form>
             </div>
         {% endfor %}
     {% elseif tipo_listado == "usuarios" %}
