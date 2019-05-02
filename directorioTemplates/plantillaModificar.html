@@ -1,0 +1,32 @@
+{% extends "plantillaGeneral.html" %}
+
+{% block sidebar %}{% endblock %}
+
+{% block evento %}
+
+<div class="principal_alt">
+    <h2>Editar evento</h2>
+    <form class="listado" method="post" action="">
+        <span class="bold">Nombre: </span><br>
+            <input type="text" name="evento" value="{{ evento.eventoNombre }}"><br>
+        <span class="bold">Estudios: </span><br>
+            <input type="text" name="evento" value="{{ evento.estudios }}"><br>
+        <span class="bold">Distribuidora: </span><br>
+            <input type="text" name="evento" value="{{ evento.distribuidora }}"><br>
+        <span class="bold">Estreno: </span><br>
+            <input type="text" name="evento" value="{{ evento.fechaEstreno }}"><br>
+        <span class="bold">Descripcion: </span><br>
+            <input type="text" name="evento" value="{{ evento.descripcion }}"><br>
+        <span class="bold">Fecha creacion: </span><br>
+            <input type="text" name="evento" value="{{ evento.fecha_creacion }}"><br>
+        <span class="bold">Fecha modificacion: </span><br>
+            <input type="text" name="evento" value="{{ evento.fecha_ultima_mod }}"><br>
+        <button id="submit" type="submit">Editar</button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block footer  %}
+    {% include 'footer.html' %}
+{% endblock %}

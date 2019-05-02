@@ -3,6 +3,7 @@ require './modelo/evento.php'; //Las funciones de bases de datos que tienen que 
 require './modelo/principal.php'; //Las funciones de bases de datos que tienen que ver con mostrar la página principal
 require './modelo/misc.php'; //Las funciones de bases de datos que no tienen que ver con lo anterior
 require './modelo/sesiones.php'; //Las funciones de bases de datos que tienen que ver con el registro de usuarios
+require './modelo/comentarios.php'; //Las funciones de bases de datos que tienen que ver con el registro manejo de comentarios
 function DBconnect() {
     $servername = "localhost";
     $username = "user";

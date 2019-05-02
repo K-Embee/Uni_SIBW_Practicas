@@ -1,25 +1,4 @@
 <?php
-//Devuelve la lista de palabras prohibidas de la BD
-function DBcensura($conn) {
-    $sql = "SELECT palabra FROM censura";
-
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
-    $array = array();
-
-    while($row = $result->fetch_assoc()) {
-        array_push($array, $row["palabra"]);
-    }
-
-    return $array;
-}
-
-//Inserta un comentario a la BD
-function  DB_INcomentario($conn, $comentario) {
-    $sql = "INSERT INTO comentarios (idEvento, ip, nombre, correo, texto) VALUES
-        ('$comentario->idEvento','$comentario->ip','$comentario->nombre','$comentario->correo','$comentario->texto')";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
-}
-
 //Devuelve el contenido de una página genérica
 function DBgenerica($conn, $arg) {
     $sql = "SELECT titulo, texto FROM pag_info WHERE idPagina =" . '\'' . $arg . '\'';
@@ -76,18 +55,6 @@ function DBlistadoPaginas($conn, $url) {
     return $array;
 }
 
-function DBtodosComentarios($conn) {
-    $sql = "SELECT * FROM comentarios";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
-
-    $array = array();
-
-    while($row = $result->fetch_assoc()){
-        array_push($array, new Comentario($row));
-    }
-    return $array;
-}
-
 function DBtodosUsuarios($conn) {
     $sql = "SELECT * FROM usuario";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
@@ -98,12 +65,6 @@ function DBtodosUsuarios($conn) {
         array_push($array, new Usuario($row));
     }
     return $array;
-}
-
-//Borra de la BD
-function DB_DROPcomentario($conn, $idcomentario) {
-    $sql = "DELETE FROM comentarios WHERE idComentario =" . $idcomentario ;
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
 }
 
 function DB_DROPevento($conn, $idevento) {
@@ -130,6 +91,14 @@ function  DB_INevento($conn, $evento) {
          ('$evento->idEvento','$evento->estudios','$evento->distribuidora',
              '$evento->fechaEstreno', '$evento->descripcion', '$evento->fecha_creacion',
              '$evento->fecha_ultima_mod')";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+}
+
+function  DB_UPDATEevento($conn, $evento) {
+    $sql = "UPDATE evento SET estudios =  $evento->estudios,
+    distribuidora = $evento->distribuidora, fechaEstreno = $evento->fechaEstreno,
+    descripcion = $evento->descripcion, fecha_creacion =  $evento->fecha_creacion,
+    fecha_ultima_mod = $evento->fecha_ultima_mod WHERE evento = $idevento" ;
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 }
 ?>

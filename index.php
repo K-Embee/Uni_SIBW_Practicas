@@ -22,13 +22,18 @@ if (array_key_exists("logout",$_GET)) {
 }
 
 if (array_key_exists("infousuario",$_GET)) {
-    /*if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("comentario",$_POST)) {
-        echo $_POST["comentario"];
-        exit();
-        DB_DROPcomentario($conn, $_POST["comentario"]);
-    }*/
-
     renderInfoUsuario($twig, $conn);
+    exit();
+}
+
+if (array_key_exists("modificar",$_GET)) {
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("evento",$_POST)) {
+        DB_DROPcomentario($conn, $_POST["comentario"]);
+        renderListado($twig, $conn);
+    }
+    
+    renderModificar($twig, $conn);
     exit();
 }
 

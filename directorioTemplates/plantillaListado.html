@@ -6,8 +6,11 @@
 
 <div class="principal_alt">
     {% if tipo_listado == "comentarios" %}
+    <input type="text" id="myInput" onkeyup="buscarComentario()" placeholder="Busqueda por comentario..." title="Type in a name">
+    <div id="listadoComentarios">
         {% for comment in lista %}
-            <div class="listado">
+            <div class="listado" id="listado-{{ comment.texto }}">
+                <span class="bold">Evento: </span>{{ comment.idEvento }}<br>
                 <span class="bold">Autor: </span>{{ comment.nombre }}<br>
                 <span class="bold">Email: </span>{{ comment.correo }}<br>
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
@@ -19,6 +22,7 @@
                 </form>
             </div>
         {% endfor %}
+    </div>
     {% elseif tipo_listado == "eventos" %}
     <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Type in a name">
         <form method="post" action="">
@@ -37,17 +41,16 @@
                 <span class="bold">Fecha creacion: </span>{{ evento.fecha_creacion }}<br>
                 <span class="bold">Fecha modificacion: </span>{{ evento.fecha_ultima_mod }}<br>
                 <span class="bold">Generos: </span>
-                <!--{% for entry in genero %}
+                {% for entry in genero %}
                     {% if loop.last %}
                      {{entry}}.
                     {% else %}
                         {{entry}},
                     {% endif %}
-                {% endfor %}-->
-                <br>
+                {% endfor %}
                 <form method="post" action="">
                     <input type="hidden" name="evento" value="{{ evento.idEvento }}">
-                        <button id="submit" type="submit">Borrar</button>
+                        <button id="submit" type="submit">Borrar evento</button>
                     </input>
                 </form>
             </div>
