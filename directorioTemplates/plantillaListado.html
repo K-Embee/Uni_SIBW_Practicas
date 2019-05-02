@@ -20,13 +20,15 @@
             </div>
         {% endfor %}
     {% elseif tipo_listado == "eventos" %}
+    <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Type in a name">
         <form method="post" action="">
             <input type="hidden" name="aniaeEvento">
                 <button id="submit" type="submit">Añadir evento</button>
             </input>
         </form>
+        <div id="listadoComentarios">
         {% for evento in lista %}
-            <div class="listado">
+            <div class="listado" id="listado-{{ evento.eventoNombre }}">
                 <span class="bold">Nombre: </span>{{ evento.eventoNombre }}<br>
                 <span class="bold">Estudios: </span>{{ evento.estudios }}<br>
                 <span class="bold">Distribuidora: </span>{{ evento.distribuidora }}<br>
@@ -50,6 +52,7 @@
                 </form>
             </div>
         {% endfor %}
+        </div>
     {% elseif tipo_listado == "usuarios" %}
         {% for usuario in lista %}
             <div class="listado">

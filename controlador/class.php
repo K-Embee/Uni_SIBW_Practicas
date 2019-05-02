@@ -45,7 +45,6 @@ class Video {
 }
 
 class Comentario {
-    //public $idComentario;
     public $idEvento;
     public $idComentario;
     public $ip;

@@ -414,7 +414,7 @@ body {
 	width: 100%;
 	left: 2.5%;
 	box-sizing: border-box;
-	
+
 	background-color: #e6f2ff;
 	border-style: solid;
 	border-radius: 5px;
@@ -422,4 +422,15 @@ body {
 	border-color: #0080ff;
 	padding: 10px;
 	margin: 16px;
+}
+
+#myInput {
+  background-image: url('../imgs/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }

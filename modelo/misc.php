@@ -123,4 +123,13 @@ function DBusuarios($conn, $idUsuario) {
     }
     return $array;
 }
+
+function  DB_INevento($conn, $evento) {
+    $sql = "INSERT INTO evento (idEvento, estudios, distribuidora, fechaEstreno,
+         descripcion, fecha_creacion, fecha_ultima_mod) VALUES
+         ('$evento->idEvento','$evento->estudios','$evento->distribuidora',
+             '$evento->fechaEstreno', '$evento->descripcion', '$evento->fecha_creacion',
+             '$evento->fecha_ultima_mod')";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+}
 ?>
