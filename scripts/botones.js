@@ -27,7 +27,6 @@ function misOjos(toggle) {
         }
         document.body.style.backgroundImage = ((misOjos)?"url(/imgs/oops.jpg)":"url(/imgs/background.jpg)");
         document.body.style.opacity = ((misOjos)?"0.6":"1");
-        console.log(body);
     }
     else {
           // No localStorage support

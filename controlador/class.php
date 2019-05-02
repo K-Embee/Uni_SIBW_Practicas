@@ -47,6 +47,7 @@ class Video {
 class Comentario {
     //public $idComentario;
     public $idEvento;
+    public $idComentario;
     public $ip;
     public $nombre;
     public $correo;
@@ -55,6 +56,7 @@ class Comentario {
     function Comentario ($array) {
         //$this->idComentario = $array["idComentario"];
         $this->idEvento = $array["idEvento"];
+        $this->idComentario = $array["idComentario"];
         $this->ip = $array["ip"];
         $this->nombre = $array["nombre"];
         $this->correo = $array["correo"];

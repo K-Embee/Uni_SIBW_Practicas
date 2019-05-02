@@ -176,8 +176,8 @@ function renderListado($twig, $conn) {
             break;
         case 'eventos':
             $args = DBprincipal($conn);
-            $args_G = DBeventoGenero($conn, $evento);
-            echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args, 'genero' => $args_G ]);
+            //$args_G = DBeventoGenero($conn, $evento);
+            echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args ]);
             exit();
             break;
         default:

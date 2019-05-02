@@ -12,7 +12,11 @@
                 <span class="bold">Email: </span>{{ comment.correo }}<br>
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
                 {{ comment.texto }}<br>
-                <form method="post" action=""><button id="submit" type="submit" name="comentario" value="{{ comment.idComentario }}" formmethod="post">Borrar</button></form>
+                <form method="post" action="">
+                    <input type="hidden" name="comentario" value="{{ comment.idComentario }}">
+                        <button id="submit" type="submit">Borrar</button>
+                    </input>
+                </form>
             </div>
         {% endfor %}
     {% elseif tipo_listado == "eventos" %}
@@ -26,13 +30,13 @@
                 <span class="bold">Fecha creacion: </span>{{ evento.fecha_creacion }}<br>
                 <span class="bold">Fecha modificacion: </span>{{ evento.fecha_ultima_mod }}<br>
                 <span class="bold">Generos: </span>
-                {% for entry in genero %}
+                <!--{% for entry in genero %}
                     {% if loop.last %}
                      {{entry}}.
                     {% else %}
                         {{entry}},
                     {% endif %}
-                {% endfor %}
+                {% endfor %}-->
                 <br>
             </div>
         {% endfor %}
