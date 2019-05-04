@@ -14,14 +14,13 @@
         <span class="bold">Distribuidora: </span><br>
             <input type="text" name="evento" value="{{ evento.distribuidora }}"><br>
         <span class="bold">Estreno: </span><br>
-            <input type="text" name="evento" value="{{ evento.fechaEstreno }}"><br>
+            <input type="date" name="evento" value="{{ evento.fechaEstreno }}"><br>
         <span class="bold">Descripcion: </span><br>
             <input type="text" name="evento" value="{{ evento.descripcion }}"><br>
-        <span class="bold">Fecha creacion: </span><br>
-            <input type="text" name="evento" value="{{ evento.fecha_creacion }}"><br>
-        <span class="bold">Fecha modificacion: </span><br>
-            <input type="text" name="evento" value="{{ evento.fecha_ultima_mod }}"><br>
-        <button id="submit" type="submit">Editar</button>
+
+        <input type="hidden" name="evento" value="{{ evento.idEvento }}">
+            <button id="submit" type="submit">Editar</button>
+        </input>
     </form>
 </div>
 

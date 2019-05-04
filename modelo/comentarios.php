@@ -37,4 +37,11 @@ function DB_DROPcomentario($conn, $idcomentario) {
     $sql = "DELETE FROM comentarios WHERE idComentario =" . $idcomentario ;
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 }
+
+function  DB_UPDATEcomentario($conn, $comentario) {
+    $hoy = getdate();
+    $sql = "UPDATE evento SET texto = '{$comentario->texto}'
+    WHERE idComentario = '{$comentario->idComentario} (Modificado por el moderador)'";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+}
 ?>

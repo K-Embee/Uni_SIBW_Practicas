@@ -41,8 +41,6 @@ function renderEvento($twig, $conn) {
 
     $ruta = $imprimir?'plantillaEventoImpresion.html':($galeria?'plantillaEventoGaleria.html':'plantillaEvento.html');
 
-    $args = array_pop($args);
-
     if(!$args) {
         echo $twig->render('oops.html');
         exit();
@@ -129,10 +127,10 @@ function renderFB_TW($twig, $conn) {
     }
 
     if($red=="tw") {
-        echo $twig->render('emergente.html', ['idEvento' => $evento, 'eventoNombre' => $args[0]->eventoNombre, 'red' => 'twitter']);
+        echo $twig->render('emergente.html', ['idEvento' => $evento, 'eventoNombre' => $args->eventoNombre, 'red' => 'twitter']);
     }
     else if($red=="fb") {
-        echo $twig->render('emergente.html', ['idEvento' => $evento, 'eventoNombre' => $args[0]->eventoNombre, 'red' => 'facebook']);
+        echo $twig->render('emergente.html', ['idEvento' => $evento, 'eventoNombre' => $args->eventoNombre, 'red' => 'facebook']);
     }
     else {
         echo $twig->render('oops.html');
@@ -176,9 +174,6 @@ function renderListado($twig, $conn) {
             break;
         case 'eventos':
             $args = DBprincipal($conn);
-            $args_G = DBeventoGenero($conn, $listado);
-            echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args, 'genero' => $args_G ]);
-            exit();
             break;
         default:
             echo $twig->render('oops.html');

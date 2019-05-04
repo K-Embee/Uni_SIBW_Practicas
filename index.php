@@ -29,10 +29,9 @@ if (array_key_exists("infousuario",$_GET)) {
 if (array_key_exists("modificar",$_GET)) {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("evento",$_POST)) {
-        DB_DROPcomentario($conn, $_POST["comentario"]);
-        renderListado($twig, $conn);
+        DB_UPDATEevento($conn, DBevento($conn, $_POST["evento"]));
     }
-    
+
     renderModificar($twig, $conn);
     exit();
 }

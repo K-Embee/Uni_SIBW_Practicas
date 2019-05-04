@@ -3,12 +3,12 @@ function DBevento($conn, $evento) {
     $sql = "SELECT * FROM evento WHERE idEvento=" . '\'' . $evento . '\'';
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
-    $array = array();
+    $var = NULL;
 
-    while($row = $result->fetch_assoc()){
-        array_push($array, new Evento($row));
+    if($row = $result->fetch_assoc()){
+        $var = new Evento($row);
     }
-    return $array;
+    return $var;
 }
 
 function DBeventoGenero($conn, $evento) {

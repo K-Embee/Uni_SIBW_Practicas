@@ -41,13 +41,6 @@
                 <span class="bold">Fecha creacion: </span>{{ evento.fecha_creacion }}<br>
                 <span class="bold">Fecha modificacion: </span>{{ evento.fecha_ultima_mod }}<br>
                 <span class="bold">Generos: </span>
-                {% for entry in genero %}
-                    {% if loop.last %}
-                     {{entry}}.
-                    {% else %}
-                        {{entry}},
-                    {% endif %}
-                {% endfor %}
                 <form method="post" action="">
                     <input type="hidden" name="evento" value="{{ evento.idEvento }}">
                         <button id="submit" type="submit">Borrar evento</button>
