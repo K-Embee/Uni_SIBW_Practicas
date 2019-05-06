@@ -11,16 +11,16 @@ class Evento {
     public $enlace_twitter;
     public $enlace_fb;
     function Evento ($array) {
-        $this->eventoNombre = $array["eventoNombre"];
-        $this->estudios = $array["estudios"];
-        $this->distribuidora = $array["distribuidora"];
-        $this->descripcion = $array["descripcion"];
-        $this->idEvento = $array["idEvento"];
-        $this->fechaEstreno = $array["fechaEstreno"];
-        $this->fecha_creacion = $array["fecha_creacion"];
-        $this->fecha_ultima_mod = $array["fecha_ultima_mod"];
-        $this->enlace_twitter = $array["enlace_twitter"];
-        $this->enlace_fb = $array["enlace_fb"];
+        if(array_key_exists("eventoNombre",$array)) $this->eventoNombre = $array["eventoNombre"];
+        if(array_key_exists("estudios",$array)) $this->estudios = $array["estudios"];
+        if(array_key_exists("distribuidora",$array)) $this->distribuidora = $array["distribuidora"];
+        if(array_key_exists("descripcion",$array)) $this->descripcion = $array["descripcion"];
+        if(array_key_exists("idEvento",$array)) $this->idEvento = $array["idEvento"];
+        if(array_key_exists("fechaEstreno",$array)) $this->fechaEstreno = $array["fechaEstreno"];
+        if(array_key_exists("fecha_creacion",$array)) $this->fecha_creacion = $array["fecha_creacion"];
+        if(array_key_exists("fecha_ultima_mod",$array)) $this->fecha_ultima_mod = $array["fecha_ultima_mod"];
+        if(array_key_exists("enlace_twitter",$array)) $this->enlace_twitter = $array["enlace_twitter"];
+        if(array_key_exists("enlace_fb",$array)) $this->enlace_fb = $array["enlace_fb"];
     }
 }
 

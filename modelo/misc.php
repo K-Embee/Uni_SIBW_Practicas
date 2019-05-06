@@ -95,11 +95,15 @@ function  DB_INevento($conn, $evento) {
 }
 
 function  DB_UPDATEevento($conn, $evento) {
-    $hoy = getdate();
-    $sql = "UPDATE evento SET estudios =  '{$evento->estudios}',
-    eventoNombre = '{$evento->eventoNombre}', distribuidora = '{$evento->distribuidora}',
-    fechaEstreno = '{$evento->fechaEstreno}', descripcion = '{$evento->descripcion}',
-    fecha_ultima_mod = CURRENT_DATE() WHERE idEvento = '{$evento->idEvento}'";
+    $eventoNombre = mysqli_real_escape_string($conn, $evento->eventoNombre);
+    $distribuidora = mysqli_real_escape_string($conn, $evento->distribuidora);
+    $estudios = mysqli_real_escape_string($conn, $evento->estudios);
+    $descripcion = mysqli_real_escape_string($conn, $evento->descripcion);
+    $idEvento = mysqli_real_escape_string($conn, $evento->idEvento);
+    $sql = "UPDATE evento SET estudios =  '{$estudios}',
+    eventoNombre = '{$eventoNombre}', distribuidora = '{$distribuidora}',
+    fechaEstreno = '{$evento->fechaEstreno}', descripcion = '{$descripcion}',
+    fecha_ultima_mod = CURRENT_DATE() WHERE idEvento = '{$idEvento}'";
     echo $sql;
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 }

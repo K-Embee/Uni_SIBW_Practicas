@@ -28,8 +28,27 @@ if (array_key_exists("infousuario",$_GET)) {
 
 if (array_key_exists("modificar",$_GET)) {
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("evento",$_POST)) {
-        DB_UPDATEevento($conn, DBevento($conn, $_POST["evento"]));
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(array_key_exists("eventoNombre",$_POST) && array_key_exists("estudios",$_POST) && array_key_exists("distribuidora",$_POST) &&
+            array_key_exists("fechaEstreno",$_POST) && array_key_exists("descripcion",$_POST))
+        {
+            $array = array();
+            $array["eventoNombre"] = $_POST["eventoNombre"];
+            $array["estudios"] = $_POST["estudios"];
+            $array["distribuidora"] = $_POST["distribuidora"];
+            $array["descripcion"] = $_POST["descripcion"];
+            $array["fechaEstreno"] = $_POST["fechaEstreno"];
+            if(array_key_exists("idModificarEvento",$_POST)) {
+                $array["idEvento"] = $_POST["idModificarEvento"];
+                $evento = new Evento($array);
+                DB_UPDATEevento($conn, $evento);
+            }
+            else if(array_key_exists("idAniadirEvento",$_POST)){
+                $array["idEvento"] = $_POST["idAniadirEvento"];
+                $evento = new Evento($array);
+                DB_INevento($conn, $evento);
+            }
+        }
     }
 
     renderModificar($twig, $conn);
