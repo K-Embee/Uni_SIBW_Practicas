@@ -5,7 +5,7 @@
 {% block evento %}
 
 <div class="principal_alt">
-    <h2>Editar evento</h2>
+    <h2>{% block titulo %}{% endblock %}</h2>
     <form class="listado" method="post" action="">
         <span class="bold">Nombre: </span><br>
             <input type="text" name="eventoNombre" value="{{ evento.eventoNombre }}"><br>

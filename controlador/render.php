@@ -198,12 +198,17 @@ function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no 
     }
 }
 
-function renderModificar($twig, $conn){
+function renderModificarEvento($twig, $conn){
     $evento = $_GET["modificar"];
 
     $menu = DBmenu($conn);
     $args = DBevento($conn,$evento);
 
     echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'evento' => $args ]);
+}
+
+function renderAniadirEvento($twig, $conn){
+    $menu = DBmenu($conn);
+    echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu]);
 }
 ?>

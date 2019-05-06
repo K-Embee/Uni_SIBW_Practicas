@@ -32,7 +32,7 @@ if (array_key_exists("infousuario",$_GET)) {
     exit();
 }
 
-if (array_key_exists("modificar",$_GET)) {
+if (array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET)) {
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(array_key_exists("eventoNombre",$_POST) && array_key_exists("estudios",$_POST) && array_key_exists("distribuidora",$_POST) &&
@@ -56,8 +56,8 @@ if (array_key_exists("modificar",$_GET)) {
             }
         }
     }
-
-    renderModificar($twig, $conn);
+    if(array_key_exists("modificar",$_GET)) renderModificarEvento($twig, $conn);
+    else if(array_key_exists("aniadir",$_GET)) renderAniadirEvento($twig, $conn);
     exit();
 }
 

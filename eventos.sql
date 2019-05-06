@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2019 a las 01:14:10
+-- Tiempo de generación: 06-05-2019 a las 21:13:35
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -80,7 +80,9 @@ INSERT INTO `comentarios` (`idComentario`, `idEvento`, `ip`, `nombre`, `correo`,
 (6, 'rey_leon', '', 'Admin', 'admin@correo.com', '2019-04-17 22:43:21', 'No se permiten comentarios ofensivos ni discusiones políticas'),
 (7, 'spiderman', '', 'Admin', 'admin@correo.com', '2019-04-17 22:43:21', 'No se permiten comentarios ofensivos ni discusiones políticas'),
 (8, 'toy_story', '', 'Admin', 'admin@correo.com', '2019-04-17 22:44:22', 'No se permiten comentarios ofensivos ni discusiones políticas'),
-(9, 'vengadores', '', 'Admin', 'admin@correo.com', '2019-04-17 22:44:22', 'No se permiten comentarios ofensivos ni discusiones políticas');
+(9, 'vengadores', '', 'Admin', 'admin@correo.com', '2019-04-17 22:44:22', 'No se permiten comentarios ofensivos ni discusiones políticas'),
+(10, 'vengadores', '::1', 'usuario', 'usuario@usuario.com', '2019-05-02 20:14:38', 'me ha gustado muchisimo, la recomiendo'),
+(11, 'detective_pikachu', '::1', 'usuario', 'usuario@usuario.com', '2019-05-02 20:15:13', '¿Como es tan mono pikachu y a sonic lo han hecho tan horrible?');
 
 -- --------------------------------------------------------
 
@@ -151,14 +153,14 @@ CREATE TABLE `evento` (
 
 INSERT INTO `evento` (`idEvento`, `eventoNombre`, `estudios`, `distribuidora`, `fechaEstreno`, `descripcion`, `enlace_twitter`, `enlace_fb`, `fecha_creacion`, `fecha_ultima_mod`) VALUES
 ('aladdin', 'Aladdin', 'Walt Disney Pictures', 'Walt Disney Studios Motion Pictures', '2019-05-24', 'Una apasionante adaptación en imagen real del clásico animado de Disney. «Aladdín» es la fascinante historia de Aladdín, un encantador ladronzuelo callejero, Jasmine, una princesa valiente e independiente, y el Genio, que puede ser la clave para el futuro de ambos.', 'https://twitter.com/disneyaladdin?lang=es', 'https://es-la.facebook.com/DisneyAladdin/', '2019-04-04', '2019-04-04'),
-('detective_pikachu', 'Detective Pikachu', 'Legendary Pictures', 'Warner Bros. Pictures', '2019-05-17', 'Tim Goodman llega a Ryme City para investigar la misteriosa desaparición de su padre en la ciudad. En el camino,\r\n				 se encuentra con un Pikachu que habla, aunque en realidad solo él es el único que puede entenderlo. Ambos trabajarán\r\n				  juntos para resolver este gran enigma junto a la reportera Kathryn Newton con su Psyduck.', 'https://twitter.com/DetPikachuMovie', 'https://www.facebook.com/detectivepikachumovie/', '2019-04-02', '2019-04-02'),
+('detective_pikachu', 'Detective Pikachu', 'Legendary Pictures', 'Warner Bros. Pictures', '2019-05-17', 'Tim Goodman llega a Ryme City para investigar la misteriosa desaparición de su padre en la ciudad. En el camino,\r\n				 se encuentra con un Pikachu que habla, aunque en realidad solo él es el único que puede entenderlo. Ambos trabajarán\r\n				  juntos para resolver este gran enigma junto a la reportera Kathryn Newton con su Psyduck.', 'https://twitter.com/DetPikachuMovie', 'https://www.facebook.com/detectivepikachumovie/', '2019-04-02', '2019-05-06'),
 ('espia', 'La espía roja', 'Trademark Films', 'Vértice', '2019-04-18', 'Es el año 2000 y Joan Stanley (Judi Dench) disfruta de su retiro en un barrio residencial durante el cambio de milenio. Su apacible vida se ve súbitamente trastornada cuando es arrestada por el MI5, el Servicio de Inteligencia británico, acusada de proporcionar información a la Rusia comunista, y por ser la espía más longeva del KGB en territorio británico.\r\n\r\nPasamos a 1938, cuando Joan (Sophie Cookson) es una estudiante de física en Cambridge que se enamora de Leo Galich (Tom Hughes), un joven comunista que le hace cambiar su percepción del mundo. Mientras trabaja en un laboratorio secreto nuclear durante la Segunda Guerra Mundial, Joan llega a la conclusión de que el mundo está al borde de una destrucción garantizada. Joan deberá entonces elegir entre traicionar a su país y a sus seres queridos o tratar de salvarlos.', 'https://twitter.com/vertice360_cine', 'https://www.facebook.com/vertice360.cine/', '2019-04-10', '2019-04-10'),
 ('hys', 'Fast & Furious Hobbs & Shaw', 'Universal Pictures', 'Universal Pictures', '2019-08-02', 'Luke Hobbs (Dwayne Johnson) y Deckard Shaw (Jason Statham) vuelven a la carga para vivir una nueva aventura en la que ellos dos serán los protagonistas absolutos. Su rivalidad y la gran química entre estos dos personajes del universo Fast & Furious serán la clave de esta nueva historia en la que deberán trabajar juntos si quieren pararle los pies al villano Brixton (Idris Elba). Además, a la pareja de protagonistas se les unirá un nuevo personaje, Hattie (Vanessa Kirby), la hermana de Shaw.\r\n', 'https://twitter.com/hobbsandshaw', 'https://www.facebook.com/HobbsAndShaw/', '2019-04-10', '2019-04-10'),
 ('men_in_black', 'Men In Black: International', 'Columbia Pictures', 'Sony Pictures Releasing', '2019-06-14', 'Relanzamiento de la franquicia en la que no estarán Will Smith y Tommy Lee Jones y que expandirá el universo de \'Men in Black\'. Siempre han estado protegiendo la tierra de la basura del universo, en esta nueva aventura, los Men in Black tendrán que enfrentarse a la mayor amenaza por el momento: un topo dentro de la organización. Al equipo se unirá la Agente M, trabajando junto con el Agente H.', 'https://twitter.com/meninblack', 'https://www.facebook.com/meninblack/', '2019-04-10', '2019-04-10'),
 ('rey_leon', 'El Rey León', 'Walt Disney Pictures', 'Walt Disney Studios Motion Pictures', '2019-07-26', 'Remake de \"El Rey León\", dirigido y producido por Jon Favreau, responsable de la puesta al día con el mismo formato de \"El libro de la selva\" (2016).\r\nLa sabana africana es el escenario en el que tienen lugar las aventuras de Simba, un pequeño león que es el heredero del trono. Sin embargo, al ser injustamente acusado por el malvado Scar de la muerte de su padre, se ve obligado a exiliarse. Durante su destierro, hará buenas amistades e intentará regresar para recuperar lo que legítimamente le corresponde', 'https://twitter.com/disneylionking', 'https://www.facebook.com/DisneyTheLionKing/', '2019-04-10', '2019-04-10'),
 ('spiderman', 'Spiderman: Far From Home', 'Marvel Studios', 'Sony Pictures Releasing', '2019-07-05', 'La película empieza después de los eventos de Avengers: Endgame,​ cuando Peter Parker va en un viaje escolar a Europa con sus amigos. Mientras que está en el extranjero, es obligado a unirse a Mysterio y así detener a los Elementales, unos extraños enemigos que nadie sabe de dónde vienen.', 'https://twitter.com/spidermanmovie', 'https://es-la.facebook.com/MarvelStudiosSpiderMan/', '2019-04-04', '2019-04-04'),
 ('toy_story', 'Toy Story 4', 'Walt Disney Pictures', 'Walt Disney Studios\r\nMotion Pictures', '2019-06-21', 'Woody siempre ha sabido cuál es su lugar en el mundo, y que su prioridad es cuidar de su dueño, ya sea Bonnie o Andy, pero cuando Bonnie agrega un juguete nuevo y reacio llamado Forky a su dormitorio, una aventura junto a viejos y nuevos amigos le mostrarán a Woody qué tan grande puede ser el mundo para un juguete. En el camino, Woody se reúne inesperadamente con Betty.', 'https://twitter.com/toystory', 'https://es-es.facebook.com/PixarToyStory/', '2019-04-04', '2019-04-04'),
-('vengadores', 'Avengers: Endgame', 'Marvel Studios', 'Walt Disney Studios Motion Pictures', '2019-04-26', 'Tras los eventos de Avengers: Infinity War, la mitad de toda la vida en el universo ha sido asesinada en un evento denominado \"La Decimación\". Con el universo sobreviviente en ruinas, los Vengadores y los Guardianes de la Galaxia restantes tratan de recuperarse de su fuerte derrota a manos del malvado Titan y deberán volver a unirse una vez más para reparar el daño causado por Thanos y restaurar la armonía en el universo.', 'https://twitter.com/avengers', 'https://www.facebook.com/avengersendg4me/', '2019-04-04', '2019-04-04');
+('vengadores', 'Vengadores: Endgame', 'Marvel Estudios', 'Walt Disney Studios Motion Pictures', '2019-05-20', 'Tras los eventos de Avengers: Infinity War, la mitad de toda la vida en el universo ha sido asesinada en un evento denominado \"La decimación\". Con el universo sobreviviente en ruinas, los Vengadores y los Guardianes de la Galaxia restantes tratan de recuperarse de su fuerte derrota a manos del malvado Titan y deberán volver a unirse una vez más para reparar el daño causado por Thanos y restaurar la armonía en el universo.', 'https://twitter.com/avengers', 'https://www.facebook.com/avengersendg4me/', '2019-04-04', '2019-05-06');
 
 -- --------------------------------------------------------
 
@@ -271,6 +273,48 @@ INSERT INTO `pag_info` (`idPagina`, `texto`, `titulo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rol`
+--
+
+CREATE TABLE `rol` (
+  `idRol` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `nombreRol` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`idRol`, `nombreRol`) VALUES
+('gestor', 'Gestor del sitio'),
+('moderador', 'Moderador'),
+('superusuario', 'Superusuario'),
+('usuario', 'Usuario');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `contraseña` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `idUsuario` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `idRol` varchar(100) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'usuario'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`nombre`, `email`, `contraseña`, `idUsuario`, `idRol`) VALUES
+('Pikachu', 'pika@chu.com', '$2y$10$D0c8jkDctPNkMQXQlDjQ0eNWCKGB8Tz9Nbzs8wER9DroNMF.cFEQe', 'pikapi98', 'superusuario');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `videos`
 --
 
@@ -346,6 +390,20 @@ ALTER TABLE `pag_info`
   ADD PRIMARY KEY (`idPagina`);
 
 --
+-- Indices de la tabla `rol`
+--
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`idRol`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `idRol` (`idRol`);
+
+--
 -- Indices de la tabla `videos`
 --
 ALTER TABLE `videos`
@@ -360,7 +418,7 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -384,6 +442,12 @@ ALTER TABLE `etiquetas`
 --
 ALTER TABLE `imagen`
   ADD CONSTRAINT `Clave Externa` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `Clave Externa rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`);
 
 --
 -- Filtros para la tabla `videos`
