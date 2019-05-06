@@ -184,13 +184,18 @@ function renderListado($twig, $conn) {
     echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args ]);
 }
 
-function renderInfoUsuario($twig, $conn){
+function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no muestra mensaje), false(muestra fallo) o true(exito)
     $usuario = $_GET["infousuario"];
 
     $menu = DBmenu($conn);
     $args = DBusuarios($conn,$usuario);
 
-    echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'usuario' => $args ]);
+    if($success == NULL){
+        echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'usuario' => $args ]);
+    }
+    else{
+        echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'usuario' => $args, 'fail' => $success ]);
+    }
 }
 
 function renderModificar($twig, $conn){

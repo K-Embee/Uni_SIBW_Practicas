@@ -22,7 +22,13 @@ if (array_key_exists("logout",$_GET)) {
 }
 
 if (array_key_exists("infousuario",$_GET)) {
-    renderInfoUsuario($twig, $conn);
+    $success = NULL;
+    if(array_key_exists("password_ant",$_POST) && array_key_exists("password_nvo",$_POST) &&
+        array_key_exists("usuario",$_SESSION) && $_SESSION["usuario"] != NULL)
+    {
+        $success = DB_UPDATEpassword($conn, $_SESSION["usuario"], $_POST["password_ant"], $_POST["password_nvo"])
+    }
+    renderInfoUsuario($twig, $conn, $success);
     exit();
 }
 
@@ -97,7 +103,12 @@ if (array_key_exists("evento",$_GET)) {
         exit();
     }
     else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        comentar($conn, $_GET['evento']);
+        if(array_key_exists("idComentarioBorrar",$_POST){
+            DB_DROPcomentario($conn, $_POST["idComentarioBorrar"])
+        }
+        else{
+            comentar($conn, $_GET['evento']);
+        }
     }
     renderEvento($twig, $conn);
     mysqli_close($conn);

@@ -40,7 +40,7 @@ function DB_DROPcomentario($conn, $idcomentario) {
 
 function  DB_UPDATEcomentario($conn, $comentario) {
     $texto = mysqli_real_escape_string($conn, $comentario->texto);
-    $sql = "UPDATE evento SET texto = '{$texto} (Modificado por el moderador)'
+    $sql = "UPDATE comentarios SET texto = '{$texto} (Modificado por el moderador)'
     WHERE idComentario = {$comentario->idComentario}";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 }

@@ -16,7 +16,7 @@
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
                 {{ comment.texto }}<br>
                 <form method="post" action="">
-                    <input type="hidden" name="comentario" value="{{ comment.idComentario }}">
+                    <input type="hidden" name="idComentarioBorrar" value="{{ comment.idComentario }}">
                         <button id="submit" type="submit">Borrar</button>
                     </input>
                 </form>
