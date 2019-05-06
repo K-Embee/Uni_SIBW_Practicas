@@ -54,7 +54,9 @@ if (array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET)) {
                 DB_UPDATEevento($conn, $evento);
             }
             else if(array_key_exists("idAniadirEvento",$_POST)){
-                $array["idEvento"] = $_POST["idAniadirEvento"];
+                $id = strtolower($array["eventoNombre"]);
+                $array["idEvento"] = str_replace(" ", "_", $id);
+                //$array["idEvento"] = $_POST["idAniadirEvento"];
                 $evento = new Evento($array);
                 DB_INevento($conn, $evento);
             }

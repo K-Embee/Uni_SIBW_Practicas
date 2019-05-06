@@ -19,7 +19,7 @@
             <input type="text" name="descripcion" value="{{ evento.descripcion }}"><br>
 
         <input type="hidden" name="{% block modificar_aniadir %}{% endblock %}" value="{{ evento.idEvento }}">
-            <button id="submit" type="submit">Editar</button>
+            <button id="submit" type="submit">{% block boton %}{% endblock %}</button>
         </input>
     </form>
 </div>
