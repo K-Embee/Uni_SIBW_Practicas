@@ -7,19 +7,17 @@
         <span class="bold">Usuario: </span>{{ usuario.idUsuario }}<br>
         <span class="bold">email: </span>{{ usuario.email }}<br>
         <span class="bold">Rol: </span>{{ usuario.idRol }}<br>
-        {% if defined fail %}
-            {% if fail %}
-                <div class="big">Error: Contraseña erronea</div>
-            {% else %}
-                <div class="big">Se ha cambiado la contraseña con éxito</div>
-            {% endif %}
-        {% endif %}
-        <label for="password">Contraseña nueva</label>
-
-        <input type="password" name="password_ant" id="password_ant" value="Submit" placeholder="Contraseña nueva"></input>
+        {% if success is defined %}{% if not success %}
+            <div class="big">Error: Contraseña erronea</div>
+        {% elseif success %}
+            <div class="big">Se ha cambiado la contraseña con éxito</div>
+        {% endif %}{% endif %}
         <label for="password">Contraseña antigua</label>
 
-        <input type="password" name="password_nvo" id="password_nvo" value="Submit" placeholder="Contraseña antigua"></input>
+        <input type="password" name="password_ant" id="password_ant" value="Submit" placeholder=""></input>
+        <label for="password">Contraseña nueva</label>
+
+        <input type="password" name="password_nvo" id="password_nvo" value="Submit" placeholder=""></input>
         <button id="submit" type="submit">Cambiar contraseña</button>
     </form>
 </div>

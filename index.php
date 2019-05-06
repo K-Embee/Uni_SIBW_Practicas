@@ -22,13 +22,15 @@ if (array_key_exists("logout",$_GET)) {
 }
 
 if (array_key_exists("infousuario",$_GET)) {
-    $success = NULL;
     if(array_key_exists("password_ant",$_POST) && array_key_exists("password_nvo",$_POST) &&
-        array_key_exists("usuario",$_SESSION) && $_SESSION["usuario"] != NULL)
+        array_key_exists("usuario",$_SESSION) && !is_null($_SESSION["usuario"]))
     {
-        $success = DB_UPDATEpassword($conn, $_SESSION["usuario"], $_POST["password_ant"], $_POST["password_nvo"])
+        $success = DB_UPDATEpassword($conn, $_SESSION["usuario"], $_POST["password_ant"], $_POST["password_nvo"]);
+        renderInfoUsuario($twig, $conn, $success);
     }
-    renderInfoUsuario($twig, $conn, $success);
+    else {
+        renderInfoUsuario($twig, $conn, NULL);
+    }
     exit();
 }
 
@@ -62,8 +64,8 @@ if (array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET)) {
 }
 
 if (array_key_exists("listado",$_GET)) {
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("comentario",$_POST)) {
-        DB_DROPcomentario($conn, $_POST["comentario"]);
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("idComentarioBorrar",$_POST)) {
+        DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("evento",$_POST)) {
         DB_DROPevento($conn, $_POST["evento"]);
@@ -78,7 +80,7 @@ if (array_key_exists("identificarse",$_GET)) {
         iniciarSesion($conn);
         $error = true;
     }
-    if (!array_key_exists("usuario",$_SESSION) || $_SESSION["usuario"]==NULL) {
+    if (!array_key_exists("usuario",$_SESSION) || is_null($_SESSION["usuario"])) {
         renderIdentificarse($twig, $conn, $error);
         mysqli_close($conn);
         exit();
@@ -90,7 +92,7 @@ if (array_key_exists("registrarse",$_GET)) {
         registrarse($conn);
         $error = true;
     }
-    if (!array_key_exists("usuario",$_SESSION) || $_SESSION["usuario"]==NULL) {
+    if (!array_key_exists("usuario",$_SESSION) || is_null($_SESSION["usuario"])) {
         renderRegistrarse($twig, $conn, $error);
         mysqli_close($conn);
         exit();
@@ -103,12 +105,14 @@ if (array_key_exists("evento",$_GET)) {
         exit();
     }
     else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(array_key_exists("idComentarioBorrar",$_POST){
-            DB_DROPcomentario($conn, $_POST["idComentarioBorrar"])
-        }
-        else{
+        //TODO -- Añadir boton de borrar comentarios en la pagina de evento
+
+        /*if(array_key_exists("idComentarioBorrar",$_POST)){
+            DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
+        }*/
+        //else {
             comentar($conn, $_GET['evento']);
-        }
+        //}
     }
     renderEvento($twig, $conn);
     mysqli_close($conn);

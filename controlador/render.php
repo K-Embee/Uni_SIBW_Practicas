@@ -164,6 +164,10 @@ function renderListado($twig, $conn) {
     $listado = $_GET["listado"];
 
     $menu = DBmenu($conn);
+    $nombreUsuario = NULL;
+    if(array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
 
     switch ($listado) {
         case 'usuarios':
@@ -188,13 +192,17 @@ function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no 
     $usuario = $_GET["infousuario"];
 
     $menu = DBmenu($conn);
+    $nombreUsuario = NULL;
+    if(array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
     $args = DBusuarios($conn,$usuario);
 
-    if($success == NULL){
-        echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'usuario' => $args ]);
+    if(is_null($success)){
+        echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'usuario' => $args ]);
     }
     else{
-        echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'usuario' => $args, 'fail' => $success ]);
+        echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'usuario' => $args, 'success' => $success ]);
     }
 }
 
@@ -202,13 +210,21 @@ function renderModificarEvento($twig, $conn){
     $evento = $_GET["modificar"];
 
     $menu = DBmenu($conn);
+    $nombreUsuario = NULL;
+    if(array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
     $args = DBevento($conn,$evento);
 
-    echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'evento' => $args ]);
+    echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'evento' => $args ]);
 }
 
 function renderAniadirEvento($twig, $conn){
     $menu = DBmenu($conn);
-    echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu]);
+    $nombreUsuario = NULL;
+    if(array_key_exists("usuario",$_SESSION)) {
+        $nombreUsuario = $_SESSION["usuario"]->idUsuario;
+    }
+    echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
 }
 ?>

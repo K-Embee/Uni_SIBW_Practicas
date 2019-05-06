@@ -17,13 +17,15 @@ function DBlogin($conn, $email, $password) {
 }
 
 function DB_UPDATEpassword($conn, $user, $pass_a, $pass_n) {
-    $pass_a = password_hash($pass_a, PASSWORD_BCRYPT);
-    if(password_verify($pass_n, $user->contraseña) && password_verify($pass_n, $pass_a)) {
+    if(password_verify($pass_a, $user->contraseña)) {
         $pass_n = password_hash($pass_n, PASSWORD_BCRYPT);
-        $sql = "UPDATE usuario SET password = '{$pass_n}' WHERE email = '{$user->email}'";
+        $sql = "UPDATE usuario SET contraseña = '{$pass_n}' WHERE email = '{$user->email}'";
         $result = $conn->query($sql);
+        if($result){
+            $user->contraseña = $pass_n;
+        }
 
-        return ($result->fetch_assoc()) ? true : false; //fetch_assoc devuelve una fila si hay algo o falso si no hay nada
+        return true;
     }
     return false;
 }
