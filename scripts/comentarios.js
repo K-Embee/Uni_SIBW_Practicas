@@ -13,21 +13,22 @@ function toggle_comments(){
 }
 
 function validate_form(){
-    var name = document.getElementById("name");
+	// Obsoleto -- La identificación se realiza mediante sesiones PHP
+	/*var name = document.getElementById("name");
     var email = document.getElementById("email");
-    var comment = document.getElementById("comentario");
-	if(name.value.length == 0 || email.value.length == 0 || comment.value.length == 0)
+    var comment = document.getElementById("comentario");*/
+	if(/*name.value.length == 0 || email.value.length == 0 ||*/ comment.value.length == 0)
     {
         alert("Hay campos vacíos");
 		return false;
     }
-	else if(!validate_email(email.value)){
+	/*else if(!validate_email(email.value)){
 		alert("Email invalido");
 		return false;
 	}
     else {
         add_comment();
-    }
+    }*/
 
     return true; //Solo se ejecuta si es valido
 }

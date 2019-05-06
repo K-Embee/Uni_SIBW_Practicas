@@ -79,4 +79,14 @@ function DBusuarios($conn, $idUsuario) {
     }
     return $array;
 }
+
+//Obtiene si un usuario tiene un permiso o no
+function DBpermiso($conn, $permiso, $rol) {
+    $sql = "SELECT * FROM permisos WHERE idRol = '{$rol}' AND idPermiso = {$permiso}";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    if($row = $result->fetch_assoc()){
+        return true;
+    }
+    return false;
+}
 ?>

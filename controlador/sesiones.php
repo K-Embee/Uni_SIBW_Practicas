@@ -1,5 +1,9 @@
 <?php
 
+function definirPermisos(){
+    define("PERMISO_COMENTAR", 0);
+}
+
 function iniciarSesion($conn) {
     $email = $email_err = $password = "";
     $email = test_input($_POST["email"]);
@@ -13,8 +17,6 @@ function iniciarSesion($conn) {
         $usuario = DBlogin($conn, $email, $password);
         if($usuario) {
             $_SESSION["usuario"] = $usuario;
-            echo "echo";
-            echo $_SESSION["usuario"]->idUsuario;
         }
     }
 }
@@ -31,5 +33,12 @@ function registrarse($conn) {
     }
 
     DB_INregister($conn,$email,$password,$nombreUsuario,$nombre);
+}
+
+function checkPermiso($conn, $permiso) {
+    if(!array_key_exists("usuario",$_SESSION) || is_null($_SESSION["usuario"])) {
+        return false;
+    }
+    return DBpermiso($conn, $permiso, $_SESSION["usuario"]->idRol);
 }
 ?>

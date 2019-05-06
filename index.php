@@ -15,6 +15,8 @@ $twig = new Twig_Environment($loader, ['cache' => false]); //Cambiar false a './
 //Inicializamos la sesion del Usuario
 session_start();
 
+definirPermisos();
+
 $conn = DBconnect();
 
 if (array_key_exists("logout",$_GET)) {
@@ -110,9 +112,9 @@ if (array_key_exists("evento",$_GET)) {
         /*if(array_key_exists("idComentarioBorrar",$_POST)){
             DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
         }*/
-        //else {
+        /*else*/ if(checkPermiso($conn, PERMISO_COMENTAR)) {
             comentar($conn, $_GET['evento']);
-        //}
+        }
     }
     renderEvento($twig, $conn);
     mysqli_close($conn);

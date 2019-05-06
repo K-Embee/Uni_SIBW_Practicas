@@ -10,10 +10,12 @@
         {% endfor %}
     </div>
     <form action="" class="formcomentario" method="post" onsubmit="return validate_form();" >
-        <label for="name">Nombre</label>
+        <!-- Obsoleto, se identifica mediante sesiones PHP -->
+        
+        <!-- <label for="name">Nombre</label>
         <input type="text" name="name" id="name" placeholder="Nombre"></input>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" placeholder="Email"></input>
+        <input type="text" name="email" id="email" placeholder="Email"></input> -->
         <label>Comentario</label>
         <textarea name="comentario" id="comentario" placeholder="Comentario" oninput="censor_comment()"></textarea>
         <input type="submit" value="Submit"></input>

@@ -273,6 +273,28 @@ INSERT INTO `pag_info` (`idPagina`, `texto`, `titulo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `permisos`
+--
+
+CREATE TABLE `permisos` (
+  `idPermiso` int(11) NOT NULL,
+  `idRol` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `permisos`
+--
+
+INSERT INTO `permisos` (`idPermiso`, `idRol`) VALUES
+(0, 'gestor'),
+(0, 'moderador'),
+(0, 'superusuario'),
+(0, 'usuario');
+
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `rol`
 --
 
@@ -443,6 +465,12 @@ ALTER TABLE `etiquetas`
 ALTER TABLE `imagen`
   ADD CONSTRAINT `Clave Externa` FOREIGN KEY (`idEvento`) REFERENCES `evento` (`idEvento`);
 
+--
+-- Constraints for table `permisos`
+--
+ALTER TABLE `permisos`
+  ADD CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`);
+  
 --
 -- Filtros para la tabla `usuario`
 --

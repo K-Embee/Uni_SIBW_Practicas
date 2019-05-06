@@ -2,8 +2,8 @@
 
 function comentar($conn, $evento) {
     $nombre = $email = $email_err = $comentario = "";
-    $name = test_input($_POST["name"]);
-    $email = test_input($_POST["email"]);
+    $name = $_SESSION["usuario"]->nombre; //test_input($_POST["name"]);
+    $email = $_SESSION["usuario"]->email; //test_input($_POST["email"]);
     $comentario = test_input($_POST["comentario"]);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $email_err = "Invalid email format";
