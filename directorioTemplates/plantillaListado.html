@@ -6,7 +6,7 @@
 
 <div class="principal_alt">
     {% if tipo_listado == "comentarios" %}
-    <input type="text" id="myInput" onkeyup="buscarComentario()" placeholder="Busqueda por comentario..." title="Type in a name">
+    <input type="text" id="myInput" onkeyup="buscarComentario()" placeholder="Busqueda por comentario..." title="Escribe texto comentario">
     <div id="listadoComentarios">
         {% for comment in lista %}
             <div class="listado" id="listado-{{ comment.texto }}">
@@ -28,7 +28,7 @@
         {% endfor %}
     </div>
     {% elseif tipo_listado == "eventos" %}
-    <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Type in a name">
+    <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Escribe título del evento">
         <a href="?aniadir"><button id="submit" type="submit">Añadir evento</button></a>
         <div id="listadoComentarios">
         {% for evento in lista %}

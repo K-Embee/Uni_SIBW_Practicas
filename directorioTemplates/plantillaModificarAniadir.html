@@ -20,14 +20,17 @@
 
         <input type="hidden" name="{% block modificar_aniadir %}{% endblock %}" value="{{ evento.idEvento }}">
 
+        <div class="column_3">
         {% for genero, idGenero in generos %}
-            <label>{{ genero }}
+            <label class="container">{{ genero }}
                 <input type="checkbox" name="genero_{{ idGenero }}"
                 {% if genero in generos_existentes %}
                     checked
                 {% endif %}>
+                <span class="checkmark"></span>
             </label>
         {% endfor %}
+        </div>
         <br>
         <button id="submit" type="submit">{% block boton %}{% endblock %}</button>
     </form>

@@ -349,6 +349,74 @@ Identificacion
 }
 
 /*=====================================
+checkbox
+=====================================*/
+
+/* editar label */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Esconde el checkbot por defecto */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Crear checkbox customizado*/
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #e6f2ff;
+}
+
+/* Cuando pasa el raton por encima, añade fondo gris */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* Cuando esta seleccionado, añade un fondo azul oscuro */
+.container input:checked ~ .checkmark {
+  background-color: #0080ff;
+}
+
+/* Crea el indicador de selección (escondido mientras no esta seleccionado) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Enseñar checkmark cuando esta seleccionado*/
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* indocador de selección */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+/*=====================================
 Misc
 =====================================*/
 
@@ -428,13 +496,17 @@ body {
 	display: none;
 }
 
+.column_3 {
+	column-count: 3;
+}
+
 #myInput {
-  background-image: url('../imgs/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+	background-image: url("../imgs/searchicon.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
 }
