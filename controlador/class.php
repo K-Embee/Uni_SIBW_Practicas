@@ -10,6 +10,7 @@ class Evento {
     public $fecha_ultima_mod;
     public $enlace_twitter;
     public $enlace_fb;
+    public $generos;
     function Evento ($array) {
         if(array_key_exists("eventoNombre",$array)) $this->eventoNombre = $array["eventoNombre"];
         if(array_key_exists("estudios",$array)) $this->estudios = $array["estudios"];
@@ -21,6 +22,7 @@ class Evento {
         if(array_key_exists("fecha_ultima_mod",$array)) $this->fecha_ultima_mod = $array["fecha_ultima_mod"];
         if(array_key_exists("enlace_twitter",$array)) $this->enlace_twitter = $array["enlace_twitter"];
         if(array_key_exists("enlace_fb",$array)) $this->enlace_fb = $array["enlace_fb"];
+        if(array_key_exists("generos",$array)) $this->generos = $array["generos"];
     }
 }
 

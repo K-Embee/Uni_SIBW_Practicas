@@ -178,6 +178,9 @@ function renderListado($twig, $conn) {
             break;
         case 'eventos':
             $args = DBprincipal($conn);
+            foreach($args as $evento) {
+                $evento->generos = DBeventoGenero($conn, $evento->idEvento);
+            }
             break;
         default:
             echo $twig->render('oops.html');
@@ -185,7 +188,7 @@ function renderListado($twig, $conn) {
             break;
     }
 
-    echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'tipo_listado' => $listado, 'lista' => $args ]);
+    echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'tipo_listado' => $listado, 'lista' => $args ]);
 }
 
 function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no muestra mensaje), false(muestra fallo) o true(exito)

@@ -22,7 +22,8 @@ function DBmenu($conn) {
     $array["Géneros"] = DBlistadoGenero($conn, true);
     $array["Otras páginas"] = DBlistadoPaginas($conn, true);
     if (array_key_exists("usuario",$_SESSION)) {
-        $permisos = array('editar perfil' => "editar perfil", 'comentarios' => "comentarios", 'eventos' => "eventos", 'usuarios' => "usuarios");
+        $permisos = array('Editar Perfil' => "?infousuario", 'Listar Comentarios' => "?listado=comentarios",
+            'Listar Eventos' => "?listado=eventos", 'Listar Usuarios' => "?listado=usuarios");
         $array["Panel de control"] = $permisos;
     }
 
