@@ -9,7 +9,7 @@ function  DB_INevento($conn, $evento) {
 
     if(isset($evento->generos)){
         foreach($evento->generos as $genero => $idGenero) {
-            $squirrel = "INSERT INTO etiquetas (idGenero, idEvento) VALUES ('{$idGenero}','{$idEvento}')";
+            $squirrel = "INSERT INTO etiquetas (idGenero, idEvento) VALUES ('{$idGenero}','{$evento->idEvento}')";
             $conn->query($squirrel) or die("Error de servidor: SQL error");
         }
     }
@@ -40,8 +40,10 @@ function  DB_UPDATEevento($conn, $evento) {
 
 function DB_DROPevento($conn, $idEvento) {
     $id = mysqli_real_escape_string($conn, $idEvento);
-    $sql = "DELETE FROM evento WHERE idEvento = '{$id}'";
-    echo $sql;
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $tablas = array("comentarios","etiquetas","imagen","evento");
+    foreach($tablas as $tabla){
+        $sql = "DELETE FROM {$tabla} WHERE idEvento = '{$id}'";
+        $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    }
 }
 ?>
