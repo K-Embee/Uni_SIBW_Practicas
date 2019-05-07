@@ -46,4 +46,9 @@ function DB_DROPevento($conn, $idEvento) {
         $result = $conn->query($sql) or die("Error de servidor: SQL error");
     }
 }
+
+function DB_DROPimagen($conn, $url){
+    $id = mysqli_real_escape_string($conn, $url);
+    $sql = "DELETE FROM imagen WHERE url = '{$id}'";
+}
 ?>

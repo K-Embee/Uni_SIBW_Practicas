@@ -131,6 +131,9 @@ if (array_key_exists("evento",$_GET)) {
         else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST)) {
             DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
         }
+        else if(array_key_exists("idFotoBorrar",$_POST)){
+            DB_DROPimagen($conn, $_POST["idFotoBorrar"]);
+        }
         else if(checkPermiso($conn, PERMISO_COMENTAR) && array_key_exists("comentario",$_POST)) {
             comentar($conn, $_GET['evento']);
         }
