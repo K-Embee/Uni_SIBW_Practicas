@@ -14,12 +14,16 @@
                 <span class="bold">Autor: </span>{{ comment.nombre }}<br>
                 <span class="bold">Email: </span>{{ comment.correo }}<br>
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
-                {{ comment.texto }}<br>
+                <span id="comentario_{{ comment.idComentario }}">{{ comment.texto }}</span><br>
                 <form method="post" action="">
                     <input type="hidden" name="idComentarioBorrar" value="{{ comment.idComentario }}">
-                        <button id="submit" type="submit">Borrar</button>
-                    </input>
+                    <button type="submit">Borrar</button>
                 </form>
+                <form method="post" action="" class="invisible" id="comentario_confirm_{{ comment.idComentario }}">
+                    <input type="hidden" name="idComentarioEditar" value="{{ comment.idComentario }}">
+                    <button type="submit">Confirmar</button>
+                </form>
+                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditar({{ comment.idComentario }})" type="submit">Editar</button>
             </div>
         {% endfor %}
     </div>
@@ -27,8 +31,7 @@
     <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Type in a name">
         <form method="post" action="">
             <input type="hidden" name="aniadeEvento">
-                <button id="submit" type="submit">Añadir evento</button>
-            </input>
+            <button id="submit" type="submit">Añadir evento</button>
         </form>
         <div id="listadoComentarios">
         {% for evento in lista %}
@@ -43,8 +46,7 @@
                 <span class="bold">Generos: </span>
                 <form method="post" action="">
                     <input type="hidden" name="evento" value="{{ evento.idEvento }}">
-                        <button id="submit" type="submit">Borrar evento</button>
-                    </input>
+                    <button id="submit" type="submit">Borrar</button>
                 </form>
             </div>
         {% endfor %}

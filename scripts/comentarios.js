@@ -12,6 +12,22 @@ function toggle_comments(){
 	comments_hidden = !comments_hidden;
 }
 
+function botonEditar(id){
+	var campo = document.getElementById("comentario_" + id);
+	if(campo && !document.getElementById("comentario_campo_" + id)) {
+		var form = document.getElementById("comentario_confirm_" + id)
+		form.style.display = "block";
+		campo.style.display = "none";
+		var nuevo = document.createElement('textarea');
+		nuevo.name = "textoComentarioEditar";
+		nuevo.id = "comentario_campo_" + id;
+		nuevo.innerHTML = campo.innerHTML;
+
+//		campo.parentNode.replaceChild(nuevo,campo);
+		form.appendChild(nuevo);
+	}
+}
+
 function validate_form(){
 	// Obsoleto -- La identificación se realiza mediante sesiones PHP
 	/*var name = document.getElementById("name");

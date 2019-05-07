@@ -68,11 +68,16 @@ if (array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET)) {
 }
 
 if (array_key_exists("listado",$_GET)) {
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("idComentarioBorrar",$_POST)) {
-        DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && array_key_exists("evento",$_POST)) {
-        DB_DROPevento($conn, $_POST["evento"]);
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if (array_key_exists("idComentarioBorrar",$_POST)) {
+            DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
+        }
+        else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST)) {
+            DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
+        }
+        else if (array_key_exists("evento",$_POST)) {
+            DB_DROPevento($conn, $_POST["evento"]);
+        }
     }
     renderListado($twig, $conn);
     exit();
@@ -109,12 +114,13 @@ if (array_key_exists("evento",$_GET)) {
         exit();
     }
     else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //TODO -- Añadir boton de borrar comentarios en la pagina de evento
-
-        /*if(array_key_exists("idComentarioBorrar",$_POST)){
+        if(array_key_exists("idComentarioBorrar",$_POST)){
             DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
-        }*/
-        /*else*/ if(checkPermiso($conn, PERMISO_COMENTAR)) {
+        }
+        else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST)) {
+            DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
+        }
+        else if(checkPermiso($conn, PERMISO_COMENTAR) && array_key_exists("comentario",$_POST)) {
             comentar($conn, $_GET['evento']);
         }
     }

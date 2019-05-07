@@ -5,13 +5,22 @@
             <div class="comment">
                 <span class="bold">Autor: </span>{{ comment.nombre }}<br>
                 <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
-                {{ comment.texto }}
+                <span id="comentario_{{ comment.idComentario }}">{{ comment.texto }}</span><br>
+                <form method="post" action="">
+                    <input type="hidden" name="idComentarioBorrar" value="{{ comment.idComentario }}">
+                    <button type="submit">Borrar</button>
+                </form>
+                <form method="post" action="" class="invisible" id="comentario_confirm_{{ comment.idComentario }}">
+                    <input type="hidden" name="idComentarioEditar" value="{{ comment.idComentario }}">
+                    <button type="submit">Confirmar</button>
+                </form>
+                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditar({{ comment.idComentario }})" type="submit">Editar</button>
             </div>
         {% endfor %}
     </div>
     <form action="" class="formcomentario" method="post" onsubmit="return validate_form();" >
         <!-- Obsoleto, se identifica mediante sesiones PHP -->
-        
+
         <!-- <label for="name">Nombre</label>
         <input type="text" name="name" id="name" placeholder="Nombre"></input>
         <label for="email">Email</label>

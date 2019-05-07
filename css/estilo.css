@@ -424,6 +424,10 @@ body {
 	margin: 16px;
 }
 
+.invisible{
+	display: none;
+}
+
 #myInput {
   background-image: url('../imgs/searchicon.png');
   background-position: 10px 10px;
