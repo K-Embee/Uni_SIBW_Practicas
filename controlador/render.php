@@ -213,21 +213,27 @@ function renderModificarEvento($twig, $conn){
     $evento = $_GET["modificar"];
 
     $menu = DBmenu($conn);
+    $args_G = DBlistadoGenero($conn, false);
+    $args_GE = DBeventoGenero($conn, $evento);
+
     $nombreUsuario = NULL;
     if(array_key_exists("usuario",$_SESSION)) {
         $nombreUsuario = $_SESSION["usuario"]->idUsuario;
     }
     $args = DBevento($conn,$evento);
 
-    echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'evento' => $args ]);
+    echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'evento' => $args,
+        'generos' => $args_G, 'generos_existentes' => $args_GE]);
 }
 
 function renderAniadirEvento($twig, $conn){
     $menu = DBmenu($conn);
+    $args_G = DBlistadoGenero($conn, false);
+
     $nombreUsuario = NULL;
     if(array_key_exists("usuario",$_SESSION)) {
         $nombreUsuario = $_SESSION["usuario"]->idUsuario;
     }
-    echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
+    echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'generos' => $args_G]);
 }
 ?>

@@ -16,11 +16,20 @@
         <span class="bold">Estreno: </span><br>
             <input type="date" name="fechaEstreno" value="{{ evento.fechaEstreno }}"><br>
         <span class="bold">Descripcion: </span><br>
-            <input type="text" name="descripcion" value="{{ evento.descripcion }}"><br>
+            <textarea name="descripcion">{{ evento.descripcion }}</textarea><br>
 
         <input type="hidden" name="{% block modificar_aniadir %}{% endblock %}" value="{{ evento.idEvento }}">
-            <button id="submit" type="submit">{% block boton %}{% endblock %}</button>
-        </input>
+
+        {% for genero, idGenero in generos %}
+            <label>{{ genero }}
+                <input type="checkbox" name="genero_{{ idGenero }}"
+                {% if genero in generos_existentes %}
+                    checked
+                {% endif %}>
+            </label>
+        {% endfor %}
+        <br>
+        <button id="submit" type="submit">{% block boton %}{% endblock %}</button>
     </form>
 </div>
 

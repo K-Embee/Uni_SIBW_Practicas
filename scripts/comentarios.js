@@ -12,7 +12,7 @@ function toggle_comments(){
 	comments_hidden = !comments_hidden;
 }
 
-function botonEditar(id){
+function botonEditarComentario(id){
 	var campo = document.getElementById("comentario_" + id);
 	if(campo && !document.getElementById("comentario_campo_" + id)) {
 		var form = document.getElementById("comentario_confirm_" + id)

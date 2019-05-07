@@ -5,7 +5,14 @@ function  DB_INevento($conn, $evento) {
          ('$evento->idEvento', '$evento->eventoNombre','$evento->estudios',
              '$evento->distribuidora','$evento->fechaEstreno', '$evento->descripcion',
              CURRENT_DATE(),CURRENT_DATE())";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $conn->query($sql) or die("Error de servidor: SQL error");
+
+    if(isset($evento->generos)){
+        foreach($evento->generos as $genero => $idGenero) {
+            $squirrel = "INSERT INTO etiquetas (idGenero, idEvento) VALUES ('{$idGenero}','{$idEvento}')";
+            $conn->query($squirrel) or die("Error de servidor: SQL error");
+        }
+    }
 }
 
 function  DB_UPDATEevento($conn, $evento) {
@@ -18,7 +25,16 @@ function  DB_UPDATEevento($conn, $evento) {
     eventoNombre = '{$eventoNombre}', distribuidora = '{$distribuidora}',
     fechaEstreno = '{$evento->fechaEstreno}', descripcion = '{$descripcion}',
     fecha_ultima_mod = CURRENT_DATE() WHERE idEvento = '{$idEvento}'";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $conn->query($sql) or die("Error de servidor: SQL error");
+
+    if(isset($evento->generos)){
+        $squirrel = "DELETE FROM etiquetas WHERE idEvento = '{$idEvento}';";
+        $conn->query($squirrel) or die("Error de servidor: SQL error");
+        foreach($evento->generos as $genero => $idGenero) {
+            $squirrel = "INSERT INTO etiquetas (idGenero, idEvento) VALUES ('{$idGenero}','{$idEvento}')";
+            $conn->query($squirrel) or die("Error de servidor: SQL error");
+        }
+    }
 }
 
 

@@ -14,7 +14,7 @@
                     <input type="hidden" name="idComentarioEditar" value="{{ comment.idComentario }}">
                     <button type="submit">Confirmar</button>
                 </form>
-                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditar({{ comment.idComentario }})" type="submit">Editar</button>
+                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditarComentario({{ comment.idComentario }})" type="submit">Editar</button>
             </div>
         {% endfor %}
     </div>

@@ -23,16 +23,13 @@
                     <input type="hidden" name="idComentarioEditar" value="{{ comment.idComentario }}">
                     <button type="submit">Confirmar</button>
                 </form>
-                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditar({{ comment.idComentario }})" type="submit">Editar</button>
+                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditarComentario({{ comment.idComentario }})" type="submit">Editar</button>
             </div>
         {% endfor %}
     </div>
     {% elseif tipo_listado == "eventos" %}
     <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Type in a name">
-        <form method="post" action="">
-            <input type="hidden" name="aniadeEvento">
-            <button id="submit" type="submit">Añadir evento</button>
-        </form>
+        <a href="?aniadir"><button id="submit" type="submit">Añadir evento</button></a>
         <div id="listadoComentarios">
         {% for evento in lista %}
             <div class="listado" id="listado-{{ evento.eventoNombre }}">
@@ -57,6 +54,7 @@
                     <input type="hidden" name="evento" value="{{ evento.idEvento }}">
                     <button id="submit" type="submit">Borrar</button>
                 </form>
+                <a href="?modificar={{ evento.idEvento }}"><button id="submit" type="submit">Editar</button></a>
             </div>
         {% endfor %}
         </div>
