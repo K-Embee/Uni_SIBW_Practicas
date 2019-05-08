@@ -16,9 +16,10 @@
 
         <div class="cleared">
             <!-- El tipo de codificación de datos, enctype, DEBE especificarse -->
-            <form enctype="multipart/form-data" action="__URL__" method="POST">
+            <form enctype="multipart/form-data" action="" method="POST">
                 <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
                 Subir foto: <input name="fichero_usuario" type="file" />
+                <input type="text" name="idFotoDescripcion" />
                 <input type="submit" name="idFotoNueva" value="Subir foto" />
             </form>
         </div>

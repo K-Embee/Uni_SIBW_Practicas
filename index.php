@@ -134,6 +134,9 @@ if (array_key_exists("evento",$_GET)) {
         else if(array_key_exists("idFotoBorrar",$_POST)){
             DB_DROPimagen($conn, $_POST["idFotoBorrar"]);
         }
+        else if(array_key_exists("idFotoDescripcion",$_POST)){
+            DB_INimagen($conn, $_GET['evento'], $_POST["idFotoDescripcion"]);
+        }
         else if(checkPermiso($conn, PERMISO_COMENTAR) && array_key_exists("comentario",$_POST)) {
             comentar($conn, $_GET['evento']);
         }

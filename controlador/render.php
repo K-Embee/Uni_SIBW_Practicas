@@ -172,6 +172,10 @@ function renderListado($twig, $conn) {
     switch ($listado) {
         case 'usuarios':
             $args = DBtodosUsuarios($conn);
+            $roles = DBlistadoRol($conn);
+            echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario,
+            'tipo_listado' => $listado, 'lista' => $args, 'rol' => $roles ]);
+            exit();
             break;
         case 'comentarios':
             $args = DBtodosComentarios($conn);

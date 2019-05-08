@@ -90,4 +90,25 @@ function DBpermiso($conn, $permiso, $rol) {
     }
     return false;
 }
+
+function DBlistadoRol($conn){
+    $sql = "SELECT idRol, nombreRol FROM rol";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    $array = array();
+    while($row = $result->fetch_assoc()){
+        $array["idRol"] = $row["idRol"];
+        $array["nombreRol"] = $row["nombreRol"];
+    }
+
+    return $result;
+}
+
+function DBrolUsuario($conn, $usuario){
+    $idUsuario = mysqli_real_escape_string($conn, $usuario);
+    $sql = "SELECT rol.nombreRol FROM rol NATURAL JOIN usuario WHERE idUsuario = '{$idUsuario}'";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    return $result;
+}
 ?>

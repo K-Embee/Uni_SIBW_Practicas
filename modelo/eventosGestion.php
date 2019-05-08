@@ -51,4 +51,12 @@ function DB_DROPimagen($conn, $url){
     $id = mysqli_real_escape_string($conn, $url);
     $sql = "DELETE FROM imagen WHERE url = '{$id}'";
 }
+
+function DB_INimagen($conn, $idEvento, $descripcion){
+    $dir_subida = './img/'.$idEvento;
+    $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
+    $evento = mysqli_real_escape_string($conn, $idEvento);
+    $texto = mysqli_real_escape_string($conn, $descripcion);
+    $sql = "INSERT INTO imagen (idEvento, url, descripcion) VALUES ('$evento', $fichero_subido, 'texto')";
+}
 ?>
