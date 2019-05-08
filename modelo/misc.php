@@ -96,19 +96,20 @@ function DBlistadoRol($conn){
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
     $array = array();
-    while($row = $result->fetch_assoc()){
-        $array["idRol"] = $row["idRol"];
-        $array["nombreRol"] = $row["nombreRol"];
+    while($row = $result->fetch_assoc()) {
+        $array[$row["idRol"]] = $row["nombreRol"];
     }
 
-    return $result;
+    return $array;
 }
 
-function DBrolUsuario($conn, $usuario){
+function DB_UPDATErol($conn, $rol, $usuario){
+    $idRol = mysqli_real_escape_string($conn, $rol);
     $idUsuario = mysqli_real_escape_string($conn, $usuario);
-    $sql = "SELECT rol.nombreRol FROM rol NATURAL JOIN usuario WHERE idUsuario = '{$idUsuario}'";
+
+    $sql = "UPDATE usuario SET idRol = '$idRol' WHERE idUsuario = '$idUsuario'";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
-    return $result;
+    return $array;
 }
 ?>

@@ -65,15 +65,19 @@
                 <span class="bold">Usuario: </span>{{ usuario.idUsuario }}<br>
                 <span class="bold">email: </span>{{ usuario.email }}<br>
                 <span class="bold">Rol: </span>{{ usuario.idRol }}<br>
-                {% for nombreRol, idRol in rol %}
-                    <label class="container">{{ nombreRol }}
-                        <input type="radio" name="usuario_{{ idUsuario }}"
-                        {% if rol.idRol == usuario.idRol %}
+                {% for idRol, nombreRol in rol %}
+                    <label class="container" >{{ nombreRol }}
+                        <input type="radio" name=idUsuarioRol value="{{ usuario.idUsuario }}"
+                        {% if idRol == usuario.idRol %}
                             checked
                         {% endif %}>
                         <span class="radiobutton"></span>
                     </label>
                 {% endfor %}
+                <form method="post" action="">
+                    <input type="hidden" name="usuarioIdRol" value="{{ idRol }}">
+                    <button id="submit" type="submit">Cambiar rol</button>
+                </form>
             </div>
         {% endfor %}
     {% endif %}

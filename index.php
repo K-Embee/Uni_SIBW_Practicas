@@ -89,6 +89,9 @@ if (array_key_exists("listado",$_GET)) {
         else if (array_key_exists("evento",$_POST)) {
             DB_DROPevento($conn, $_POST["evento"]);
         }
+        else if (array_key_exists("usuarioIdRol",$_POST) && array_key_exists("idUsuarioRol",$_POST)) {
+            DB_UPDATErol($conn, $_POST["usuarioIdRol"], $_POST["idUsuarioRol"]);
+        }
     }
     renderListado($twig, $conn);
     exit();
