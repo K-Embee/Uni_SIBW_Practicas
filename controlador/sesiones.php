@@ -30,9 +30,10 @@ function registrarse($conn) {
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $email_err = "Invalid email format";
+        return false;
     }
 
-    DB_INregister($conn,$email,$password,$nombreUsuario,$nombre);
+    return DB_INregister($conn,$email,$password,$nombreUsuario,$nombre);
 }
 
 function checkPermiso($conn, $permiso) {

@@ -73,12 +73,10 @@ function DBusuarios($conn, $idUsuario) {
     $sql = "SELECT * FROM usuario WHERE idUsuario =" . '\'' . $idUsuario . '\'';
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
-    $array = array();
-
-    while($row = $result->fetch_assoc()){
-        array_push($array, new Usuario($row));
+    if($row = $result->fetch_assoc()){
+        return new Usuario($row);
     }
-    return $array;
+    return NULL;
 }
 
 //Obtiene si un usuario tiene un permiso o no
@@ -107,9 +105,14 @@ function DB_UPDATErol($conn, $rol, $usuario){
     $idRol = mysqli_real_escape_string($conn, $rol);
     $idUsuario = mysqli_real_escape_string($conn, $usuario);
 
-    $sql = "UPDATE usuario SET idRol = '$idRol' WHERE idUsuario = '$idUsuario'";
+    $sql = "SELECT * FROM usuario WHERE idRol = 'superusuario'";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
 
-    return $array;
+    if($result->num_rows <= 1 && $_SESSION["usuario"]->idUsuario == $idUsuario && $idRol != 'superusuario') { //Esto no comprueba permisos, puede dejar al sitio sin superusuarios si algun no-superusuario lo puede cambiar
+        return false;
+    }
+
+    $sql = "UPDATE usuario SET idRol = '$idRol' WHERE idUsuario = '$idUsuario'";
+    $conn->query($sql) or die("Error de servidor: SQL error");
 }
 ?>

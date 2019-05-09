@@ -203,7 +203,7 @@ function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no 
     if(array_key_exists("usuario",$_SESSION)) {
         $nombreUsuario = $_SESSION["usuario"]->idUsuario;
     }
-    $args = DBusuarios($conn,$usuario);
+    $args = DBusuarios($conn,$nombreUsuario);
 
     if(is_null($success)){
         echo $twig->render('plantillaUsuario.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'usuario' => $args ]);

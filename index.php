@@ -35,6 +35,11 @@ if (array_key_exists("infousuario",$_GET)) {
         $success = DB_UPDATEpassword($conn, $_SESSION["usuario"], $_POST["password_ant"], $_POST["password_nvo"]);
         renderInfoUsuario($twig, $conn, $success);
     }
+    else if(array_key_exists("UsuarioNombreCambiado",$_POST) && array_key_exists("UsuarioEmailCambiado",$_POST) &&
+        array_key_exists("usuario",$_SESSION) && !is_null($_SESSION["usuario"])){
+        $success = DB_UPDATEusuario($conn, $_SESSION["usuario"], $_POST["UsuarioNombreCambiado"], $_POST["UsuarioEmailCambiado"]);
+        renderInfoUsuario($twig, $conn, $success);
+    }
     else {
         renderInfoUsuario($twig, $conn, NULL);
     }
@@ -112,8 +117,13 @@ if (array_key_exists("identificarse",$_GET)) {
 if (array_key_exists("registrarse",$_GET)) {
     $error = false;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        registrarse($conn);
-        $error = true;
+        $error = !(registrarse($conn));
+        if(!$error) {
+            iniciarSesion($conn);
+            renderPrincipal($twig, $conn);
+            mysqli_close($conn);
+            exit();
+        }
     }
     if (!array_key_exists("usuario",$_SESSION) || is_null($_SESSION["usuario"])) {
         renderRegistrarse($twig, $conn, $error);

@@ -3,18 +3,25 @@
 {% block evento %}
 <div class="principal">
     <form method="post" action="">
-        <span class="bold">Nombre: </span>{{ usuario.nombre }}<br>
-        <span class="bold">Usuario: </span>{{ usuario.idUsuario }}<br>
-        <span class="bold">email: </span>{{ usuario.email }}<br>
-        <span class="bold">Rol: </span>{{ usuario.idRol }}<br>
+        <h2>Información de {{ usuario.idUsuario }}</h2>
         {% if success is defined %}{% if not success %}
             <div class="big">Error: Contraseña erronea</div>
         {% elseif success %}
-            <div class="big">Se ha cambiado la contraseña con éxito</div>
+            <div class="big">Se han cambiado los datos con éxito</div>
         {% endif %}{% endif %}
+
+        <span class="bold">Nombre: </span>{{ usuario.nombre }}<br>
+        <input type="text" name="UsuarioNombreCambiado" value="{{ usuario.nombre }}">
+        <span class="bold">Email: </span>{{ usuario.email }}<br>
+        <input type="text" name="UsuarioEmailCambiado" value="{{ usuario.email }}">
+        <span class="bold">Rol: </span>{{ usuario.idRol }}<br><br>
+        <button id="submit" type="submit">Cambiar datos</button>
+    </form>
+    <br>
+    <form class="" action="" method="post">
         <label for="password">Contraseña antigua</label>
 
-        <input type="password" name="password_ant" id="password_ant" value="Submit" placeholder=""></input>
+        <input type="password" name="password_ant" id="password_ant" value="Submit" placeholder=""</input>
         <label for="password">Contraseña nueva</label>
 
         <input type="password" name="password_nvo" id="password_nvo" value="Submit" placeholder=""></input>

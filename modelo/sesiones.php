@@ -19,7 +19,7 @@ function DBlogin($conn, $email, $password) {
 function DB_UPDATEpassword($conn, $user, $pass_a, $pass_n) {
     if(password_verify($pass_a, $user->contraseña)) {
         $pass_n = password_hash($pass_n, PASSWORD_BCRYPT);
-        $sql = "UPDATE usuario SET contraseña = '{$pass_n}' WHERE email = '{$user->email}'";
+        $sql = "UPDATE usuario SET contraseña = '{$pass_n}' WHERE idUsuario = '{$user->idUsuario}'";
         $result = $conn->query($sql);
         if($result){
             $user->contraseña = $pass_n;
@@ -30,11 +30,27 @@ function DB_UPDATEpassword($conn, $user, $pass_a, $pass_n) {
     return false;
 }
 
+function DB_UPDATEusuario($conn, $user, $nombre, $email) {
+    $nombre = mysqli_real_escape_string($conn, $nombre);
+    $email = mysqli_real_escape_string($conn, $email);
+    $sql = "UPDATE usuario SET nombre = '{$nombre}', email = '{$email}' WHERE idUsuario = '{$user->idUsuario}'";
+    $result = $conn->query($sql);
+    if($result){
+        return true;
+    }
+    return false;
+}
+
+
 function DB_INregister($conn, $email, $password, $nombreUsuario, $nombre) {
     $password = password_hash($password, PASSWORD_BCRYPT);
     $sql = "INSERT INTO usuario (nombre, email, contraseña, idUsuario, idRol) VALUES
         ('$nombre', '$email', '$password', '$nombreUsuario', 'usuario')";
     $result = $conn->query($sql);
+    if($result){
+        return true;
+    }
+    return false;
 }
 
 
