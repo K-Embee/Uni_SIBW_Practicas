@@ -2,6 +2,10 @@
 
 function definirPermisos(){
     define("PERMISO_COMENTAR", 0);
+    define("PERMISO_MODERACION_COMENTARIOS", 1);
+    define("PERMISO_GESTION_EVENTOS", 2);
+    define("PERMISO_MODIFICAR_GALERIA", 3);
+    define("PERMISO_SUPERUSUARIO", 4);
 }
 
 function iniciarSesion($conn) {
