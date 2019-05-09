@@ -22,8 +22,10 @@ function DBmenu($conn) {
     $array["Géneros"] = DBlistadoGenero($conn, true);
     $array["Otras páginas"] = DBlistadoPaginas($conn, true);
     if (array_key_exists("usuario",$_SESSION)) {
-        $permisos = array('Editar Perfil' => "?infousuario", 'Listar Comentarios' => "?listado=comentarios",
-            'Listar Eventos' => "?listado=eventos", 'Listar Usuarios' => "?listado=usuarios");
+        $permisos = array('Editar Perfil' => "?infousuario");
+        if(checkPermiso($conn, NULL, PERMISO_MODERACION_COMENTARIOS)) $permisos['Listar Comentarios'] = "?listado=comentarios";
+        if(checkPermiso($conn, NULL, PERMISO_GESTION_EVENTOS)) $permisos['Listar Eventos'] = "?listado=eventos";
+        if(checkPermiso($conn, NULL, PERMISO_SUPERUSUARIO)) $permisos['Listar Usuarios'] = "?listado=usuarios";
         $array["Panel de control"] = $permisos;
     }
 
@@ -79,16 +81,6 @@ function DBusuarios($conn, $idUsuario) {
     return NULL;
 }
 
-//Obtiene si un usuario tiene un permiso o no
-function DBpermiso($conn, $permiso, $rol) {
-    $sql = "SELECT * FROM permisos WHERE idRol = '{$rol}' AND idPermiso = {$permiso}";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
-    if($row = $result->fetch_assoc()){
-        return true;
-    }
-    return false;
-}
-
 function DBlistadoRol($conn){
     $sql = "SELECT idRol, nombreRol FROM rol";
     $result = $conn->query($sql) or die("Error de servidor: SQL error");
@@ -114,5 +106,8 @@ function DB_UPDATErol($conn, $rol, $usuario){
 
     $sql = "UPDATE usuario SET idRol = '$idRol' WHERE idUsuario = '$idUsuario'";
     $conn->query($sql) or die("Error de servidor: SQL error");
+    if($_SESSION["usuario"]->idUsuario == $idUsuario) {
+        $_SESSION["usuario"]->idRol = $idRol;
+    }
 }
 ?>

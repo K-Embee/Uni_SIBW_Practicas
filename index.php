@@ -24,16 +24,11 @@ if (array_key_exists("logout",$_GET)) {
     session_unset();
 }
 
-if (array_key_exists("exit",$_GET)) {
-    echo $twig->render('oops_exito.html');
-    exit();
-}
-
 if (array_key_exists("infousuario",$_GET)) {
     funcionInfoUsuario($twig, $conn);
 }
 
-if (array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET)) {
+if ((array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET))) {
     funcionAlterarEvento($twig, $conn);
 }
 

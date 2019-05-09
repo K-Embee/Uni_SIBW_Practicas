@@ -16,6 +16,16 @@ function DBlogin($conn, $email, $password) {
     return $var;
 }
 
+//Obtiene si un usuario tiene un permiso o no
+function DBpermiso($conn, $permiso, $rol) {
+    $sql = "SELECT * FROM permisos WHERE idRol = '{$rol}' AND idPermiso = {$permiso}";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    if($row = $result->fetch_assoc()){
+        return true;
+    }
+    return false;
+}
+
 function DB_UPDATEpassword($conn, $user, $pass_a, $pass_n) {
     if(password_verify($pass_a, $user->contraseña)) {
         $pass_n = password_hash($pass_n, PASSWORD_BCRYPT);

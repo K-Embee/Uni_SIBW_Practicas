@@ -216,13 +216,13 @@ INSERT INTO `imagen` (`url`, `idEvento`, `descripcion`) VALUES
 ('./imgs/aladdin/mono.jpg', 'aladdin', 'Abú'),
 ('./imgs/aladdin/portada.jpg', 'aladdin', 'Portada'),
 ('./imgs/aladdin/poster.jpeg', 'aladdin', 'Poster'),
-('./imgs/detective_pikachu/2Pikachushablan.jpg', 'detective_pikachu', 'pika pi habla con pika pi'),
-('./imgs/detective_pikachu/DP.jpg', 'detective_pikachu', 'pika pi'),
+('./imgs/detective_pikachu/2Pikachushablan.jpg', 'detective_pikachu', 'Un Pikachu hablando con otro'),
+('./imgs/detective_pikachu/DP.jpg', 'detective_pikachu', 'Un Pikachu'),
 ('./imgs/detective_pikachu/Mewtwo.png', 'detective_pikachu', 'Mewtwo'),
-('./imgs/detective_pikachu/pikachu.jpg', 'detective_pikachu', 'pika chuuuuuuuuuu'),
-('./imgs/detective_pikachu/portada.jpg', 'detective_pikachu', 'pika pi'),
+('./imgs/detective_pikachu/pikachu.jpg', 'detective_pikachu', 'Un Pikachu'),
+('./imgs/detective_pikachu/portada.jpg', 'detective_pikachu', 'Un Pikachu'),
 ('./imgs/detective_pikachu/poster.jpg', 'detective_pikachu', 'Poster'),
-('./imgs/detective_pikachu/Real3D.jpg', 'detective_pikachu', 'poster Real3D'),
+('./imgs/detective_pikachu/Real3D.jpg', 'detective_pikachu', 'Poster Real3D'),
 ('./imgs/espia/portada.jpg', 'espia', 'Portada'),
 ('./imgs/hys/portada.jpg', 'hys', 'Portada'),
 ('./imgs/men_in_black/portada.jpg', 'men_in_black', 'Portada'),
@@ -289,7 +289,14 @@ INSERT INTO `permisos` (`idPermiso`, `idRol`) VALUES
 (0, 'gestor'),
 (0, 'moderador'),
 (0, 'superusuario'),
-(0, 'usuario');
+(0, 'usuario'),
+(1, 'superusuario'),
+(2, 'superusuario'),
+(3, 'superusuario'),
+(4, 'superusuario'),
+(1, 'moderador'),
+(2, 'gestor'),
+(3, 'gestor');
 
 
 -- --------------------------------------------------------
@@ -332,7 +339,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nombre`, `email`, `contraseña`, `idUsuario`, `idRol`) VALUES
+('Admin', 'admin@correo.com', '$2y$10$QU8SeJQjHzusSsd7N3OzmeM0gzVEgQpH4pmqDLivCD.cbtudlL2VW', 'admin', 'superusuario'),
 ('Pikachu', 'pika@chu.com', '$2y$10$D0c8jkDctPNkMQXQlDjQ0eNWCKGB8Tz9Nbzs8wER9DroNMF.cFEQe', 'pikapi98', 'superusuario');
+('Usuario', 'usuario@usuario.com', '$2y$10$zO0DKtjcLhIljHIkzcy3zOiCO.rFerlLaPBk3i.c/X58fiyho8PoO', 'usuario', 'usuario');
 
 -- --------------------------------------------------------
 

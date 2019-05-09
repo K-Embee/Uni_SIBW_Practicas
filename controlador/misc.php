@@ -5,19 +5,19 @@ function funcionEvento($twig, $conn){
         exit();
     }
     else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(array_key_exists("idComentarioBorrar",$_POST)){
+        if(array_key_exists("idComentarioBorrar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS)){
             DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
         }
-        else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST)) {
+        else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS)) {
             DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
         }
-        else if(array_key_exists("idFotoBorrar",$_POST)){
+        else if(array_key_exists("idFotoBorrar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODIFICAR_GALERIA)){
             DB_DROPimagen($conn, $_POST["idFotoBorrar"]);
         }
-        else if(array_key_exists("idFotoDescripcion",$_POST)){
+        else if(array_key_exists("idFotoDescripcion",$_POST) && checkPermiso($conn, $twig, PERMISO_MODIFICAR_GALERIA)){
             DB_INimagen($conn, $_GET['evento'], $_POST["idFotoDescripcion"]);
         }
-        else if(checkPermiso($conn, PERMISO_COMENTAR) && array_key_exists("comentario",$_POST)) {
+        else if(array_key_exists("comentario",$_POST) && checkPermiso($conn, $twig, PERMISO_COMENTAR)) {
             comentar($conn, $_GET['evento']);
         }
     }
@@ -28,25 +28,40 @@ function funcionEvento($twig, $conn){
 
 function funcionListado($twig, $conn) {
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        if (array_key_exists("idComentarioBorrar",$_POST)) {
+        if (array_key_exists("idComentarioBorrar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS)) {
             DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
         }
-        else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST)) {
+        else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS)) {
             DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
         }
-        else if (array_key_exists("evento",$_POST)) {
+        else if (array_key_exists("evento",$_POST) && checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
             DB_DROPevento($conn, $_POST["evento"]);
         }
-        else if (array_key_exists("usuarioIdRol",$_POST) && array_key_exists("idUsuarioRol",$_POST)) {
+        else if (array_key_exists("usuarioIdRol",$_POST) && array_key_exists("idUsuarioRol",$_POST) && checkPermiso($conn, $twig, PERMISO_SUPERUSUARIO)) {
             DB_UPDATErol($conn, $_POST["usuarioIdRol"], $_POST["idUsuarioRol"]);
         }
     }
+
+    $listado = $_GET["listado"];
+
+    switch ($listado) {
+        case 'usuarios':
+            checkPermiso($conn, $twig, PERMISO_SUPERUSUARIO);
+            break;
+        case 'comentarios':
+            checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS);
+            break;
+        case 'eventos':
+            checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS);
+            break;
+    }
+
     renderListado($twig, $conn);
     exit();
 }
 
 function funcionAlterarEvento($twig, $conn) {
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
         if(array_key_exists("eventoNombre",$_POST) && array_key_exists("estudios",$_POST) && array_key_exists("distribuidora",$_POST) &&
             array_key_exists("fechaEstreno",$_POST) && array_key_exists("descripcion",$_POST))
         {
@@ -79,6 +94,7 @@ function funcionAlterarEvento($twig, $conn) {
     }
     if(array_key_exists("modificar",$_GET)) renderModificarEvento($twig, $conn);
     else if(array_key_exists("aniadir",$_GET)) renderAniadirEvento($twig, $conn);
+    else echo $twig->render('oops.html');
     exit();
 }
 
@@ -94,8 +110,11 @@ function funcionInfoUsuario($twig, $conn) {
         $success = DB_UPDATEusuario($conn, $_SESSION["usuario"], $_POST["UsuarioNombreCambiado"], $_POST["UsuarioEmailCambiado"]);
         renderInfoUsuario($twig, $conn, $success);
     }
-    else {
+    else if(array_key_exists("usuario",$_SESSION) && !is_null($_SESSION["usuario"])){
         renderInfoUsuario($twig, $conn, NULL);
+    }
+    else {
+        echo $twig->render('oops.html');
     }
     exit();
 }

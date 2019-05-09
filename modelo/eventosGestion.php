@@ -63,10 +63,11 @@ function DB_INimagen($conn, $idEvento, $descripcion){
     $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
 
     if(move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $fichero_subido)){
-        echo "bap";
+        //Exitoso
     }
     else {
-        echo "fuckin mistake";
+        echo $twig->render('oops.html');
+        exit();
     }
 
     $evento = mysqli_real_escape_string($conn, $idEvento);

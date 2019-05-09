@@ -1,5 +1,6 @@
 <?php
 
+// Defines de permisos.
 function definirPermisos(){
     define("PERMISO_COMENTAR", 0);
     define("PERMISO_MODERACION_COMENTARIOS", 1);
@@ -8,6 +9,23 @@ function definirPermisos(){
     define("PERMISO_SUPERUSUARIO", 4);
 }
 
+function checkPermiso($conn, $pag_error, $permiso) {
+    $tiene_permiso = true;
+    if(!array_key_exists("usuario",$_SESSION) || is_null($_SESSION["usuario"])) {
+        $tiene_permiso = false;
+    }
+    else if(!DBpermiso($conn, $permiso, $_SESSION["usuario"]->idRol)){
+        $tiene_permiso = false;
+    }
+
+    if(is_null($pag_error) || $tiene_permiso) {
+        return $tiene_permiso;
+    }
+    echo $pag_error->render('oops_perms.html');
+    exit();
+}
+
+//Inicio de sesión y registro
 function iniciarSesion($conn) {
     $email = $email_err = $password = "";
     $email = test_input($_POST["email"]);
@@ -38,12 +56,5 @@ function registrarse($conn) {
     }
 
     return DB_INregister($conn,$email,$password,$nombreUsuario,$nombre);
-}
-
-function checkPermiso($conn, $permiso) {
-    if(!array_key_exists("usuario",$_SESSION) || is_null($_SESSION["usuario"])) {
-        return false;
-    }
-    return DBpermiso($conn, $permiso, $_SESSION["usuario"]->idRol);
 }
 ?>
