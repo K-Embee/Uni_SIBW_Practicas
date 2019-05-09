@@ -49,14 +49,29 @@ function DB_DROPevento($conn, $idEvento) {
 
 function DB_DROPimagen($conn, $url){
     $id = mysqli_real_escape_string($conn, $url);
+
+    $sql = "SELECT * FROM imagen WHERE url = '{$id}'";
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    if($result->num_rows == 0) die("Error de servidor: Archivo no existente");
     $sql = "DELETE FROM imagen WHERE url = '{$id}'";
+    $conn->query($sql) or die("Error de servidor: SQL error");
+    unlink($url);
 }
 
 function DB_INimagen($conn, $idEvento, $descripcion){
-    $dir_subida = './img/'.$idEvento;
+    $dir_subida = "./imgs/{$idEvento}/";
     $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
+
+    if(move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $fichero_subido)){
+        echo "bap";
+    }
+    else {
+        echo "fuckin mistake";
+    }
+
     $evento = mysqli_real_escape_string($conn, $idEvento);
     $texto = mysqli_real_escape_string($conn, $descripcion);
-    $sql = "INSERT INTO imagen (idEvento, url, descripcion) VALUES ('$evento', $fichero_subido, 'texto')";
+    $sql = "INSERT INTO imagen (idEvento, url, descripcion) VALUES ('$evento', '$fichero_subido', '$texto')";
+    $conn->query($sql) or die("Error de servidor: SQL error");
 }
 ?>
