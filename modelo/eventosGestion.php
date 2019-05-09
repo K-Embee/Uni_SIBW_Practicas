@@ -45,6 +45,7 @@ function DB_DROPevento($conn, $idEvento) {
         $sql = "DELETE FROM {$tabla} WHERE idEvento = '{$id}'";
         $result = $conn->query($sql) or die("Error de servidor: SQL error");
     }
+    return true;
 }
 
 function DB_DROPimagen($conn, $url){
@@ -56,6 +57,7 @@ function DB_DROPimagen($conn, $url){
     $sql = "DELETE FROM imagen WHERE url = '{$id}'";
     $conn->query($sql) or die("Error de servidor: SQL error");
     unlink($url);
+    return true;
 }
 
 function DB_INimagen($conn, $idEvento, $descripcion){
@@ -74,5 +76,6 @@ function DB_INimagen($conn, $idEvento, $descripcion){
     $texto = mysqli_real_escape_string($conn, $descripcion);
     $sql = "INSERT INTO imagen (idEvento, url, descripcion) VALUES ('$evento', '$fichero_subido', '$texto')";
     $conn->query($sql) or die("Error de servidor: SQL error");
+    return true;
 }
 ?>

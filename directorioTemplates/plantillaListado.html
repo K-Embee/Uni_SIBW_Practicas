@@ -5,6 +5,11 @@
 {% block evento %}
 
 <div class="principal_alt">
+    {% if success is defined %}{% if not success %}
+        <div class="panel_red big">Error no se ha podido realizar la operacion</div>
+    {% elseif success %}
+        <div class="panel_green big">Se ha realizado la operacion con exito</div>
+    {% endif %}{% endif %}
     {% if tipo_listado == "comentarios" %}
     <input type="text" id="myInput" onkeyup="buscarComentario()" placeholder="Busqueda por comentario..." title="Escribe texto comentario">
     <div id="listadoComentarios">

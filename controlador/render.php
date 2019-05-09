@@ -4,7 +4,7 @@ function validar_consulta($entrada) {
     return preg_match('/^[a-zA-Z0-9\-_]+$/', $entrada); //Asegura que la cadena entera es carácteres alfanumericos
 }
 
-function renderEvento($twig, $conn) {
+function renderEvento($twig, $conn, $success) {
     $evento = $_GET["evento"];
 
     if(!validar_consulta($evento)) {
@@ -46,8 +46,14 @@ function renderEvento($twig, $conn) {
         exit();
     }
 
-    echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C, 'generos' => $args_G,
-                        'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
+    if( is_null($success) ){
+        echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C,
+        'generos' => $args_G, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
+    }
+    else{
+        echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C,
+        'generos' => $args_G, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'success' => $success]);
+    }
 }
 
 function renderPrincipal($twig, $conn) {
@@ -160,7 +166,7 @@ function renderRegistrarse($twig, $conn, $error) {
     echo $twig->render('plantillaRegistro.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'fail' => $error]);
 }
 
-function renderListado($twig, $conn) {
+function renderListado($twig, $conn, $success) {
     $listado = $_GET["listado"];
 
     $menu = DBmenu($conn);
@@ -192,7 +198,14 @@ function renderListado($twig, $conn) {
             break;
     }
 
-    echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'tipo_listado' => $listado, 'lista' => $args ]);
+    if(is_null($success)){
+        echo $twig->render('plantillaListado.html', ['listado_menu' => $menu,
+        'nombre_usuario' => $nombreUsuario, 'tipo_listado' => $listado, 'lista' => $args ]);
+    }
+    else{
+        echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario,
+        'tipo_listado' => $listado, 'lista' => $args, 'success' => $success ]);
+    }
 }
 
 function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no muestra mensaje), false(muestra fallo) o true(exito)
@@ -213,7 +226,7 @@ function renderInfoUsuario($twig, $conn, $success){ //success puede ser null(no 
     }
 }
 
-function renderModificarEvento($twig, $conn){
+function renderModificarEvento($twig, $conn, $success){
     $evento = $_GET["modificar"];
 
     $menu = DBmenu($conn);
@@ -226,11 +239,17 @@ function renderModificarEvento($twig, $conn){
     }
     $args = DBevento($conn,$evento);
 
-    echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'evento' => $args,
-        'generos' => $args_G, 'generos_existentes' => $args_GE]);
+    if(is_null($success)){
+        echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario,
+        'evento' => $args, 'generos' => $args_G, 'generos_existentes' => $args_GE]);
+    }
+    else{
+        echo $twig->render('plantillaModificar.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario,
+        'evento' => $args, 'generos' => $args_G, 'generos_existentes' => $args_GE, 'success' => $success]);
+    }
 }
 
-function renderAniadirEvento($twig, $conn){
+function renderAniadirEvento($twig, $conn, $success){
     $menu = DBmenu($conn);
     $args_G = DBlistadoGenero($conn, false);
 
@@ -238,6 +257,14 @@ function renderAniadirEvento($twig, $conn){
     if(array_key_exists("usuario",$_SESSION)) {
         $nombreUsuario = $_SESSION["usuario"]->idUsuario;
     }
-    echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'generos' => $args_G]);
+
+    if(is_null($success)){
+        echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu,
+        'nombre_usuario' => $nombreUsuario, 'generos' => $args_G]);
+    }
+    else{
+        echo $twig->render('plantillaAniadir.html', ['listado_menu' => $menu,
+        'nombre_usuario' => $nombreUsuario, 'generos' => $args_G, 'success' => $success]);
+    }
 }
 ?>

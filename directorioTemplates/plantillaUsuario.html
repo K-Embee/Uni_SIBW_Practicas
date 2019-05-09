@@ -5,9 +5,9 @@
     <form method="post" action="">
         <h2>Información de {{ usuario.idUsuario }}</h2>
         {% if success is defined %}{% if not success %}
-            <div class="big">Error: Contraseña erronea</div>
+            <div class="panel_red big">Error: Contraseña erronea</div>
         {% elseif success %}
-            <div class="big">Se han cambiado los datos con éxito</div>
+            <div class="panel_green big">Se han cambiado los datos con éxito</div>
         {% endif %}{% endif %}
 
         <span class="bold">Nombre: </span>{{ usuario.nombre }}<br>

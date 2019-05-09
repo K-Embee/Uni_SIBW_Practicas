@@ -36,13 +36,18 @@ function DBtodosComentarios($conn) {
 function DB_DROPcomentario($conn, $idcomentario) {
     $sql = "DELETE FROM comentarios WHERE idComentario =" . $idcomentario ;
     $conn->query($sql) or die("Error de servidor: SQL error");
+
+    return true;
 }
 
 function  DB_UPDATEcomentario($conn, $idComentario, $texto) {
     $texto = mysqli_real_escape_string($conn, $texto);
     $sql = "UPDATE comentarios SET texto = '{$texto} (Modificado por el moderador)'
     WHERE idComentario = {$idComentario}";
-    echo $sql;
-    $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+
+    if($result)
+        return true;
+    return false;
 }
 ?>

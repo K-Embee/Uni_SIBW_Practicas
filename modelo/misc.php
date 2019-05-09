@@ -109,5 +109,7 @@ function DB_UPDATErol($conn, $rol, $usuario){
     if($_SESSION["usuario"]->idUsuario == $idUsuario) {
         $_SESSION["usuario"]->idRol = $idRol;
     }
+
+    return true;
 }
 ?>

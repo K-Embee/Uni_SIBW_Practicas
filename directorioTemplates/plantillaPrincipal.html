@@ -12,6 +12,12 @@
         </div>
         {% endfor %}
 
+        {% if peliculas is empty %}
+            <div class="bigger pad">No hay peliculas en este momento</div>
+
+            <img class="errorimg pad" src="./imgs/sadGremlin.png"><img>
+        {% endif %}
+
     </span>
 {% endblock %}
 

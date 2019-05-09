@@ -1,5 +1,6 @@
 <?php
 function funcionEvento($twig, $conn){
+    $success = NULL;
     if (array_key_exists("fb_tw",$_GET)) {
         renderFB_TW($twig, $conn);
         exit();
@@ -12,33 +13,34 @@ function funcionEvento($twig, $conn){
             DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
         }
         else if(array_key_exists("idFotoBorrar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODIFICAR_GALERIA)){
-            DB_DROPimagen($conn, $_POST["idFotoBorrar"]);
+            $success = DB_DROPimagen($conn, $_POST["idFotoBorrar"]);
         }
         else if(array_key_exists("idFotoDescripcion",$_POST) && checkPermiso($conn, $twig, PERMISO_MODIFICAR_GALERIA)){
-            DB_INimagen($conn, $_GET['evento'], $_POST["idFotoDescripcion"]);
+            $success = DB_INimagen($conn, $_GET['evento'], $_POST["idFotoDescripcion"]);
         }
         else if(array_key_exists("comentario",$_POST) && checkPermiso($conn, $twig, PERMISO_COMENTAR)) {
             comentar($conn, $_GET['evento']);
         }
     }
-    renderEvento($twig, $conn);
+    renderEvento($twig, $conn, $success);
     mysqli_close($conn);
     exit();
 }
 
 function funcionListado($twig, $conn) {
+    $success = NULL;
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (array_key_exists("idComentarioBorrar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS)) {
-            DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
+            $success = DB_DROPcomentario($conn, $_POST["idComentarioBorrar"]);
         }
         else if (array_key_exists("idComentarioEditar",$_POST) && array_key_exists("textoComentarioEditar",$_POST) && checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS)) {
-            DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
+            $success = DB_UPDATEcomentario($conn, $_POST["idComentarioEditar"], $_POST["textoComentarioEditar"]);
         }
         else if (array_key_exists("evento",$_POST) && checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
-            DB_DROPevento($conn, $_POST["evento"]);
+            $success = DB_DROPevento($conn, $_POST["evento"]);
         }
         else if (array_key_exists("usuarioIdRol",$_POST) && array_key_exists("idUsuarioRol",$_POST) && checkPermiso($conn, $twig, PERMISO_SUPERUSUARIO)) {
-            DB_UPDATErol($conn, $_POST["usuarioIdRol"], $_POST["idUsuarioRol"]);
+            $success = DB_UPDATErol($conn, $_POST["usuarioIdRol"], $_POST["idUsuarioRol"]);
         }
     }
 
@@ -56,11 +58,12 @@ function funcionListado($twig, $conn) {
             break;
     }
 
-    renderListado($twig, $conn);
+    renderListado($twig, $conn, $success);
     exit();
 }
 
 function funcionAlterarEvento($twig, $conn) {
+    $success = NULL;
     if ($_SERVER["REQUEST_METHOD"] == "POST" && checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
         if(array_key_exists("eventoNombre",$_POST) && array_key_exists("estudios",$_POST) && array_key_exists("distribuidora",$_POST) &&
             array_key_exists("fechaEstreno",$_POST) && array_key_exists("descripcion",$_POST))
@@ -81,19 +84,19 @@ function funcionAlterarEvento($twig, $conn) {
                 $array["idEvento"] = $_POST["idModificarEvento"];
                 $array["generos"] = $generos;
                 $evento = new Evento($array);
-                DB_UPDATEevento($conn, $evento);
+                $success = DB_UPDATEevento($conn, $evento);
             }
             else if(array_key_exists("idAniadirEvento",$_POST)){
                 $id = strtolower($array["eventoNombre"]);
                 $array["idEvento"] = str_replace(" ", "_", $id);
                 $array["generos"] = $generos;
                 $evento = new Evento($array);
-                DB_INevento($conn, $evento);
+                $success = DB_INevento($conn, $evento);
             }
         }
     }
-    if(array_key_exists("modificar",$_GET)) renderModificarEvento($twig, $conn);
-    else if(array_key_exists("aniadir",$_GET)) renderAniadirEvento($twig, $conn);
+    if(array_key_exists("modificar",$_GET)) renderModificarEvento($twig, $conn, $success);
+    else if(array_key_exists("aniadir",$_GET)) renderAniadirEvento($twig, $conn, $success);
     else echo $twig->render('oops.html');
     exit();
 }
