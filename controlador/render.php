@@ -41,10 +41,6 @@ function renderEvento($twig, $conn, $success) {
 
     $ruta = $imprimir?'plantillaEventoImpresion.html':($galeria?'plantillaEventoGaleria.html':'plantillaEvento.html');
 
-    if(!$args) {
-        echo $twig->render('oops.html');
-        exit();
-    }
 
     if( is_null($success) ){
         echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C,
@@ -85,7 +81,7 @@ function renderPorGenero($twig, $conn) {
     }
 
     if(!$args) {
-        echo $twig->render('oops.html');
+        echo $twig->render('oops_genero.html');
         exit();
     }
 

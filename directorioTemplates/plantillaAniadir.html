@@ -1,4 +1,11 @@
 {% extends "plantillaModificarAniadir.html" %}
 {% block titulo %}Añadir evento{% endblock %}
+{% block mensajeError %}Error: no se ha podido añadir el evento{% endblock %}
+{% block mensajeExito %}Se ha añadido correctamente{% endblock %}
 {% block modificar_aniadir %}idAniadirEvento{% endblock %}
+
+{% block FotoPortada %}
+Subir portada: <input name="fichero_usuario" type="file" />
+{% endblock %}
+
 {% block boton %}Añadir{% endblock %}

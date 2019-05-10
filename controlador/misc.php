@@ -16,7 +16,7 @@ function funcionEvento($twig, $conn){
             $success = DB_DROPimagen($conn, $_POST["idFotoBorrar"]);
         }
         else if(array_key_exists("idFotoDescripcion",$_POST) && checkPermiso($conn, $twig, PERMISO_MODIFICAR_GALERIA)){
-            $success = DB_INimagen($conn, $_GET['evento'], $_POST["idFotoDescripcion"]);
+            $success = DB_INimagen($conn, $_GET['evento'], $_POST["idFotoDescripcion"], false);
         }
         else if(array_key_exists("comentario",$_POST) && checkPermiso($conn, $twig, PERMISO_COMENTAR)) {
             comentar($conn, $_GET['evento']);
@@ -91,7 +91,10 @@ function funcionAlterarEvento($twig, $conn) {
                 $array["idEvento"] = str_replace(" ", "_", $id);
                 $array["generos"] = $generos;
                 $evento = new Evento($array);
-                $success = DB_INevento($conn, $evento);
+                if(array_key_exists("fichero_usuario",$_FILES) && checkPermiso($conn, $twig, PERMISO_MODIFICAR_GALERIA)){
+                    $success = DB_INevento($conn, $evento);
+                    DB_INimagen($conn, $array["idEvento"], "Portada", true);
+                }
             }
         }
     }

@@ -13,6 +13,7 @@ function  DB_INevento($conn, $evento) {
             $conn->query($squirrel) or die("Error de servidor: SQL error");
         }
     }
+    return true;
 }
 
 function  DB_UPDATEevento($conn, $evento) {
@@ -35,6 +36,7 @@ function  DB_UPDATEevento($conn, $evento) {
             $conn->query($squirrel) or die("Error de servidor: SQL error");
         }
     }
+    return true;
 }
 
 
@@ -60,10 +62,15 @@ function DB_DROPimagen($conn, $url){
     return true;
 }
 
-function DB_INimagen($conn, $idEvento, $descripcion){
+function DB_INimagen($conn, $idEvento, $descripcion, $portada){
     $dir_subida = "./imgs/{$idEvento}/";
-    $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
-
+    if(!$portada) $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
+    else{
+        $fichero_subido = $dir_subida . 'portada.jpg';
+        if (!file_exists("./imgs/{$idEvento}/")) {
+            mkdir("./imgs/{$idEvento}/", 0777, true) or die("Error de servidor: No se ha podido crear la carpeta");
+        }
+    }
     if(move_uploaded_file($_FILES['fichero_usuario']['tmp_name'], $fichero_subido)){
         //Exitoso
     }

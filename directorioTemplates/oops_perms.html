@@ -1,14 +1,4 @@
-{% extends 'plantillaGeneral.html'%}
+{% extends 'plantillaError.html'%}
 
-
-{% block header %}
-	<div class="pagetop">
-        <div class="bigger pad">Error: No tienes permisos para hacer eso.</div>
-        <div class="big pad"><a href=".">(Pinche aquí para volver a la página principal)</a></div>
-
-        <img class="errorimg pad" src="./imgs/gizmo.gif"><img>
-    </div>
-{% endblock %}
-
-{% block sidebar %}
-{% endblock %}
+{% block mensaje %}Error: No tienes permisos para hacer eso.{% endblock %}
+{% block imagen %}./imgs/gizmo.gif{% endblock %}

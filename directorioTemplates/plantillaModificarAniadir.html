@@ -6,14 +6,20 @@
 
 <div class="principal_alt">
     <h2>{% block titulo %}{% endblock %}</h2>
-    
+
     {% if success is defined %}{% if not success %}
-        <div class="panel_red big">Error no se ha podido realizar la operacion</div>
+        <div class="panel_red big">
+            {% block mensajeError %}Error no se ha podido realizar la operacion
+            {% endblock %}
+        </div>
     {% elseif success %}
-        <div class="panel_green big">Se ha realizado la operacion con exito</div>
+        <div class="panel_green big">
+            {% block mensajeExito %}Se ha realizado la operacion con exito
+            {% endblock %}
+        </div>
     {% endif %}{% endif %}
 
-    <form class="listado" method="post" action="">
+    <form enctype="multipart/form-data" class="listado" method="post" action="">
         <span class="bold">Nombre: </span><br>
             <input type="text" name="eventoNombre" value="{{ evento.eventoNombre }}"><br>
         <span class="bold">Estudios: </span><br>
@@ -39,6 +45,7 @@
         {% endfor %}
         </div>
         <br>
+        {% block FotoPortada %}{% endblock %}
         <button id="submit" type="submit">{% block boton %}{% endblock %}</button>
     </form>
 </div>
