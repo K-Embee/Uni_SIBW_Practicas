@@ -4,7 +4,7 @@ function validar_consulta($entrada) {
     return preg_match('/^[a-zA-Z0-9\-_]+$/', $entrada); //Asegura que la cadena entera es carácteres alfanumericos
 }
 
-function renderEvento($twig, $conn, $success) {
+function renderEvento($twig, $conn, $success, $permiso_galeria) {
     $evento = $_GET["evento"];
 
     if(!validar_consulta($evento)) {
@@ -41,14 +41,13 @@ function renderEvento($twig, $conn, $success) {
 
     $ruta = $imprimir?'plantillaEventoImpresion.html':($galeria?'plantillaEventoGaleria.html':'plantillaEvento.html');
 
-
     if( is_null($success) ){
         echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C,
-        'generos' => $args_G, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario]);
+        'generos' => $args_G, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'admin' => $permiso_galeria]);
     }
     else{
         echo $twig->render( $ruta, ['evento' => $args, 'imagenes' => $args_I, 'videos' => $args_V, 'comentarios' => $args_C,
-        'generos' => $args_G, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'success' => $success]);
+        'generos' => $args_G, 'listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario, 'admin' => $permiso_galeria, 'success' => $success]);
     }
 }
 

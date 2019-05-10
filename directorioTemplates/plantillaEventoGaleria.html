@@ -12,14 +12,17 @@
             <div class="box infobox">
                 <img class="infoimg pad" src="{{ entry.url }}"/>
                 <p>{{ entry.descripcion }}</p>
+                {% if admin %}
                 <form method="post" action="">
                     <input type="hidden" name="idFotoBorrar" value="{{ entry.url }}">
                     <button type="submit">Borrar</button>
                 </form>
+                {% endif %}
             </div>
         {% endfor %}
 
         <div class="cleared">
+            {% if admin %}
             <!-- El tipo de codificación de datos, enctype, DEBE especificarse -->
             <form enctype="multipart/form-data" action="" method="POST">
                 <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
@@ -27,6 +30,7 @@
                 <input type="text" name="idFotoDescripcion" placeholder="Describe la foto aqui..."/>
                 <input type="submit" name="idFotoNueva" value="Subir foto" />
             </form>
+            {% endif %}
         </div>
         {% block galeria %}
             <div class="bold cleared"><a href="./?evento={{evento.idEvento}}">(Volver a la página del evento)</a></div>

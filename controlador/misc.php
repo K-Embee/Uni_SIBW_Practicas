@@ -22,7 +22,10 @@ function funcionEvento($twig, $conn){
             comentar($conn, $_GET['evento']);
         }
     }
-    renderEvento($twig, $conn, $success);
+    
+    $permiso_editar_galeria = checkPermiso($conn, NULL, PERMISO_MODIFICAR_GALERIA);
+
+    renderEvento($twig, $conn, $success, $permiso_editar_galeria);
     mysqli_close($conn);
     exit();
 }
