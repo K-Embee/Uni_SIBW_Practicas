@@ -45,19 +45,18 @@ function funcionQuery($twig, $conn){
                 array_push($array_final, $evento);
             }
         }
-        $echo = $twig->render('listadoEventos.html', ['lista' => $array_final, 'admin' => $permisos]);
-
-        //Resaltado
-        $buscable_regex = "/\<span class=\"buscable\"\>*\<\/span\>";
-        $query_regex = "/{$query}/gi";
-        $matches = Array();
-        preg_match_all ( "/<span class=\"buscable\">(.*)<\/span>/i" , $echo, $matches, PREG_OFFSET_CAPTURE);
-
-        foreach ($matches as $index => $match) {
-            if($index == 0) continue;
-            $new_match = preg_replace($query, "<span class=\"highlight\">".$query."</span>", $match[0]);
-            $var = preg_replace($match[0], $new_match, $var);
+        if($query == "") {
+            $echo = $twig->render('listadoEventos.html', ['lista' => $array_final, 'admin' => $permisos]);
         }
+        //Resaltado
+        else {
+            foreach ($array_final as $evento) {
+                $evento->eventoNombre = str_ireplace($query, "<span class=\"highlight\">".$query."</span>", $evento->eventoNombre);
+                $evento->descripcion = str_ireplace($query, "<span class=\"highlight\">".$query."</span>", $evento->descripcion);
+            }
+            $echo = $twig->render('listadoEventos.html', ['lista' => $array_final, 'admin' => $permisos, 'query' => true]);
+        }
+        //Fin de resaltado
         echo $echo;
     }
     else if($_GET["listado"] == "comentarios") {
