@@ -36,6 +36,17 @@
                 <button id="submit" type="submit">Borrar</button>
             </form>
             <a href="?modificar={{ evento.idEvento }}"><button id="submit" type="submit">Editar</button></a>
+            {% if not evento.publicado %}
+                <form method="post" action="">
+                    <input type="hidden" name="publicar" value="{{ evento.idEvento }}">
+                    <button id="submit" type="submit">Publicar</button>
+                </form>
+            {% else %}
+                <form method="post" action="">
+                    <input type="hidden" name="ocultar" value="{{ evento.idEvento }}">
+                    <button id="submit" type="submit">Ocultar</button>
+                </form>
+            {% endif %}
         {% endif %}
     </div>
 {% endfor %}

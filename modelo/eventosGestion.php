@@ -86,4 +86,19 @@ function DB_INimagen($conn, $idEvento, $descripcion, $portada){
     return true;
 }
 
+//UPDATE `evento` SET `publicado` = '1' WHERE `evento`.`idEvento` = 'evento'
+function  DBpublicarEvento($conn, $evento) {
+    $idEvento = mysqli_real_escape_string($conn, $evento);
+    $sql = "UPDATE evento SET publicado =  '1' WHERE idEvento = '{$idEvento}'";
+    $conn->query($sql) or die("Error de servidor: SQL error");
+    return true;
+}
+
+function  DBOcultarEvento($conn, $evento) {
+    $idEvento = mysqli_real_escape_string($conn, $evento);
+    $sql = "UPDATE evento SET publicado =  '0' WHERE idEvento = '{$idEvento}'";
+    $conn->query($sql) or die("Error de servidor: SQL error");
+    return true;
+}
+
 ?>

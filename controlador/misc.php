@@ -90,6 +90,12 @@ function funcionListado($twig, $conn) {
         else if (array_key_exists("usuarioIdRol",$_POST) && array_key_exists("idUsuarioRol",$_POST) && checkPermiso($conn, $twig, PERMISO_SUPERUSUARIO)) {
             $success = DB_UPDATErol($conn, $_POST["usuarioIdRol"], $_POST["idUsuarioRol"]);
         }
+        else if (array_key_exists("publicar",$_POST) && checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
+            $success = DBpublicarEvento($conn, $_POST["publicar"]);
+        }
+        else if (array_key_exists("ocultar",$_POST) && checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
+            $success = DBocultarEvento($conn, $_POST["ocultar"]);
+        }
     }
 
     $listado = $_GET["listado"];
