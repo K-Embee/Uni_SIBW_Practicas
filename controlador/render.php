@@ -39,6 +39,12 @@ function renderEvento($twig, $conn, $success, $permiso_galeria) {
         $galeria = true;
     }
 
+    //el evento no está publicado y no tiene permisos
+    if(!DBpublico($conn, $evento) && !checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS)) {
+        echo $twig->render('oops_perms.html');
+        exit();
+    }
+
     $ruta = $imprimir?'plantillaEventoImpresion.html':($galeria?'plantillaEventoGaleria.html':'plantillaEvento.html');
 
     if( is_null($success) ){

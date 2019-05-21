@@ -1,7 +1,7 @@
 <?php
 function DBevento($conn, $evento) {
     $sql = "SELECT * FROM evento WHERE idEvento=" . '\'' . $evento . '\'';
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBevento");
 
     $var = NULL;
 
@@ -13,7 +13,7 @@ function DBevento($conn, $evento) {
 
 function DBeventoGenero($conn, $evento) {
     $sql = "SELECT genero FROM genero NATURAL JOIN etiquetas WHERE idEvento=" . '\'' . $evento . '\'';
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBeventoGenero");
 
     $array = array();
 
@@ -25,7 +25,7 @@ function DBeventoGenero($conn, $evento) {
 
 function DBimagenes($conn, $evento) {
     $sql = "SELECT * FROM imagen WHERE idEvento=" . '\'' . $evento . '\'';
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBimagenes");
 
     $array = array();
 
@@ -37,7 +37,7 @@ function DBimagenes($conn, $evento) {
 
 function DBvideos($conn, $evento) {
     $sql = "SELECT * FROM videos WHERE idEvento=" . '\'' . $evento . '\'';
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBvideos");
 
     $array = array();
 
@@ -49,7 +49,7 @@ function DBvideos($conn, $evento) {
 
 function DBcomentarios($conn, $evento) {
     $sql = "SELECT * FROM comentarios WHERE idEvento=" . '\'' . $evento . '\'';
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBcomentarios");
 
     $array = array();
 

@@ -1,4 +1,5 @@
 {% for evento in lista %}
+{% if evento.publicado %}
     <div class="listado" id="listado-{{ evento.eventoNombre }}">
         <span class="bold">Nombre: </span>
         <a href="?evento={{ evento.idEvento }}">
@@ -49,4 +50,5 @@
             {% endif %}
         {% endif %}
     </div>
+{% endif %}
 {% endfor %}

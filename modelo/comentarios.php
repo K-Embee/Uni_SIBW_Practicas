@@ -3,7 +3,7 @@
 function DBcensura($conn) {
     $sql = "SELECT palabra FROM censura";
 
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBcensura");
     $array = array();
 
     while($row = $result->fetch_assoc()) {
@@ -17,12 +17,12 @@ function DBcensura($conn) {
 function  DB_INcomentario($conn, $comentario) {
     $sql = "INSERT INTO comentarios (idEvento, ip, nombre, correo, texto) VALUES
         ('$comentario->idEvento','$comentario->ip','$comentario->nombre','$comentario->correo','$comentario->texto')";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DB_INcomentario");
 }
 
 function DBtodosComentarios($conn) {
     $sql = "SELECT * FROM comentarios";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DBtodosComentarios");
 
     $array = array();
 
@@ -44,7 +44,7 @@ function  DB_UPDATEcomentario($conn, $idComentario, $texto) {
     $texto = mysqli_real_escape_string($conn, $texto);
     $sql = "UPDATE comentarios SET texto = '{$texto} (Modificado por el moderador)'
     WHERE idComentario = {$idComentario}";
-    $result = $conn->query($sql) or die("Error de servidor: SQL error");
+    $result = $conn->query($sql) or die("Error de servidor: SQL error in DB_UPDATEcomentario");
 
     if($result)
         return true;
