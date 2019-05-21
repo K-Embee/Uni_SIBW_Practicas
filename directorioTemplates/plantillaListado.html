@@ -11,57 +11,15 @@
         <div class="panel_green big">Se ha realizado la operacion con exito</div>
     {% endif %}{% endif %}
     {% if tipo_listado == "comentarios" %}
-    <input type="text" id="myInput" onkeyup="buscarComentario()" placeholder="Busqueda por comentario..." title="Escribe texto comentario">
-    <div id="listadoComentarios">
-        {% for comment in lista %}
-            <div class="listado" id="listado-{{ comment.texto }}">
-                <span class="bold">Evento: </span>{{ comment.idEvento }}<br>
-                <span class="bold">Autor: </span>{{ comment.nombre }}<br>
-                <span class="bold">Email: </span>{{ comment.correo }}<br>
-                <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
-                <span id="comentario_{{ comment.idComentario }}">{{ comment.texto }}</span><br>
-                <form method="post" action="">
-                    <input type="hidden" name="idComentarioBorrar" value="{{ comment.idComentario }}">
-                    <button type="submit">Borrar</button>
-                </form>
-                <form method="post" action="" class="invisible" id="comentario_confirm_{{ comment.idComentario }}">
-                    <input type="hidden" name="idComentarioEditar" value="{{ comment.idComentario }}">
-                    <button type="submit">Confirmar</button>
-                </form>
-                <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditarComentario({{ comment.idComentario }})" type="submit">Editar</button>
-            </div>
-        {% endfor %}
+    <input type="text" id="myInput" onkeyup="buscarAJAX(false)" placeholder="Busqueda por comentario..." title="Escribe texto comentario">
+    <div id="listado">
+        {% include 'listadoComentarios.html' %}
     </div>
     {% elseif tipo_listado == "eventos" %}
-    <input type="text" id="myInput" onkeyup="buscarEvento()" placeholder="Busqueda por nombre..." title="Escribe título del evento">
+    <input type="text" id="myInput" onkeyup="buscarAJAX(true)" placeholder="Busqueda por nombre..." title="Escribe título del evento">
         <a href="?aniadir"><button id="submit" type="submit">Añadir evento</button></a>
-        <div id="listadoComentarios">
-        {% for evento in lista %}
-            <div class="listado" id="listado-{{ evento.eventoNombre }}">
-                <span class="bold">Nombre: </span>{{ evento.eventoNombre }}<br>
-                <span class="bold">Estudios: </span>{{ evento.estudios }}<br>
-                <span class="bold">Distribuidora: </span>{{ evento.distribuidora }}<br>
-                <span class="bold">Estreno: </span>{{ evento.fechaEstreno }}<br>
-                <span class="bold">Descripcion: </span>{{ evento.descripcion }}<br>
-                <span class="bold">Fecha creacion: </span>{{ evento.fecha_creacion }}<br>
-                <span class="bold">Fecha modificacion: </span>{{ evento.fecha_ultima_mod }}<br>
-                <span class="bold">Generos: </span>
-                    {% for entry in evento.generos %}
-                        {% if loop.last %}
-                         {{entry}}.
-                        {% else %}
-                            {{entry}},
-                        {% endif %}
-                    {% endfor %}
-                <br>
-                <a href="?evento={{ evento.idEvento }}&galeria">Enlace a la galería</a>
-                <form method="post" action="">
-                    <input type="hidden" name="evento" value="{{ evento.idEvento }}">
-                    <button id="submit" type="submit">Borrar</button>
-                </form>
-                <a href="?modificar={{ evento.idEvento }}"><button id="submit" type="submit">Editar</button></a>
-            </div>
-        {% endfor %}
+        <div id="listado">
+            {% include 'listadoEventos.html' %}
         </div>
     {% elseif tipo_listado == "usuarios" %}
         {% for usuario in lista %}

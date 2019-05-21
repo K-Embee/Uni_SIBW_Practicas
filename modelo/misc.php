@@ -21,13 +21,12 @@ function DBmenu($conn) {
     $array["Página Principal"] = "/";
     $array["Géneros"] = DBlistadoGenero($conn, true);
     $array["Otras páginas"] = DBlistadoPaginas($conn, true);
-    if (array_key_exists("usuario",$_SESSION)) {
-        $permisos = array('Editar Perfil' => "?infousuario");
-        if(checkPermiso($conn, NULL, PERMISO_MODERACION_COMENTARIOS)) $permisos['Listar Comentarios'] = "?listado=comentarios";
-        if(checkPermiso($conn, NULL, PERMISO_GESTION_EVENTOS)) $permisos['Listar Eventos'] = "?listado=eventos";
-        if(checkPermiso($conn, NULL, PERMISO_SUPERUSUARIO)) $permisos['Listar Usuarios'] = "?listado=usuarios";
-        $array["Panel de control"] = $permisos;
-    }
+    $permisos = array();
+    if(array_key_exists("usuario", $_SESSION) && !is_null($_SESSION["usuario"])) $permisos['Editar Perfil'] = "?infousuario";
+    if(checkPermiso($conn, NULL, PERMISO_MODERACION_COMENTARIOS)) $permisos['Listar Comentarios'] = "?listado=comentarios";
+    $permisos['Listar Eventos'] = "?listado=eventos";
+    if(checkPermiso($conn, NULL, PERMISO_SUPERUSUARIO)) $permisos['Listar Usuarios'] = "?listado=usuarios";
+    $array["Panel de control"] = $permisos;
 
     return $array;
 }

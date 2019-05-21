@@ -1,0 +1,18 @@
+{% for comment in lista %}
+    <div class="listado" id="listado-{{ comment.texto }}">
+        <span class="bold">Evento: </span>{{ comment.idEvento }}<br>
+        <span class="bold">Autor: </span>{{ comment.nombre }}<br>
+        <span class="bold">Email: </span>{{ comment.correo }}<br>
+        <span class="bold">Fecha: </span>{{ comment.fecha_hora }}<br>
+        <span id="comentario_{{ comment.idComentario }}">{{ comment.texto }}</span><br>
+        <form method="post" action="">
+            <input type="hidden" name="idComentarioBorrar" value="{{ comment.idComentario }}">
+            <button type="submit">Borrar</button>
+        </form>
+        <form method="post" action="" class="invisible" id="comentario_confirm_{{ comment.idComentario }}">
+            <input type="hidden" name="idComentarioEditar" value="{{ comment.idComentario }}">
+            <button type="submit">Confirmar</button>
+        </form>
+        <button id="comentario_editar_{{ comment.idComentario }}" onclick="botonEditarComentario({{ comment.idComentario }})" type="submit">Editar</button>
+    </div>
+{% endfor %}

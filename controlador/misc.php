@@ -22,11 +22,40 @@ function funcionEvento($twig, $conn){
             comentar($conn, $_GET['evento']);
         }
     }
-    
+
     $permiso_editar_galeria = checkPermiso($conn, NULL, PERMISO_MODIFICAR_GALERIA);
 
     renderEvento($twig, $conn, $success, $permiso_editar_galeria);
     mysqli_close($conn);
+    exit();
+}
+
+function funcionQuery($twig, $conn){
+    $query = $_REQUEST["q"];
+    $array_final = Array();
+
+    if($_GET["listado"] == "eventos") {
+        $array = DBprincipal($conn);
+        foreach ($array as $evento) {
+            if($query == "" || stripos($evento->eventoNombre, $query) !== false || stripos($evento->descripcion, $query) !== false) {
+                array_push($array_final, $evento);
+            }
+        }
+        echo $twig->render('listadoEventos.html', ['lista' => $array_final]);
+    }
+    else if($_GET["listado"] == "comentarios") {
+        $array = DBtodosComentarios($conn);
+        foreach ($array as $comentario) {
+            if($query == "" || stripos($comentario->texto, $query) !== false || stripos($comentario->nombre, $query) !== false) {
+                array_push($array_final, $comentario);
+            }
+        }
+        echo $twig->render('listadoComentarios.html', ['lista' => $array_final]);
+    }
+    else {
+        echo $twig->render('oops.html');
+    }
+
     exit();
 }
 

@@ -33,6 +33,10 @@ if ((array_key_exists("modificar",$_GET) || array_key_exists("aniadir",$_GET))) 
 }
 
 if (array_key_exists("listado",$_GET)) {
+    if (array_key_exists("q",$_GET)) {
+        funcionQuery($twig, $conn);
+        exit();
+    }
     funcionListado($twig, $conn);
 }
 
@@ -72,11 +76,6 @@ if (array_key_exists("evento",$_GET)) {
 
 else if (array_key_exists("pagina",$_GET)) {
     renderGenerica($twig, $conn);
-    mysqli_close($conn);
-    exit();
-}
-else if (array_key_exists("genero",$_GET)) {
-    renderPorGenero($twig, $conn);
     mysqli_close($conn);
     exit();
 }

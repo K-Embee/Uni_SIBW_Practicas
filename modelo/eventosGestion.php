@@ -85,4 +85,5 @@ function DB_INimagen($conn, $idEvento, $descripcion, $portada){
     $conn->query($sql) or die("Error de servidor: SQL error");
     return true;
 }
+
 ?>
