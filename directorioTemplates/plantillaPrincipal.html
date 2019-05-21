@@ -4,12 +4,14 @@
     <span class="principal">
 
         {% for entry in peliculas %}
+        {% if entry.publicado %}
         <div class="box infobox">
             <a href=".?evento={{ entry.idEvento }}">
                 <img class="infoimg" src="./imgs/{{ entry.idEvento }}/portada.jpg"/>
                 <p>{{ entry.eventoNombre }}</p>
             </a>
         </div>
+        {% endif %}
         {% endfor %}
 
     </span>
