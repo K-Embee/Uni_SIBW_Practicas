@@ -17,7 +17,9 @@
     </div>
     {% elseif tipo_listado == "eventos" %}
     <input type="text" id="myInput" onkeyup="buscarAJAX(true)" placeholder="Busqueda por nombre..." title="Escribe título del evento">
-        <a href="?aniadir"><button id="submit" type="submit">Añadir evento</button></a>
+        {% if admin %}
+            <a href="?aniadir"><button id="submit" type="submit">Añadir evento</button></a>
+        {% endif %}
         <div id="listado">
             {% include 'listadoEventos.html' %}
         </div>

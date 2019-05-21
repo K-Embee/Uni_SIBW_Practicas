@@ -33,6 +33,7 @@ function funcionEvento($twig, $conn){
 function funcionQuery($twig, $conn){
     $query = $_REQUEST["q"];
     $array_final = Array();
+    $permisos = checkPermiso($conn, null, PERMISO_GESTION_EVENTOS);
 
     if($_GET["listado"] == "eventos") {
         $array = DBprincipal($conn);
@@ -41,7 +42,7 @@ function funcionQuery($twig, $conn){
                 array_push($array_final, $evento);
             }
         }
-        echo $twig->render('listadoEventos.html', ['lista' => $array_final]);
+        echo $twig->render('listadoEventos.html', ['lista' => $array_final, 'admin' => $permisos]);
     }
     else if($_GET["listado"] == "comentarios") {
         $array = DBtodosComentarios($conn);
@@ -50,7 +51,7 @@ function funcionQuery($twig, $conn){
                 array_push($array_final, $comentario);
             }
         }
-        echo $twig->render('listadoComentarios.html', ['lista' => $array_final]);
+        echo $twig->render('listadoComentarios.html', ['lista' => $array_final, 'admin' => $permisos]);
     }
     else {
         echo $twig->render('oops.html');
@@ -86,7 +87,7 @@ function funcionListado($twig, $conn) {
             checkPermiso($conn, $twig, PERMISO_MODERACION_COMENTARIOS);
             break;
         case 'eventos':
-            checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS);
+            //checkPermiso($conn, $twig, PERMISO_GESTION_EVENTOS);
             break;
     }
 

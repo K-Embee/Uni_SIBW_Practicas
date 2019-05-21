@@ -164,6 +164,7 @@ function renderRegistrarse($twig, $conn, $error) {
 function renderListado($twig, $conn, $success) {
     $listado = $_GET["listado"];
 
+    $permisos = false;
     $menu = DBmenu($conn);
     $nombreUsuario = NULL;
     if(array_key_exists("usuario",$_SESSION)) {
@@ -180,12 +181,14 @@ function renderListado($twig, $conn, $success) {
             break;
         case 'comentarios':
             $args = DBtodosComentarios($conn);
+            $permisos = checkPermiso($conn, null, PERMISO_MODERACION_COMENTARIOS);
             break;
         case 'eventos':
             $args = DBprincipal($conn);
             foreach($args as $evento) {
                 $evento->generos = DBeventoGenero($conn, $evento->idEvento);
             }
+            $permisos = checkPermiso($conn, null, PERMISO_GESTION_EVENTOS);
             break;
         default:
             echo $twig->render('oops.html');
@@ -195,11 +198,11 @@ function renderListado($twig, $conn, $success) {
 
     if(is_null($success)){
         echo $twig->render('plantillaListado.html', ['listado_menu' => $menu,
-        'nombre_usuario' => $nombreUsuario, 'tipo_listado' => $listado, 'lista' => $args ]);
+        'nombre_usuario' => $nombreUsuario, 'tipo_listado' => $listado, 'lista' => $args, 'admin' => $permisos ]);
     }
     else{
         echo $twig->render('plantillaListado.html', ['listado_menu' => $menu, 'nombre_usuario' => $nombreUsuario,
-        'tipo_listado' => $listado, 'lista' => $args, 'success' => $success ]);
+        'tipo_listado' => $listado, 'lista' => $args, 'success' => $success, 'admin' => $permisos ]);
     }
 }
 

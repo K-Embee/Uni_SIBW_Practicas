@@ -16,11 +16,13 @@
                 {% endif %}
             {% endfor %}
         <br>
-        <a href="?evento={{ evento.idEvento }}&galeria">Enlace a la galería</a>
-        <form method="post" action="">
-            <input type="hidden" name="evento" value="{{ evento.idEvento }}">
-            <button id="submit" type="submit">Borrar</button>
-        </form>
-        <a href="?modificar={{ evento.idEvento }}"><button id="submit" type="submit">Editar</button></a>
+        {% if admin %}
+            <a href="?evento={{ evento.idEvento }}&galeria">Enlace a la galería</a>
+            <form method="post" action="">
+                <input type="hidden" name="evento" value="{{ evento.idEvento }}">
+                <button id="submit" type="submit">Borrar</button>
+            </form>
+            <a href="?modificar={{ evento.idEvento }}"><button id="submit" type="submit">Editar</button></a>
+        {% endif %}
     </div>
 {% endfor %}
