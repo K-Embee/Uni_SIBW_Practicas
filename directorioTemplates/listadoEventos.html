@@ -1,10 +1,14 @@
 {% for evento in lista %}
     <div class="listado" id="listado-{{ evento.eventoNombre }}">
-        <span class="bold">Nombre: </span><a href="?evento={{ evento.idEvento }}">{{ evento.eventoNombre }}</a><br>
+        <span class="bold">Nombre: </span>
+        <a href="?evento={{ evento.idEvento }}">
+            <span class="buscable">{{ evento.eventoNombre }}</span>
+        </a><br>
         <span class="bold">Estudios: </span>{{ evento.estudios }}<br>
         <span class="bold">Distribuidora: </span>{{ evento.distribuidora }}<br>
         <span class="bold">Estreno: </span>{{ evento.fechaEstreno }}<br>
-        <span class="bold">Descripcion: </span>{{ evento.descripcion }}<br>
+        <span class="bold">Descripcion: </span>
+            <span class="buscable">{{ evento.descripcion }}</span><br>
         <span class="bold">Fecha creacion: </span>{{ evento.fecha_creacion }}<br>
         <span class="bold">Fecha modificacion: </span>{{ evento.fecha_ultima_mod }}<br>
         <span class="bold">Generos: </span>
