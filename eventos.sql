@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2019 a las 23:09:51
+-- Tiempo de generación: 26-05-2019 a las 20:30:06
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -152,9 +152,9 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`idEvento`, `eventoNombre`, `estudios`, `distribuidora`, `fechaEstreno`, `descripcion`, `enlace_twitter`, `enlace_fb`, `fecha_creacion`, `fecha_ultima_mod`, `publicado`) VALUES
-('aladdin', 'Aladdin', 'Walt Disney Pictures', 'Walt Disney Studios Motion Pictures', '2019-05-24', 'Una apasionante adaptación en imagen real del clásico animado de Disney. «Aladdín» es la fascinante historia de Aladdín, un encantador ladronzuelo callejero, Jasmine, una princesa valiente e independiente, y el Genio, que puede ser la clave para el futuro de ambos.', 'https://twitter.com/disneyaladdin?lang=es', 'https://es-la.facebook.com/DisneyAladdin/', '2019-04-04', '2019-05-10', 1),
+('aladdin', 'Aladdin', 'Walt Disney Pictures', 'Walt Disney Studios Motion Pictures', '2019-05-24', 'Una apasionante adaptación en imagen real del clásico animado de Disney. «Aladdín» es la fascinante historia de Aladdín, un encantador ladronzuelo callejero, Jasmine, una princesa valiente e independiente, y el Genio, que puede ser la clave para el futuro de ambos.', 'https://twitter.com/disneyaladdin?lang=es', 'https://es-la.facebook.com/DisneyAladdin/', '2019-04-04', '2019-05-10', 0),
 ('detective_pikachu', 'Detective Pikachu', 'Legendary Pictures', 'Warner Bros. Pictures', '2019-05-17', 'Tim Goodman llega a Ryme City para investigar la misteriosa desaparición de su padre en la ciudad. En el camino, se encuentra con un Pikachu que habla, aunque en realidad solo él es el único que puede entenderlo. Ambos trabajarán juntos para resolver este gran enigma junto a la reportera Kathryn Newton con su Psyduck.', 'https://twitter.com/DetPikachuMovie', 'https://www.facebook.com/detectivepikachumovie/', '2019-04-02', '2019-05-10', 1),
-('espia', 'La espía roja', 'Trademark Films', 'Vértice', '2019-04-18', 'Es el año 2000 y Joan Stanley (Judi Dench) disfruta de su retiro en un barrio residencial durante el cambio de milenio. Su apacible vida se ve súbitamente trastornada cuando es arrestada por el MI5, el Servicio de Inteligencia británico, acusada de proporcionar información a la Rusia comunista, y por ser la espía más longeva del KGB en territorio británico.\r\n\r\nPasamos a 1938, cuando Joan (Sophie Cookson) es una estudiante de física en Cambridge que se enamora de Leo Galich (Tom Hughes), un joven comunista que le hace cambiar su percepción del mundo. Mientras trabaja en un laboratorio secreto nuclear durante la Segunda Guerra Mundial, Joan llega a la conclusión de que el mundo está al borde de una destrucción garantizada. Joan deberá entonces elegir entre traicionar a su país y a sus seres queridos o tratar de salvarlos.', 'https://twitter.com/vertice360_cine', 'https://www.facebook.com/vertice360.cine/', '2019-04-10', '2019-04-10', 0),
+('espia', 'La espía roja', 'Trademark Films', 'Vértice', '2019-04-18', 'Es el año 2000 y Joan Stanley (Judi Dench) disfruta de su retiro en un barrio residencial durante el cambio de milenio. Su apacible vida se ve súbitamente trastornada cuando es arrestada por el MI5, el Servicio de Inteligencia británico, acusada de proporcionar información a la Rusia comunista, y por ser la espía más longeva del KGB en territorio británico.\r\n\r\nPasamos a 1938, cuando Joan (Sophie Cookson) es una estudiante de física en Cambridge que se enamora de Leo Galich (Tom Hughes), un joven comunista que le hace cambiar su percepción del mundo. Mientras trabaja en un laboratorio secreto nuclear durante la Segunda Guerra Mundial, Joan llega a la conclusión de que el mundo está al borde de una destrucción garantizada. Joan deberá entonces elegir entre traicionar a su país y a sus seres queridos o tratar de salvarlos.', 'https://twitter.com/vertice360_cine', 'https://www.facebook.com/vertice360.cine/', '2019-04-10', '2019-04-10', 1),
 ('hys', 'Fast & Furious Hobbs & Shaw', 'Universal Pictures', 'Universal Pictures', '2019-08-02', 'Luke Hobbs (Dwayne Johnson) y Deckard Shaw (Jason Statham) vuelven a la carga para vivir una nueva aventura en la que ellos dos serán los protagonistas absolutos. Su rivalidad y la gran química entre estos dos personajes del universo Fast & Furious serán la clave de esta nueva historia en la que deberán trabajar juntos si quieren pararle los pies al villano Brixton (Idris Elba). Además, a la pareja de protagonistas se les unirá un nuevo personaje, Hattie (Vanessa Kirby), la hermana de Shaw.\r\n', 'https://twitter.com/hobbsandshaw', 'https://www.facebook.com/HobbsAndShaw/', '2019-04-10', '2019-04-10', 1),
 ('men_in_black', 'Men In Black: International', 'Columbia Pictures', 'Sony Pictures Releasing', '2019-06-14', 'Relanzamiento de la franquicia en la que no estarán Will Smith y Tommy Lee Jones y que expandirá el universo de \'Men in Black\'. Siempre han estado protegiendo la tierra de la basura del universo, en esta nueva aventura, los Men in Black tendrán que enfrentarse a la mayor amenaza por el momento: un topo dentro de la organización. Al equipo se unirá la Agente M, trabajando junto con el Agente H.', 'https://twitter.com/meninblack', 'https://www.facebook.com/meninblack/', '2019-04-10', '2019-04-10', 1),
 ('rey_leon', 'El Rey León', 'Walt Disney Pictures', 'Walt Disney Studios Motion Pictures', '2019-07-26', 'Remake de \"El Rey León\", dirigido y producido por Jon Favreau, responsable de la puesta al día con el mismo formato de \"El libro de la selva\" (2016).\r\nLa sabana africana es el escenario en el que tienen lugar las aventuras de Simba, un pequeño león que es el heredero del trono. Sin embargo, al ser injustamente acusado por el malvado Scar de la muerte de su padre, se ve obligado a exiliarse. Durante su destierro, hará buenas amistades e intentará regresar para recuperar lo que legítimamente le corresponde', 'https://twitter.com/disneylionking', 'https://www.facebook.com/DisneyTheLionKing/', '2019-04-10', '2019-04-10', 1),
@@ -210,18 +210,18 @@ CREATE TABLE `imagen` (
 --
 
 INSERT INTO `imagen` (`url`, `idEvento`, `descripcion`) VALUES
-('./imgs/aladdin/2019vs1992.jpg', 'aladdin', 'principe ali'),
-('./imgs/aladdin/charlando.jpg', 'aladdin', 'charlando'),
+('./imgs/aladdin/2019vs1992.jpg', 'aladdin', 'Principe ali'),
+('./imgs/aladdin/charlando.jpg', 'aladdin', 'Charlando'),
 ('./imgs/aladdin/Jafar.jpg', 'aladdin', 'Jafar'),
 ('./imgs/aladdin/Jasmin.png', 'aladdin', 'Jasmin'),
 ('./imgs/aladdin/mono.jpg', 'aladdin', 'Abú'),
 ('./imgs/aladdin/portada.jpg', 'aladdin', 'Portada'),
 ('./imgs/aladdin/poster.jpeg', 'aladdin', 'Poster'),
-('./imgs/detective_pikachu/2Pikachushablan.jpg', 'detective_pikachu', 'pika pi habla con pika pi'),
+('./imgs/detective_pikachu/2Pikachushablan.jpg', 'detective_pikachu', '2 pikachus hablando'),
 ('./imgs/detective_pikachu/DP.jpg', 'detective_pikachu', 'pika pi'),
 ('./imgs/detective_pikachu/Mewtwo.png', 'detective_pikachu', 'Mewtwo'),
-('./imgs/detective_pikachu/pikachu.jpg', 'detective_pikachu', 'pika chuuuuuuuuuu'),
-('./imgs/detective_pikachu/portada.jpg', 'detective_pikachu', 'pika pi'),
+('./imgs/detective_pikachu/pikachu.jpg', 'detective_pikachu', 'Pikachu'),
+('./imgs/detective_pikachu/portada.jpg', 'detective_pikachu', 'Portada'),
 ('./imgs/detective_pikachu/poster.jpg', 'detective_pikachu', 'Poster'),
 ('./imgs/detective_pikachu/Real3D.jpg', 'detective_pikachu', 'poster Real3D'),
 ('./imgs/espia/portada.jpg', 'espia', 'Portada'),
